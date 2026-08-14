@@ -71,6 +71,7 @@
   --teal:#3FD9C7;
   --nord-blue:#4687FF;
   --surf-green:#22C39A;
+  --saily-purple:#8B6BFF;
   --text-light:#EDF2F7;
   --text-muted:#8CA0B8;
   --hairline: rgba(140,160,184,0.16);
@@ -139,6 +140,8 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
 .btn-nord:hover{ transform:translateY(-1px); background:#5b95ff; }
 .btn-surf{ background:var(--surf-green); color:#062a22; width:100%; }
 .btn-surf:hover{ transform:translateY(-1px); background:#33d9ae; }
+.btn-saily{ background:var(--saily-purple); color:#fff; width:100%; }
+.btn-saily:hover{ transform:translateY(-1px); background:#a08aff; }
 
 .menu-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
 .menu-toggle span{ width:22px; height:2px; background:var(--text-light); }
@@ -241,6 +244,28 @@ section{ padding:80px 0; }
 .provider-card li:first-child{ border-top:none; }
 .provider-card li svg{ width:14px; height:14px; stroke:var(--teal); flex-shrink:0; margin-top:3px; }
 .provider-price{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--text-muted); margin-bottom:14px; }
+
+/* eSIM spotlight */
+.esim-spotlight{
+  background:linear-gradient(135deg, rgba(139,107,255,0.12), var(--navy-panel));
+  border:1px solid var(--hairline);
+  border-radius:16px;
+  padding:40px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:36px;
+  align-items:center;
+}
+.esim-spotlight .provider-name.saily{ color:var(--saily-purple); }
+.esim-spotlight ul{ list-style:none; margin:18px 0 0; }
+.esim-spotlight li{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; padding:9px 0; border-top:1px solid var(--hairline); }
+.esim-spotlight li:first-child{ border-top:none; }
+.esim-spotlight li svg{ width:14px; height:14px; stroke:var(--saily-purple); flex-shrink:0; margin-top:3px; }
+.esim-side{ background:var(--navy-deep); border:1px solid var(--hairline); border-radius:12px; padding:26px; }
+.esim-side .mono{ font-size:0.7rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; display:block;}
+.esim-side .stat{ display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid var(--hairline); font-size:0.88rem; }
+.esim-side .stat:first-of-type{ border-top:none; }
+.esim-side .stat b{ color:var(--saily-purple); }
 
 /* Use-case cards */
 .usecases{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
@@ -377,6 +402,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns:1fr; }
+  .esim-spotlight{ grid-template-columns:1fr; padding:28px; }
   .steps, .quotes{ grid-template-columns:1fr; }
   .providers{ grid-template-columns:1fr; }
   .usecases{ grid-template-columns:1fr; }
@@ -413,6 +439,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       <a href="#why">Why a VPN</a>
       <a href="#reviews">Reviews</a>
       <a href="#best-for">Best For</a>
+      <a href="#esim">eSIM</a>
       <a href="#compare">Compare</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -637,6 +664,40 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
     </div>
   </section>
 
+  <!-- ESIM SPOTLIGHT -->
+  <section id="esim">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">STAYING CONNECTED</div>
+        <h2>Don't forget mobile data — the other half of staying connected abroad</h2>
+        <p>A VPN secures your connection. An eSIM is what gets you online in the first place, without hunting for a local SIM shop or paying your carrier's roaming fees.</p>
+      </div>
+      <div class="esim-spotlight">
+        <div>
+          <span class="provider-name saily">Saily</span>
+          <p style="color:var(--text-muted); margin-top:8px;">eSIM data plans in 200+ destinations, built by the team behind NordVPN.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12 L10 17 L19 7"/></svg>Install before you fly — activate only once you land</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12 L10 17 L19 7"/></svg>No physical SIM swap, no hunting for a local kiosk</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12 L10 17 L19 7"/></svg>Keep your home number active alongside your data eSIM</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12 L10 17 L19 7"/></svg>Backed by Nord Security's reliability and support standards</li>
+          </ul>
+          <div style="margin-top:24px; display:flex; gap:18px; align-items:center; flex-wrap:wrap;">
+            <a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto; display:inline-flex;">Get Saily's eSIM Plans →</a>
+            <a href="best-esim-for-travelers.html" class="link read-more">Read the full guide →</a>
+          </div>
+        </div>
+        <div class="esim-side">
+          <span class="mono">QUICK FACTS</span>
+          <div class="stat"><span>Coverage</span><b>200+ destinations</b></div>
+          <div class="stat"><span>Setup</span><b>Digital, no swap</b></div>
+          <div class="stat"><span>Made by</span><b>Nord Security</b></div>
+          <div class="stat"><span>Pairs with</span><b>NordVPN</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- COMPARISON TABLE -->
   <section id="compare">
     <div class="wrap">
@@ -731,7 +792,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 <footer id="disclosure">
   <div class="wrap">
-    <p class="footer-note">Affiliate Disclosure: TravelConnectly participates in the NordVPN and Surfshark affiliate programs. If you sign up through the links on this page, we may earn a commission at no additional cost to you. This helps support the site and does not affect the opinions expressed in our comparisons. We do not offer our own VPN subscription.</p>
+    <p class="footer-note">Affiliate Disclosure: TravelConnectly participates in the NordVPN, Surfshark, and Saily affiliate programs. If you sign up through the links on this page, we may earn a commission at no additional cost to you. This helps support the site and does not affect the opinions expressed in our comparisons. We do not offer our own VPN or eSIM subscription.</p>
     <div class="footer-grid">
       <div>
         <a href="#top" class="logo" style="margin-bottom:14px;">
@@ -757,6 +818,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <ul>
           <li><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN Deal</a></li>
           <li><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark Deal</a></li>
+          <li><a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener">Saily eSIM Deal</a></li>
         </ul>
       </div>
       <div>
