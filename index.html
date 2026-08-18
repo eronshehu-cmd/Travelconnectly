@@ -77,7 +77,8 @@
   --nord-blue:#2A56C4;
   --nord-blue-text:#7AA8FF;
   --surf-green:#22C39A;
-  --saily-purple:#8B6BFF;
+  --saily-purple:#6544C7;
+  --saily-purple-text:#B29AFF;
   --text-light:#EDF2F7;
   --text-muted:#8CA0B8;
   --hairline: rgba(140,160,184,0.16);
@@ -147,7 +148,7 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
 .btn-surf{ background:var(--surf-green); color:#062a22; width:100%; }
 .btn-surf:hover{ transform:translateY(-1px); background:#33d9ae; }
 .btn-saily{ background:var(--saily-purple); color:#fff; width:100%; }
-.btn-saily:hover{ transform:translateY(-1px); background:#a08aff; }
+.btn-saily:hover{ transform:translateY(-1px); background:#7053C9; }
 
 .menu-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:12px; min-width:48px; min-height:48px; align-items:center; justify-content:center; }
 .menu-toggle span{ width:22px; height:2px; background:var(--text-light); }
@@ -264,16 +265,16 @@ section{ padding:80px 0; }
   gap:36px;
   align-items:center;
 }
-.esim-spotlight .provider-name.saily{ color:var(--saily-purple); }
+.esim-spotlight .provider-name.saily{ color:var(--saily-purple-text); }
 .esim-spotlight ul{ list-style:none; margin:18px 0 0; }
 .esim-spotlight li{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; padding:9px 0; border-top:1px solid var(--hairline); }
 .esim-spotlight li:first-child{ border-top:none; }
-.esim-spotlight li svg{ width:14px; height:14px; stroke:var(--saily-purple); flex-shrink:0; margin-top:3px; }
+.esim-spotlight li svg{ width:14px; height:14px; stroke:var(--saily-purple-text); flex-shrink:0; margin-top:3px; }
 .esim-side{ background:var(--navy-deep); border:1px solid var(--hairline); border-radius:12px; padding:26px; }
 .esim-side .mono{ font-size:0.7rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; display:block;}
 .esim-side .stat{ display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid var(--hairline); font-size:0.88rem; }
 .esim-side .stat:first-of-type{ border-top:none; }
-.esim-side .stat b{ color:var(--saily-purple); }
+.esim-side .stat b{ color:var(--saily-purple-text); }
 
 /* Use-case cards */
 .usecases{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
@@ -295,6 +296,7 @@ section{ padding:80px 0; }
 }
 .usecase-badge.nord{ background:rgba(122,168,255,0.18); color:var(--nord-blue-text); }
 .usecase-badge.surf{ background:rgba(34,195,154,0.15); color:var(--surf-green); }
+.usecase-badge.saily{ background:rgba(178,154,255,0.18); color:var(--saily-purple-text); }
 .usecase p{ color:var(--text-muted); font-size:0.9rem; margin-bottom:14px; }
 .usecase .usecase-links{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
 .usecase a.link{ padding:8px 6px; margin:-8px -6px; display:inline-flex; align-items:center;
@@ -304,6 +306,7 @@ section{ padding:80px 0; }
 }
 .usecase a.link.nord{ color:var(--nord-blue-text); }
 .usecase a.link.surf{ color:var(--surf-green); }
+.usecase a.link.saily{ color:var(--saily-purple-text); }
 .usecase a.link:hover{ text-decoration:underline; }
 .usecase a.link{ padding:8px 6px; margin:-8px -6px; display:inline-flex; align-items:center; display:inline-block; padding:8px 2px; text-decoration:underline; }
 .usecase a.read-more{ color:var(--text-muted); }
@@ -397,6 +400,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 .mini-compare .mc-card .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:10px; }
 .mini-compare .mc-card.nord .name{ color:var(--nord-blue-text); }
 .mini-compare .mc-card.surf .name{ color:var(--surf-green); }
+.mini-compare .mc-card.saily .name{ color:var(--saily-purple-text); }
 .mini-compare .mc-card ul{ margin:0 0 16px 0; list-style:none; }
 .mini-compare .mc-card li{ font-size:0.88rem; color:var(--text-muted); padding:6px 0; border-top:1px solid var(--hairline); }
 .mini-compare .mc-card li:first-child{ border-top:none; }
@@ -669,6 +673,30 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           <div class="usecase-links">
             <a href="best-vpn-for-solo-female-travelers.html" class="link read-more" aria-label="Read the full guide: Best VPN for solo female travelers">Read the full guide →</a>
             <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="link nord">See NordVPN's deal →</a>
+          </div>
+        </div>
+
+        <div class="usecase">
+          <div class="usecase-head">
+            <h3><a href="best-vpn-for-long-term-travel.html">Best VPN for long-term travel &amp; gap years</a></h3>
+            <span class="usecase-badge surf">Surfshark</span>
+          </div>
+          <p>Months on the road across many countries makes total cost and device coverage matter more than on a short trip. Surfshark's unlimited devices and lower cost on extended plans fit a gap year better than paying monthly.</p>
+          <div class="usecase-links">
+            <a href="best-vpn-for-long-term-travel.html" class="link read-more" aria-label="Read the full guide: Best VPN for long-term travel and gap years">Read the full guide →</a>
+            <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener" class="link surf">See Surfshark's deal →</a>
+          </div>
+        </div>
+
+        <div class="usecase">
+          <div class="usecase-head">
+            <h3><a href="cheapest-way-to-stay-connected-traveling.html">Cheapest way to stay connected for months</a></h3>
+            <span class="usecase-badge surf">Surfshark + Saily</span>
+          </div>
+          <p>Roaming fees and hunting for physical SIM shops at every border add up fast. Pairing an eSIM with a VPN on a longer plan is the lowest-cost setup for staying online and secure across a multi-country trip.</p>
+          <div class="usecase-links">
+            <a href="cheapest-way-to-stay-connected-traveling.html" class="link read-more" aria-label="Read the full guide: Cheapest way to stay connected while traveling for months">Read the full guide →</a>
+            <a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener" class="link saily">See Saily's deal →</a>
           </div>
         </div>
 
