@@ -74,7 +74,8 @@
   --navy-panel-2:#1B3049;
   --amber:#F4A825;
   --teal:#3FD9C7;
-  --nord-blue:#4687FF;
+  --nord-blue:#2A56C4;
+  --nord-blue-text:#7AA8FF;
   --surf-green:#22C39A;
   --saily-purple:#8B6BFF;
   --text-light:#EDF2F7;
@@ -142,13 +143,13 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
 .btn-ghost{ border-color:var(--hairline); color:var(--text-light); }
 .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
 .btn-nord{ background:var(--nord-blue); color:#fff; width:100%; }
-.btn-nord:hover{ transform:translateY(-1px); background:#5b95ff; }
+.btn-nord:hover{ transform:translateY(-1px); background:#376AD9; }
 .btn-surf{ background:var(--surf-green); color:#062a22; width:100%; }
 .btn-surf:hover{ transform:translateY(-1px); background:#33d9ae; }
 .btn-saily{ background:var(--saily-purple); color:#fff; width:100%; }
 .btn-saily:hover{ transform:translateY(-1px); background:#a08aff; }
 
-.menu-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
+.menu-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:12px; min-width:48px; min-height:48px; align-items:center; justify-content:center; }
 .menu-toggle span{ width:22px; height:2px; background:var(--text-light); }
 
 /* Disclosure bar */
@@ -160,16 +161,18 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
   color:var(--text-muted);
   text-align:center;
 }
-.disclosure a{ color:var(--teal); }
+.disclosure a{ color:var(--teal); padding:6px 3px; margin:-6px -3px; text-decoration:underline; }
 
 /* Breadcrumb */
-.breadcrumb{
+.breadcrumb{ 
   font-family:'IBM Plex Mono', monospace;
   font-size:0.74rem;
   color:var(--text-muted);
   padding:20px 0 0;
 }
+.breadcrumb a{ padding:9px 5px; margin:-9px -5px; display:inline-block; }
 .breadcrumb a:hover{ color:var(--teal); }
+.breadcrumb a{ display:inline-block; padding:8px 2px; }
 .breadcrumb .sep{ margin:0 8px; opacity:0.5; }
 
 /* HERO */
@@ -203,7 +206,7 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
 .board-cols{ display:grid; grid-template-columns:1.6fr 1fr 1fr; padding:8px 10px; font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); }
 .board-row{ display:grid; grid-template-columns:1.6fr 1fr 1fr; align-items:center; padding:14px 10px; border-top:1px solid var(--hairline); font-family:'IBM Plex Mono', monospace; font-size:0.85rem; }
 .board-row .metric{ color:var(--text-muted); font-size:0.78rem; text-transform:none; font-family:'Inter',sans-serif; }
-.board-row .nord{ color:var(--nord-blue); font-weight:600; }
+.board-row .nord{ color:var(--nord-blue-text); font-weight:600; }
 .board-row .surf{ color:var(--surf-green); font-weight:600; }
 .board-foot{ margin-top:14px; padding-top:14px; border-top:1px solid var(--hairline); display:flex; gap:10px; }
 .board-foot .btn{ flex:1; padding:10px 14px; font-size:0.82rem; }
@@ -240,7 +243,7 @@ section{ padding:80px 0; }
 }
 .provider-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
 .provider-name{ font-family:'Space Grotesk', sans-serif; font-size:1.4rem; font-weight:700; }
-.provider-name.nord{ color:var(--nord-blue); }
+.provider-name.nord{ color:var(--nord-blue-text); }
 .provider-name.surf{ color:var(--surf-green); }
 .rating{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--amber); }
 .provider-tag{ color:var(--text-muted); font-size:0.92rem; margin-bottom:22px; }
@@ -290,18 +293,19 @@ section{ padding:80px 0; }
   padding:5px 10px; border-radius:999px;
   white-space:nowrap;
 }
-.usecase-badge.nord{ background:rgba(70,135,255,0.15); color:var(--nord-blue); }
+.usecase-badge.nord{ background:rgba(122,168,255,0.18); color:var(--nord-blue-text); }
 .usecase-badge.surf{ background:rgba(34,195,154,0.15); color:var(--surf-green); }
 .usecase p{ color:var(--text-muted); font-size:0.9rem; margin-bottom:14px; }
 .usecase .usecase-links{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
-.usecase a.link{
+.usecase a.link{ padding:8px 6px; margin:-8px -6px; display:inline-flex; align-items:center;
   font-family:'IBM Plex Mono', monospace;
   font-size:0.78rem; letter-spacing:0.02em;
   display:inline-flex; align-items:center; gap:6px;
 }
-.usecase a.link.nord{ color:var(--nord-blue); }
+.usecase a.link.nord{ color:var(--nord-blue-text); }
 .usecase a.link.surf{ color:var(--surf-green); }
 .usecase a.link:hover{ text-decoration:underline; }
+.usecase a.link{ padding:8px 6px; margin:-8px -6px; display:inline-flex; align-items:center; display:inline-block; padding:8px 2px; text-decoration:underline; }
 .usecase a.read-more{ color:var(--text-muted); }
 .usecase a.read-more:hover{ color:var(--text-light); }
 
@@ -312,7 +316,7 @@ th,td{ padding:16px 20px; text-align:left; font-size:0.92rem; border-bottom:1px 
 th{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); background:var(--navy-panel); }
 td:first-child{ color:var(--text-muted); }
 tr:last-child td{ border-bottom:none; }
-.table-wrap td.nord{ color:var(--nord-blue); font-weight:600; }
+.table-wrap td.nord{ color:var(--nord-blue-text); font-weight:600; }
 .table-wrap td.surf{ color:var(--surf-green); font-weight:600; }
 
 /* Quotes */
@@ -345,9 +349,10 @@ tr:last-child td{ border-bottom:none; }
 
 footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--text-muted); font-size:0.88rem; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:40px; }
-.footer-grid h4{ font-family:'IBM Plex Mono', monospace; color:var(--text-light); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; }
+.footer-grid h3{ font-family:'IBM Plex Mono', monospace; color:var(--text-light); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; }
 .footer-grid ul{ list-style:none; }
 .footer-grid li{ margin-bottom:10px; }
+.footer-grid a{ display:inline-block; padding:6px 2px; margin:-6px -2px; }
 .footer-grid a:hover{ color:var(--teal); }
 .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:24px; border-top:1px solid var(--hairline); font-size:0.8rem; flex-wrap:wrap; gap:10px;}
 .footer-note{ max-width:760px; color:var(--text-muted); font-size:0.8rem; margin-bottom:24px; line-height:1.7;}
@@ -366,6 +371,8 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 .article ul, .article ol{ margin:0 0 20px 22px; color:var(--text-light); }
 .article li{ margin-bottom:8px; font-size:1rem; }
 .article strong{ color:var(--text-light); }
+.article a{ color:var(--teal); text-decoration:underline; text-underline-offset:3px; }
+.article a:hover{ color:#7ce8dc; }
 
 .verdict-box{
   background:var(--navy-panel);
@@ -388,7 +395,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   background:var(--navy-panel); border:1px solid var(--hairline); border-radius:12px; padding:20px;
 }
 .mini-compare .mc-card .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:10px; }
-.mini-compare .mc-card.nord .name{ color:var(--nord-blue); }
+.mini-compare .mc-card.nord .name{ color:var(--nord-blue-text); }
 .mini-compare .mc-card.surf .name{ color:var(--surf-green); }
 .mini-compare .mc-card ul{ margin:0 0 16px 0; list-style:none; }
 .mini-compare .mc-card li{ font-size:0.88rem; color:var(--text-muted); padding:6px 0; border-top:1px solid var(--hairline); }
@@ -588,7 +595,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>Streaming platforms actively block VPN traffic, so reliability matters more than server count here. NordVPN's speed and consistency make it the safer bet for watching your usual shows while you're away.</p>
           <div class="usecase-links">
-            <a href="best-vpn-for-streaming-netflix-abroad.html" class="link read-more">Read the full guide →</a>
+            <a href="best-vpn-for-streaming-netflix-abroad.html" class="link read-more" aria-label="Read the full guide: Best VPN for streaming Netflix and BBC iPlayer abroad">Read the full guide →</a>
             <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="link nord">See NordVPN's deal →</a>
           </div>
         </div>
@@ -600,7 +607,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>If you travel often and want to keep costs down without cutting corners on security, Surfshark's longer plans are typically the cheaper option of the two, without giving up audited no-logs protection.</p>
           <div class="usecase-links">
-            <a href="best-budget-vpn-for-travelers.html" class="link read-more">Read the full guide →</a>
+            <a href="best-budget-vpn-for-travelers.html" class="link read-more" aria-label="Read the full guide: Best budget VPN for frequent travelers">Read the full guide →</a>
             <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener" class="link surf">See Surfshark's deal →</a>
           </div>
         </div>
@@ -612,7 +619,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>Shared networks are where snooping risk is highest. NordVPN's Threat Protection adds a layer against malicious sites and trackers on top of standard encryption, which is exactly what an unfamiliar network calls for.</p>
           <div class="usecase-links">
-            <a href="best-vpn-for-airport-hotel-wifi.html" class="link read-more">Read the full guide →</a>
+            <a href="best-vpn-for-airport-hotel-wifi.html" class="link read-more" aria-label="Read the full guide: Best VPN for airport and hotel WiFi">Read the full guide →</a>
             <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="link nord">See NordVPN's deal →</a>
           </div>
         </div>
@@ -624,7 +631,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>Working on the road usually means a laptop, phone, and tablet all connected at once — sometimes shared with a partner. Surfshark's unlimited device count covers all of it under a single plan.</p>
           <div class="usecase-links">
-            <a href="best-vpn-for-digital-nomads.html" class="link read-more">Read the full guide →</a>
+            <a href="best-vpn-for-digital-nomads.html" class="link read-more" aria-label="Read the full guide: Best VPN for digital nomads and remote work">Read the full guide →</a>
             <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener" class="link surf">See Surfshark's deal →</a>
           </div>
         </div>
@@ -636,7 +643,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>Joining calls and accessing work systems from hotel rooms and lounges calls for a VPN that just stays connected. NordVPN's large, stable server network is built for exactly that kind of reliability.</p>
           <div class="usecase-links">
-            <a href="best-vpn-for-business-travelers.html" class="link read-more">Read the full guide →</a>
+            <a href="best-vpn-for-business-travelers.html" class="link read-more" aria-label="Read the full guide: Best VPN for business travelers">Read the full guide →</a>
             <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="link nord">See NordVPN's deal →</a>
           </div>
         </div>
@@ -648,7 +655,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>Long trips through multiple countries mean multiple devices and a tighter budget. Surfshark's low cost per device makes it easy to justify for months of travel at a time.</p>
           <div class="usecase-links">
-            <a href="best-vpn-for-backpacking.html" class="link read-more">Read the full guide →</a>
+            <a href="best-vpn-for-backpacking.html" class="link read-more" aria-label="Read the full guide: Best VPN for backpacking on a budget">Read the full guide →</a>
             <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener" class="link surf">See Surfshark's deal →</a>
           </div>
         </div>
@@ -660,7 +667,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </div>
           <p>Booking accommodation, checking in with people back home, and handling accounts all happen more often on public WiFi when you're traveling alone. NordVPN's auto-connect on new networks makes protection automatic rather than one more thing to remember.</p>
           <div class="usecase-links">
-            <a href="best-vpn-for-solo-female-travelers.html" class="link read-more">Read the full guide →</a>
+            <a href="best-vpn-for-solo-female-travelers.html" class="link read-more" aria-label="Read the full guide: Best VPN for solo female travelers">Read the full guide →</a>
             <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="link nord">See NordVPN's deal →</a>
           </div>
         </div>
@@ -689,7 +696,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           </ul>
           <div style="margin-top:24px; display:flex; gap:18px; align-items:center; flex-wrap:wrap;">
             <a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto; display:inline-flex;">Get Saily's eSIM Plans →</a>
-            <a href="best-esim-for-travelers.html" class="link read-more">Read the full guide →</a>
+            <a href="best-esim-for-travelers.html" class="link read-more" aria-label="Read the full guide: Best eSIM for travelers">Read the full guide →</a>
           </div>
         </div>
         <div class="esim-side">
@@ -811,7 +818,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <p style="max-width:260px;">Independent VPN comparisons for people who work and travel.</p>
       </div>
       <div>
-        <h4>Guide</h4>
+        <h3>Guide</h3>
         <ul>
           <li><a href="#why">Why a VPN</a></li>
           <li><a href="#reviews">Reviews</a></li>
@@ -819,7 +826,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         </ul>
       </div>
       <div>
-        <h4>Get Started</h4>
+        <h3>Get Started</h3>
         <ul>
           <li><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN Deal</a></li>
           <li><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark Deal</a></li>
@@ -827,7 +834,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         </ul>
       </div>
       <div>
-        <h4>Site</h4>
+        <h3>Site</h3>
         <ul>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#disclosure">Affiliate Disclosure</a></li>
