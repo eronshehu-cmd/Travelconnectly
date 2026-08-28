@@ -19,6 +19,10 @@
 <meta property="og:site_name" content="TravelConnectly">
 <meta property="og:title" content="Free VPN vs Paid VPN: What You Are Actually Giving Up">
 <meta property="og:description" content="Free VPNs sound like an easy win for travelers on a budget. Here is what you are actually trading away.">
+<meta property="og:image" content="https://www.travelconnectly.com/photo-freevpn.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.travelconnectly.com/photo-freevpn.jpg">
 <meta property="og:locale" content="en_US">
 
 <script type="application/ld+json">
@@ -28,6 +32,7 @@
   "headline": "Free VPN vs Paid VPN: What You Are Actually Giving Up",
   "author": { "@type": "Organization", "name": "TravelConnectly" },
   "publisher": { "@type": "Organization", "name": "TravelConnectly", "logo": { "@type": "ImageObject", "url": "https://www.travelconnectly.com/icon-192.png" } },
+  "image": "https://www.travelconnectly.com/photo-freevpn.jpg",
   "about": "Comparing free and paid VPN services"
 }
 </script>
@@ -361,6 +366,41 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 }
 .trust-note p{ color:var(--text-muted); font-size:0.88rem; margin:0; }
 .trust-note strong{ color:var(--text-light); }
+.guide-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin:34px 0 70px; }
+.guide-card{
+  background:var(--navy-panel); border:1px solid var(--hairline);
+  border-radius:12px; overflow:hidden; display:flex; flex-direction:column;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.guide-card:hover{ border-color:var(--teal); transform:translateY(-2px); }
+.guide-card img{ width:100%; height:158px; object-fit:cover; display:block; }
+.guide-card-body{ padding:18px 20px 22px; }
+.guide-card .tag{
+  font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.07em;
+  text-transform:uppercase; color:var(--teal); display:block; margin-bottom:9px;
+}
+.guide-card h3{ font-size:1rem; line-height:1.35; margin-bottom:8px; }
+.guide-card p{ color:var(--text-muted); font-size:0.86rem; margin:0; }
+@media (max-width:900px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:600px){ .guide-grid{ grid-template-columns:1fr; } }
+.hero-img{ width:100%; border-radius:14px; margin:6px 0 26px; display:block; border:1px solid var(--hairline); }
+.toc{
+  background:var(--navy-panel); border:1px solid var(--hairline);
+  border-radius:12px; padding:20px 24px; margin:28px 0 32px; max-width:740px;
+}
+.toc h2{ font-size:0.78rem !important; font-family:'IBM Plex Mono',monospace; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--text-muted); margin:0 0 12px !important; }
+.toc ol{ margin:0 0 0 20px; }
+.toc li{ margin-bottom:7px; font-size:0.94rem; }
+.toc a{ color:var(--teal); text-decoration:none; }
+.toc a:hover{ text-decoration:underline; }
+.glance{ margin:28px 0 34px; max-width:100%; }
+.glance table{ min-width:520px; }
+.glance th, .glance td{ padding:13px 16px; font-size:0.88rem; }
+.glance .price{ font-family:'IBM Plex Mono',monospace; color:var(--amber); white-space:nowrap; }
+.price-note{ font-size:0.78rem; color:var(--text-muted); margin-top:10px; font-family:'IBM Plex Mono',monospace; }
+.provider-price{ font-family:'IBM Plex Mono',monospace; }
+.provider-price b{ color:var(--amber); font-size:1.05rem; }
 
 .article{ max-width:740px; }
 .article p{ color:var(--text-light); font-size:1.02rem; margin-bottom:20px; }
@@ -448,17 +488,42 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       Travel<b>Connectly</b>
     </a>
     <div class="nav-links">
-      <a href="index.html#why">Why a VPN</a>
+      <a href="guides.html">Guides</a>
       <a href="index.html#reviews">Reviews</a>
       <a href="index.html#best-for">Best For</a>
       <a href="index.html#esim">eSIM</a>
       <a href="index.html#compare">Compare</a>
+      <a href="about.html">About</a>
     </div>
     <div class="nav-cta">
       <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener" class="btn btn-primary">Get Surfshark</a>
     </div>
     <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
+      <div class="glance">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Provider</th><th>Best for</th><th>Devices</th><th>From</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nord"><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN</a></td>
+                <td>Speed &amp; streaming</td><td>10</td><td class="price">$3.49/mo</td>
+              </tr>
+              <tr>
+                <td class="surf"><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark</a></td>
+                <td>Budget &amp; multi-device</td><td>Unlimited</td><td class="price">$2.49/mo</td>
+              </tr>
+              <tr>
+                <td><a href="https://protonvpn.com/" target="_blank" rel="noopener">Proton VPN</a></td>
+                <td>Free tier</td><td>1 free / 10 paid</td><td class="price">Free</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="price-note">Lowest advertised rates on multi-year plans, checked August 2026. Prices change often and renew higher — check the provider for current pricing. We have no affiliate relationship with Proton VPN; it's listed because it's the free option we'd point people to.</p>
+      </div>
 </header>
 
 <main id="top">
@@ -475,13 +540,24 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   </div>
 
   <div class="wrap">
+    <img class="hero-img" src="photo-freevpn.jpg" alt="Two travelers using a phone and reading in an airport waiting area" width="1200" height="630">
     <div class="trust-note">
       <p><strong>How we compare providers:</strong> We evaluate VPN, eSIM, and travel-safety providers using official specifications, published pricing, and independently verified audit reports, and we update this guide as providers change their offerings. Our recommendation reflects fit for the specific travel scenario covered here, not which provider pays the highest commission.</p>
     </div>
     <article class="article">
       <p class="lede">A free VPN looks like an easy win when you are trying to keep travel costs down. The catch is that running a global server network, building apps, and paying for security audits all cost real money — a free product has to cover that cost somehow, and it is worth knowing how before you rely on one to protect anything.</p>
 
-      <h2>How free VPNs actually make money</h2>
+      <nav class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <ol>
+      <li><a href="#how-free-vpns-actually-make-money">How free VPNs actually make money</a></li>
+      <li><a href="#what-you-typically-give-up-beyond-privacy">What you typically give up beyond privacy</a></li>
+      <li><a href="#the-actual-cost-comparison-for-travelers-specifically">The actual cost comparison, for travelers specifically</a></li>
+      <li><a href="#when-a-free-vpn-is-genuinely-reasonable">When a free VPN is genuinely reasonable</a></li>
+      <li><a href="#frequently-asked-questions">Frequently asked questions</a></li>
+        </ol>
+      </nav>
+      <h2 id="how-free-vpns-actually-make-money">How free VPNs actually make money</h2>
       <p>There are a few common models, and they are not all equally concerning:</p>
       <ul>
         <li><strong>Data logging and selling.</strong> Some free VPNs log your browsing activity and sell it to advertisers or data brokers — the exact thing a VPN is supposed to protect you from in the first place.</li>
@@ -490,7 +566,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       </ul>
       <p>The uncomfortable part is that from the outside, a free VPN app usually looks the same regardless of which model it is running. The privacy policy is where the real difference shows up, and few people read it before installing.</p>
 
-      <h2>What you typically give up beyond privacy</h2>
+      <h2 id="what-you-typically-give-up-beyond-privacy">What you typically give up beyond privacy</h2>
       <ul>
         <li><strong>Speed.</strong> Free tiers are usually rate-limited or routed through fewer, more congested servers.</li>
         <li><strong>Server locations.</strong> A handful of countries at most, compared to 100+ on most paid providers — a real limitation if you need a specific location for streaming or work access.</li>
@@ -498,13 +574,13 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <li><strong>Independent audits.</strong> Reputable paid providers publish third-party audits of their no-logs claims. Most free VPNs do not, which means their privacy claims are effectively unverifiable.</li>
       </ul>
 
-      <h2>The actual cost comparison, for travelers specifically</h2>
+      <h2 id="the-actual-cost-comparison-for-travelers-specifically">The actual cost comparison, for travelers specifically</h2>
       <p>A paid VPN on a longer plan often works out to a few dollars a month — genuinely small next to the cost of a flight, accommodation, or a single bad night from a compromised account while traveling. For budget-conscious travelers specifically, the calculation is less "free vs. paid" and more "which paid option is cheapest without cutting the corners that matter" — see our <a href="best-budget-vpn-for-travelers.html">best budget VPN for travelers guide</a> for that comparison.</p>
 
-      <h2>When a free VPN is genuinely reasonable</h2>
+      <h2 id="when-a-free-vpn-is-genuinely-reasonable">When a free VPN is genuinely reasonable</h2>
       <p>Not every situation calls for paid protection. Light, occasional use — checking a map or reading news on WiFi you already trust — is a lower-stakes scenario than logging into a bank account from an airport lounge. The risk profile changes with what you are actually doing on the connection, not just whether a VPN is technically running.</p>
 
-      <h2>Frequently asked questions</h2>
+      <h2 id="frequently-asked-questions">Frequently asked questions</h2>
       <h3>Are free VPNs safe to use?</h3>
       <p>Some are reasonably safe but limited in speed and data, while others fund themselves by logging and selling user activity, which defeats the purpose of using a VPN for privacy in the first place. The specific provider's business model matters more than the fact that it's free.</p>
       <h3>Why do paid VPNs cost money if free ones exist?</h3>
@@ -552,7 +628,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 <footer id="disclosure">
   <div class="wrap">
-    <p class="footer-note">Affiliate Disclosure: TravelConnectly participates in the NordVPN, Surfshark, Saily, and SafetyWing affiliate programs. If you sign up through the links on this page, we may earn a commission at no additional cost to you. This helps support the site and does not affect the opinions expressed in our comparisons. We do not offer our own VPN or eSIM subscription.</p>
+    <p class="footer-note">Affiliate Disclosure: TravelConnectly participates in the NordVPN, Surfshark, Saily, SafetyWing, and Wise affiliate programs. If you sign up through the links on this page, we may earn a commission at no additional cost to you. This helps support the site and does not affect the opinions expressed in our comparisons. We do not offer our own VPN or eSIM subscription.</p>
     <div class="footer-grid">
       <div>
         <a href="index.html" class="logo" style="margin-bottom:14px;">
@@ -570,7 +646,8 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <ul>
           <li><a href="index.html#why">Why a VPN</a></li>
           <li><a href="index.html#reviews">Reviews</a></li>
-          <li><a href="index.html#compare">Compare</a></li>
+          <li><a href="index.html#compare">Compare</a>
+      <a href="about.html">About</a></li>
         </ul>
       </div>
       <div>
@@ -580,6 +657,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           <li><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark Deal</a></li>
           <li><a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener">Saily eSIM Deal</a></li>
           <li><a href="https://safetywing.com/?referenceID=26583666&utm_source=26583666&utm_medium=Ambassador" target="_blank" rel="sponsored noopener">SafetyWing Insurance</a></li>
+          <li><a href="https://wise.prf.hn/click/camref:1011l5PJJD" target="_blank" rel="sponsored noopener">Wise Money Transfer</a></li>
         </ul>
       </div>
       <div>

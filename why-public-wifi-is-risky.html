@@ -19,6 +19,10 @@
 <meta property="og:site_name" content="TravelConnectly">
 <meta property="og:title" content="Why Public WiFi Is Risky (And What Actually Happens)">
 <meta property="og:description" content="What actually happens when you connect to airport, hotel, or cafe WiFi without protection.">
+<meta property="og:image" content="https://www.travelconnectly.com/photo-wifi-risk.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.travelconnectly.com/photo-wifi-risk.jpg">
 <meta property="og:locale" content="en_US">
 
 <script type="application/ld+json">
@@ -28,6 +32,7 @@
   "headline": "Why Public WiFi Is Risky (And What Actually Happens)",
   "author": { "@type": "Organization", "name": "TravelConnectly" },
   "publisher": { "@type": "Organization", "name": "TravelConnectly", "logo": { "@type": "ImageObject", "url": "https://www.travelconnectly.com/icon-192.png" } },
+  "image": "https://www.travelconnectly.com/photo-wifi-risk.jpg",
   "about": "Public WiFi security risks for travelers"
 }
 </script>
@@ -361,6 +366,41 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 }
 .trust-note p{ color:var(--text-muted); font-size:0.88rem; margin:0; }
 .trust-note strong{ color:var(--text-light); }
+.guide-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin:34px 0 70px; }
+.guide-card{
+  background:var(--navy-panel); border:1px solid var(--hairline);
+  border-radius:12px; overflow:hidden; display:flex; flex-direction:column;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.guide-card:hover{ border-color:var(--teal); transform:translateY(-2px); }
+.guide-card img{ width:100%; height:158px; object-fit:cover; display:block; }
+.guide-card-body{ padding:18px 20px 22px; }
+.guide-card .tag{
+  font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.07em;
+  text-transform:uppercase; color:var(--teal); display:block; margin-bottom:9px;
+}
+.guide-card h3{ font-size:1rem; line-height:1.35; margin-bottom:8px; }
+.guide-card p{ color:var(--text-muted); font-size:0.86rem; margin:0; }
+@media (max-width:900px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:600px){ .guide-grid{ grid-template-columns:1fr; } }
+.hero-img{ width:100%; border-radius:14px; margin:6px 0 26px; display:block; border:1px solid var(--hairline); }
+.toc{
+  background:var(--navy-panel); border:1px solid var(--hairline);
+  border-radius:12px; padding:20px 24px; margin:28px 0 32px; max-width:740px;
+}
+.toc h2{ font-size:0.78rem !important; font-family:'IBM Plex Mono',monospace; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--text-muted); margin:0 0 12px !important; }
+.toc ol{ margin:0 0 0 20px; }
+.toc li{ margin-bottom:7px; font-size:0.94rem; }
+.toc a{ color:var(--teal); text-decoration:none; }
+.toc a:hover{ text-decoration:underline; }
+.glance{ margin:28px 0 34px; max-width:100%; }
+.glance table{ min-width:520px; }
+.glance th, .glance td{ padding:13px 16px; font-size:0.88rem; }
+.glance .price{ font-family:'IBM Plex Mono',monospace; color:var(--amber); white-space:nowrap; }
+.price-note{ font-size:0.78rem; color:var(--text-muted); margin-top:10px; font-family:'IBM Plex Mono',monospace; }
+.provider-price{ font-family:'IBM Plex Mono',monospace; }
+.provider-price b{ color:var(--amber); font-size:1.05rem; }
 
 .article{ max-width:740px; }
 .article p{ color:var(--text-light); font-size:1.02rem; margin-bottom:20px; }
@@ -448,11 +488,12 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       Travel<b>Connectly</b>
     </a>
     <div class="nav-links">
-      <a href="index.html#why">Why a VPN</a>
+      <a href="guides.html">Guides</a>
       <a href="index.html#reviews">Reviews</a>
       <a href="index.html#best-for">Best For</a>
       <a href="index.html#esim">eSIM</a>
       <a href="index.html#compare">Compare</a>
+      <a href="about.html">About</a>
     </div>
     <div class="nav-cta">
       <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="btn btn-primary">Get NordVPN</a>
@@ -475,35 +516,47 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   </div>
 
   <div class="wrap">
+    <img class="hero-img" src="photo-wifi-risk.jpg" alt="Travelers using laptops and tablets on shared public WiFi in a crowded airport terminal" width="1200" height="630">
     <div class="trust-note">
       <p><strong>How we compare providers:</strong> We evaluate VPN, eSIM, and travel-safety providers using official specifications, published pricing, and independently verified audit reports, and we update this guide as providers change their offerings. Our recommendation reflects fit for the specific travel scenario covered here, not which provider pays the highest commission.</p>
     </div>
     <article class="article">
       <p class="lede">"Use a VPN on public WiFi" is advice you've probably heard a dozen times without anyone explaining what actually goes wrong if you don't. Here's the plain version — what's actually happening on that hotel or airport network, and why it matters.</p>
 
-      <h2>What "public" actually means for a WiFi network</h2>
+      <nav class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <ol>
+      <li><a href="#what-public-actually-means-for-a-wifi-network">What "public" actually means for a WiFi network</a></li>
+      <li><a href="#what-a-man-in-the-middle-attack-actually-is">What a man-in-the-middle attack actually is</a></li>
+      <li><a href="#three-moments-where-this-actually-matters">Three moments where this actually matters</a></li>
+      <li><a href="#what-a-vpn-actually-changes-here">What a VPN actually changes here</a></li>
+      <li><a href="#does-a-password-make-a-network-safe">Does a password make a network safe?</a></li>
+      <li><a href="#frequently-asked-questions">Frequently asked questions</a></li>
+        </ol>
+      </nav>
+      <h2 id="what-public-actually-means-for-a-wifi-network">What "public" actually means for a WiFi network</h2>
       <p>A home WiFi network has one household on it, usually with a unique password nobody outside the home knows. A public network — airport, hotel lobby, hostel common room, cafe — has dozens or hundreds of strangers connected to the same access point, often with a password anyone can get simply by asking staff or reading a receipt.</p>
       <p>That shared access is the entire problem. Being on the same network as someone doesn't just mean you're both using the same internet connection — depending on how the network is configured, it can mean your devices are visible to each other in ways that would never happen at home.</p>
 
-      <h2>What a man-in-the-middle attack actually is</h2>
+      <h2 id="what-a-man-in-the-middle-attack-actually-is">What a man-in-the-middle attack actually is</h2>
       <p>The most common risk on public WiFi has a name: a man-in-the-middle (MITM) attack. It works roughly like this — someone on the same network positions themselves between your device and whatever you're connecting to, whether that's your bank's app or a hotel booking site. Your data still seems to arrive at its destination, but it passes through that third party first, who can read it, and in some cases alter it, without either side noticing anything unusual.</p>
       <p>This isn't a theoretical scenario reserved for high-value targets. The tools to attempt this on an open network are widely available and don't require deep technical skill, which is exactly why security guidance treats any public network as untrusted by default.</p>
 
-      <h2>Three moments where this actually matters</h2>
+      <h2 id="three-moments-where-this-actually-matters">Three moments where this actually matters</h2>
       <ul>
         <li><strong>Logging into anything.</strong> Banking apps, email, and social accounts all send credentials that are worth intercepting.</li>
         <li><strong>Entering payment details.</strong> Booking a hostel or bus ticket from cafe WiFi means typing a card number on a network you don't control.</li>
         <li><strong>Anything you'd consider private.</strong> Messages, photos, and location data are all technically interceptable on an unsecured connection, not just financial data.</li>
       </ul>
 
-      <h2>What a VPN actually changes here</h2>
+      <h2 id="what-a-vpn-actually-changes-here">What a VPN actually changes here</h2>
       <p>A VPN encrypts your traffic before it leaves your device, so even if someone is positioned to intercept it on the same network, what they capture is unreadable without the encryption key. It doesn't make the network itself more trustworthy — it makes what happens on it irrelevant to anyone trying to listen in.</p>
       <p>This is the specific, practical reason "use a VPN on public WiFi" is common advice rather than just caution for its own sake. For a setup built specifically around this kind of use, see our <a href="best-vpn-for-airport-hotel-wifi.html">guide to the best VPN for airport and hotel WiFi</a>.</p>
 
-      <h2>Does a password make a network safe?</h2>
+      <h2 id="does-a-password-make-a-network-safe">Does a password make a network safe?</h2>
       <p>Not meaningfully. A shared password — like one printed on a hostel receipt — controls who can join the network, but everyone who does join is still on the same shared network together. It reduces the pool of possible strangers, not the underlying risk between the people already on it.</p>
 
-      <h2>Frequently asked questions</h2>
+      <h2 id="frequently-asked-questions">Frequently asked questions</h2>
       <h3>Is public WiFi safe if it requires a password?</h3>
       <p>A shared password still means everyone on that network has the same access — it restricts who can join, but doesn't meaningfully protect your traffic from others already connected.</p>
       <h3>What is a man-in-the-middle attack?</h3>
@@ -551,7 +604,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 <footer id="disclosure">
   <div class="wrap">
-    <p class="footer-note">Affiliate Disclosure: TravelConnectly participates in the NordVPN, Surfshark, Saily, and SafetyWing affiliate programs. If you sign up through the links on this page, we may earn a commission at no additional cost to you. This helps support the site and does not affect the opinions expressed in our comparisons. We do not offer our own VPN or eSIM subscription.</p>
+    <p class="footer-note">Affiliate Disclosure: TravelConnectly participates in the NordVPN, Surfshark, Saily, SafetyWing, and Wise affiliate programs. If you sign up through the links on this page, we may earn a commission at no additional cost to you. This helps support the site and does not affect the opinions expressed in our comparisons. We do not offer our own VPN or eSIM subscription.</p>
     <div class="footer-grid">
       <div>
         <a href="index.html" class="logo" style="margin-bottom:14px;">
@@ -569,7 +622,8 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <ul>
           <li><a href="index.html#why">Why a VPN</a></li>
           <li><a href="index.html#reviews">Reviews</a></li>
-          <li><a href="index.html#compare">Compare</a></li>
+          <li><a href="index.html#compare">Compare</a>
+      <a href="about.html">About</a></li>
         </ul>
       </div>
       <div>
@@ -579,6 +633,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
           <li><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark Deal</a></li>
           <li><a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener">Saily eSIM Deal</a></li>
           <li><a href="https://safetywing.com/?referenceID=26583666&utm_source=26583666&utm_medium=Ambassador" target="_blank" rel="sponsored noopener">SafetyWing Insurance</a></li>
+          <li><a href="https://wise.prf.hn/click/camref:1011l5PJJD" target="_blank" rel="sponsored noopener">Wise Money Transfer</a></li>
         </ul>
       </div>
       <div>
