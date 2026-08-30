@@ -344,7 +344,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   transition:border-color .15s ease, transform .15s ease;
 }
 .guide-card:hover{ border-color:var(--teal); transform:translateY(-2px); }
-.guide-card img{ width:100%; height:158px; object-fit:cover; display:block; }
+.guide-card img{ width:100%; height:158px; object-fit:cover; display:block; aspect-ratio:auto; }
 .guide-card-body{ padding:18px 20px 22px; }
 .guide-card .tag{
   font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.07em;
@@ -354,7 +354,14 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 .guide-card p{ color:var(--text-muted); font-size:0.86rem; margin:0; }
 @media (max-width:900px){ .guide-grid{ grid-template-columns:1fr 1fr; } }
 @media (max-width:600px){ .guide-grid{ grid-template-columns:1fr; } }
-.hero-img{ width:100%; border-radius:14px; margin:6px 0 26px; display:block; border:1px solid var(--hairline); }
+.hero-img{
+  width:100%; height:auto; aspect-ratio:1200/630; object-fit:cover;
+  border-radius:14px; margin:6px 0 26px; display:block;
+  border:1px solid var(--hairline);
+}
+@media (max-width:700px){
+  .hero-img{ aspect-ratio:16/10; border-radius:10px; margin:4px 0 20px; }
+}
 .toc{
   background:var(--navy-panel); border:1px solid var(--hairline);
   border-radius:12px; padding:20px 24px; margin:28px 0 32px; max-width:740px;
@@ -478,8 +485,6 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
     </div>
     <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
-        <p class="price-note">Lowest advertised rates on multi-year plans, checked August 2026. Prices change often and renew higher — check the provider for current pricing. We have no affiliate relationship with Proton VPN; it's listed because it's the free option we'd point people to.</p>
-      </div>
 </header>
 
 <main id="top">
@@ -538,6 +543,8 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
             </tbody>
           </table>
         </div>
+        <p class="price-note">Lowest advertised rates on multi-year plans, checked August 2026. Prices change often and renew higher — check the provider for current pricing. We have no affiliate relationship with Proton VPN; it's listed because it's the free option we'd point people to.</p>
+      </div>
       <p>Backpackers tend to rely on public WiFi more than any other type of traveler, simply because it's often the only option in hostels and budget accommodation. That makes security genuinely useful here — but so does keeping monthly costs down over a trip that might run six months or longer.</p>
 
       <h2 id="what-backpackers-should-prioritize">What backpackers should prioritize</h2>
