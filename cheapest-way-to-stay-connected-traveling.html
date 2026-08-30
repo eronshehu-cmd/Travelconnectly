@@ -451,6 +451,9 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px){
+  .nav-cta .btn{ padding:10px 14px; font-size:0.8rem; white-space:nowrap; }
+  nav{ gap:10px; padding:12px 18px; }
+  .logo{ font-size:1rem; }
   .hero-grid{ grid-template-columns:1fr; }
   .esim-spotlight{ grid-template-columns:1fr; padding:28px; }
   .steps, .quotes{ grid-template-columns:1fr; }
@@ -467,6 +470,11 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   .cta-band{ padding:48px 24px; }
 }
 
+
+@media (max-width: 560px){
+  .nav-cta{ display:none; }
+  .logo{ font-size:1.05rem; }
+}
 </style>
 </head>
 <body>

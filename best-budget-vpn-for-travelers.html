@@ -424,6 +424,9 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px){
+  .nav-cta .btn{ padding:10px 14px; font-size:0.8rem; white-space:nowrap; }
+  nav{ gap:10px; padding:12px 18px; }
+  .logo{ font-size:1rem; }
   .hero-grid{ grid-template-columns:1fr; }
   .steps, .quotes{ grid-template-columns:1fr; }
   .providers{ grid-template-columns:1fr; }
@@ -439,6 +442,11 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   .cta-band{ padding:48px 24px; }
 }
 
+
+@media (max-width: 560px){
+  .nav-cta{ display:none; }
+  .logo{ font-size:1.05rem; }
+}
 </style>
 </head>
 <body>
@@ -470,28 +478,6 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
     </div>
     <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
-      <div class="glance">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Provider</th><th>Best for</th><th>Devices</th><th>From</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="nord"><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN</a></td>
-                <td>Speed &amp; streaming</td><td>10</td><td class="price">$3.49/mo</td>
-              </tr>
-              <tr>
-                <td class="surf"><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark</a></td>
-                <td>Budget &amp; multi-device</td><td>Unlimited</td><td class="price">$2.49/mo</td>
-              </tr>
-              <tr>
-                <td><a href="https://protonvpn.com/" target="_blank" rel="noopener">Proton VPN</a></td>
-                <td>Free tier</td><td>1 free / 10 paid</td><td class="price">Free</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <p class="price-note">Lowest advertised rates on multi-year plans, checked August 2026. Prices change often and renew higher — check the provider for current pricing. We have no affiliate relationship with Proton VPN; it's listed because it's the free option we'd point people to.</p>
       </div>
 </header>
@@ -528,6 +514,28 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       <li><a href="#frequently-asked-questions">Frequently asked questions</a></li>
         </ol>
       </nav>
+      <div class="glance">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Provider</th><th>Best for</th><th>Devices</th><th>From</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nord"><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN</a></td>
+                <td>Speed &amp; streaming</td><td>10</td><td class="price">$3.49/mo</td>
+              </tr>
+              <tr>
+                <td class="surf"><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark</a></td>
+                <td>Budget &amp; multi-device</td><td>Unlimited</td><td class="price">$2.49/mo</td>
+              </tr>
+              <tr>
+                <td><a href="https://protonvpn.com/" target="_blank" rel="noopener">Proton VPN</a></td>
+                <td>Free tier</td><td>1 free / 10 paid</td><td class="price">Free</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       <p>Budget-friendly doesn't have to mean cutting corners. The VPNs worth considering on a budget still need to check the essentials: audited no-logs policies, real encryption standards, and a kill switch to stop your data leaking if the connection drops. What you're really shopping for is the best value per dollar, not just the lowest number on the pricing page.</p>
 
       <h2 id="what-to-look-for-in-a-budget-vpn">What to look for in a budget VPN</h2>
