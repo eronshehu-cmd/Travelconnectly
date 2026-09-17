@@ -337,6 +337,229 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 }
 .trust-note p{ color:var(--text-muted); font-size:0.88rem; margin:0; }
 .trust-note strong{ color:var(--text-light); }
+/* ===== design v2 components ===== */
+.credbar{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px 22px;
+  padding:14px 16px; background:var(--navy-panel);
+  border:1px solid var(--hairline); border-radius:12px; margin:16px 0 4px;
+}
+.credbar .who{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+.credbar .av{
+  width:36px; height:36px; aspect-ratio:1/1; border-radius:50%; flex:0 0 auto;
+  background:#1B3247; display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.95rem; color:var(--teal);
+}
+.credbar .nm{ display:flex; flex-direction:column; gap:1px; }
+.credbar .nm b{ font-size:0.875rem; font-weight:600; color:var(--text-light); line-height:1.3; }
+.credbar .nm > span{
+  font-family:'IBM Plex Mono',monospace; font-size:0.69rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--text-muted);
+}
+.credbar .vline{ width:1px; align-self:stretch; background:var(--hairline); flex:0 0 auto; }
+.credbar .chk{ display:inline-flex; align-items:center; gap:7px; font-size:0.84rem; color:var(--text-light); flex:0 0 auto; }
+.credbar .chk i{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:18px; height:18px; border-radius:50%; background:var(--teal);
+  color:#0D1B2A; font-size:0.69rem; font-weight:700; font-style:normal; flex:0 0 auto;
+}
+.credbar .meta{ display:flex; align-items:center; gap:10px 20px; flex:1 1 300px; min-width:0; flex-wrap:wrap; }
+.credbar .upd{ font-family:'IBM Plex Mono',monospace; font-size:0.81rem; color:var(--text-muted); font-variant-numeric:tabular-nums; }
+.credbar .how{
+  display:inline-flex; align-items:center; min-height:48px;
+  font-size:0.84rem; font-weight:500; color:var(--teal);
+  text-decoration:underline; text-underline-offset:3px;
+}
+@media (max-width:620px){ .credbar .vline{ display:none; } }
+
+.stat-strip{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:12px; background:none; border:none; border-radius:0; overflow:visible; margin:8px 0 0;
+}
+.stat-strip div{
+  background:var(--navy-panel); border:1px solid var(--hairline);
+  border-radius:12px; padding:20px 18px; text-align:left;
+}
+.stat-strip .n{
+  font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:2.35rem;
+  line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; display:block; margin-bottom:0;
+}
+.stat-strip .n.sm{ font-size:1.7rem; line-height:1.35; }
+.stat-strip .l{ margin-top:10px; font-size:0.84rem; line-height:1.45; color:#B9CAD9; display:block; }
+
+.providers-3{ grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); }
+.provider-card{ padding:34px 22px 22px; border-radius:16px; }
+.provider-card[data-badge]::before{ top:-14px; left:20px; font-size:0.72rem; padding:7px 14px; }
+.pc-head{ display:flex; align-items:center; gap:12px; }
+.pc-logo{
+  width:52px; height:52px; aspect-ratio:1/1; border-radius:12px; flex:0 0 auto;
+  border:1px solid var(--hairline); display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.25rem; background:#0D1B2A;
+}
+.pc-logo.nord{ color:var(--nord-blue-text); }
+.pc-logo.surf{ color:var(--surf-green); }
+.pc-logo.proton{ color:#A78BFF; }
+.pc-head h3{ font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:600; margin:0; line-height:1.2; }
+.pc-score{ display:flex; align-items:center; gap:8px; margin-top:5px; }
+.pc-score .st{ color:var(--teal); font-size:0.875rem; letter-spacing:1px; line-height:1; }
+.pc-score .st .off{ color:#6E8BA4; }
+.pc-score .nv{ font-family:'IBM Plex Mono',monospace; font-size:0.81rem; color:var(--text-light); font-variant-numeric:tabular-nums; }
+.pc-score .nv span{ color:var(--text-muted); }
+.price-block{ margin-top:20px; padding:18px 0 0; background:none; border:none; border-top:1px solid var(--hairline); border-radius:0; }
+.price-row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 10px; }
+.price-now{ font-family:'IBM Plex Mono',monospace; font-size:2.5rem; font-weight:600; line-height:1; color:var(--text-light); font-variant-numeric:tabular-nums; }
+.price-unit{ font-size:0.875rem; color:var(--text-muted); }
+.price-off{
+  margin-left:auto; background:var(--amber); color:#0D1B2A;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600;
+  letter-spacing:.04em; padding:5px 10px; border-radius:999px; white-space:nowrap;
+}
+.price-context{ margin-top:10px; display:flex; flex-direction:column; gap:4px; font-size:0.81rem; color:#B9CAD9; }
+.price-context s{ color:var(--text-muted); font-family:'IBM Plex Mono',monospace; }
+.price-guarantee{
+  margin-top:16px; display:flex; align-items:center; gap:10px;
+  padding:11px 13px; background:rgba(63,217,199,.09);
+  border:1px solid rgba(63,217,199,.32); border-radius:10px; border-top:none;
+  font-size:0.84rem; line-height:1.4; color:var(--text-light);
+}
+.price-guarantee i{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:50%; background:var(--teal);
+  color:#0D1B2A; font-size:0.75rem; font-weight:700; font-style:normal; flex:0 0 auto;
+}
+.pc-list{ list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:11px; }
+.pc-list li{ display:flex; gap:10px; align-items:flex-start; border:none; padding:0; font-size:0.875rem; line-height:1.5; color:var(--text-light); }
+.pc-list li .m{ color:var(--teal); flex:0 0 auto; }
+.pc-list li.con{ color:#B9CAD9; }
+.pc-list li.con .m{ color:var(--text-muted); }
+.pc-cta{ margin-top:auto; padding-top:20px; display:flex; flex-direction:column; gap:10px; }
+.pc-cta .btn{ min-height:52px; border-radius:10px; width:100%; font-family:'Space Grotesk',sans-serif; font-size:0.97rem; }
+.pc-cta .second{
+  display:flex; align-items:center; justify-content:center; min-height:48px;
+  font-size:0.875rem; font-weight:500; color:var(--teal);
+  text-decoration:underline; text-underline-offset:3px;
+}
+
+.lib-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(288px,1fr)); gap:20px; margin:34px 0 60px; }
+.lib-card{ background:var(--navy-panel); border:1px solid var(--hairline); border-radius:14px; padding:20px; }
+.lib-head{ display:flex; align-items:center; gap:12px; }
+.lib-head .ic{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:42px; height:42px; border-radius:11px; background:#1B3247; color:var(--teal);
+  font-family:'IBM Plex Mono',monospace; font-size:0.875rem; font-weight:600; flex:0 0 auto;
+}
+.lib-head h3{ font-family:'Space Grotesk',sans-serif; font-size:1.06rem; font-weight:600; margin:0 0 3px; }
+.lib-head p{ margin:0; font-size:0.81rem; color:var(--text-muted); line-height:1.4; }
+.lib-card ul{ list-style:none; margin:14px 0 0; padding:0; border-top:1px solid var(--hairline); }
+.lib-card li{ border-bottom:1px solid var(--hairline); margin:0; }
+.lib-card li a{ display:flex; align-items:center; min-height:48px; font-size:0.875rem; color:var(--text-light); text-decoration:none; }
+.lib-card li a:hover{ color:var(--teal); }
+.lib-card details ul{ margin:0; border-top:none; }
+.lib-card summary{
+  display:flex; align-items:center; min-height:48px; list-style:none; cursor:pointer;
+  font-family:'IBM Plex Mono',monospace; font-size:0.81rem; letter-spacing:.04em;
+  color:var(--teal); border-bottom:1px solid var(--hairline);
+}
+.lib-card summary::-webkit-details-marker{ display:none; }
+/* ---- provider card v2 ---- */
+.providers-3{ grid-template-columns:repeat(3,1fr); }
+.provider-card[data-badge]{ position:relative; }
+.provider-card[data-badge]::before{
+  content:attr(data-badge);
+  position:absolute; top:-13px; left:28px;
+  background:var(--amber); color:#1a1305;
+  font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.07em;
+  padding:5px 11px; border-radius:999px; font-weight:600; white-space:nowrap;
+}
+.provider-card.pick[data-badge]::before{ background:var(--amber); }
+.provider-name.proton{ color:#A78BFF; }
+.btn-proton{ background:#5D3EBD; color:#fff; width:100%; }
+.btn-proton:hover{ transform:translateY(-1px); background:#6B4FDB; }
+
+.price-block{
+  background:rgba(255,255,255,0.035); border:1px solid var(--hairline);
+  border-radius:10px; padding:14px 16px; margin:4px 0 20px;
+}
+.price-row{ display:flex; align-items:baseline; gap:7px; flex-wrap:wrap; }
+.price-now{ font-family:'Space Grotesk',sans-serif; font-size:1.9rem; font-weight:700; color:var(--text-light); line-height:1; }
+.price-unit{ font-size:0.9rem; color:var(--text-muted); }
+.price-off{
+  margin-left:auto; background:rgba(244,168,37,0.16); color:var(--amber);
+  font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.05em;
+  padding:4px 9px; border-radius:999px; white-space:nowrap;
+}
+.price-context{ font-size:0.78rem; color:var(--text-muted); margin-top:7px; }
+.price-context s{ color:#9FB0C4; }
+.price-guarantee{
+  display:flex; align-items:center; gap:7px;
+  font-size:0.78rem; color:var(--teal); margin-top:9px;
+  padding-top:9px; border-top:1px solid var(--hairline);
+}
+.price-guarantee svg{ width:13px; height:13px; stroke:var(--teal); flex-shrink:0; }
+
+.provider-card li.con{ color:#C3A76B; }
+.provider-card li.con svg{ stroke:#C3A76B; }
+
+.spec-row{
+  display:flex; gap:14px; flex-wrap:wrap;
+  border-top:1px solid var(--hairline); padding-top:14px; margin-bottom:20px;
+}
+.spec-row span{ display:flex; flex-direction:column; gap:3px; font-size:0.8rem; color:var(--text-light); }
+.spec-row b{
+  font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.07em;
+  text-transform:uppercase; color:var(--text-muted); font-weight:500;
+}
+
+/* ---- trust stat strip ---- */
+.stat-strip{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--hairline); border:1px solid var(--hairline);
+  border-radius:12px; overflow:hidden; margin:8px 0 0;
+}
+.stat-strip div{ background:var(--navy-panel); padding:18px 16px; text-align:center; }
+.stat-strip .n{
+  font-family:'IBM Plex Mono',monospace; font-size:1.15rem; color:var(--teal);
+  display:block; margin-bottom:5px;
+}
+.stat-strip .l{ font-size:0.72rem; color:var(--text-muted); line-height:1.35; display:block; }
+
+/* ---- author byline ---- */
+.byline{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  font-size:0.82rem; color:var(--text-muted);
+  padding:14px 0 0; margin-top:4px;
+}
+.byline .av{
+  width:34px; height:34px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg,var(--teal),var(--navy-panel-2));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; color:#0D1B2A; font-size:0.95rem;
+}
+.byline b{ color:var(--text-light); font-weight:600; }
+.byline .sep2{ opacity:0.4; }
+.byline a{ color:var(--teal); }
+.byline a:hover{ text-decoration:underline; }
+
+/* ---- sticky mobile CTA ---- */
+.sticky-cta{ display:none; }
+@media (max-width:760px){
+  .sticky-cta{
+    display:block; position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:rgba(13,27,42,0.96); backdrop-filter:blur(10px);
+    border-top:1px solid var(--hairline);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+  .sticky-cta .btn{ width:100%; padding:14px 18px; font-size:0.92rem; }
+  .sticky-cta .sub{
+    display:block; text-align:center; font-size:0.68rem; color:var(--text-muted);
+    margin-top:6px; font-family:'IBM Plex Mono',monospace;
+  }
+  footer{ padding-bottom:110px; }
+  .providers-3{ grid-template-columns:1fr; }
+  .stat-strip{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:980px) and (min-width:761px){
+  .providers-3{ grid-template-columns:1fr; }
+}
 .guide-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin:34px 0 70px; }
 .guide-card{
   background:var(--navy-panel); border:1px solid var(--hairline);
@@ -498,6 +721,21 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
     <div class="article-meta">
       <span>UPDATED AUGUST 2026</span><span>·</span><span>5 MIN READ</span>
     </div>
+    <div class="credbar">
+      <div class="who">
+        <span class="av">E</span>
+        <div class="nm">
+          <b>Eron</b>
+          <span>Solo traveler &amp; founder</span>
+        </div>
+      </div>
+      <div class="vline"></div>
+      <span class="chk"><i>&#10003;</i>Specs verified against provider docs</span>
+      <div class="meta">
+        <span class="upd">Last updated: August 2026</span>
+        <a class="how" href="methodology.html">How I compare providers &rarr;</a>
+      </div>
+    </div>
   </div>
 
   <div class="wrap">
@@ -522,25 +760,28 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>Provider</th><th>Best for</th><th>Devices</th><th>From</th></tr>
+              <tr><th>Provider</th><th>Best for</th><th>Devices</th><th>Audited</th><th>From</th></tr>
             </thead>
             <tbody>
               <tr>
                 <td class="nord"><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN</a></td>
-                <td>Speed &amp; streaming</td><td>10</td><td class="price">$3.49/mo</td>
+                <td>Speed &amp; streaming</td><td>10</td><td>Deloitte, 2025</td>
+                <td class="price">$3.49/mo<br><s style="color:#9FB0C4;font-size:0.76rem;">$14.99 monthly</s></td>
               </tr>
               <tr>
                 <td class="surf"><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark</a></td>
-                <td>Budget &amp; multi-device</td><td>Unlimited</td><td class="price">$2.49/mo</td>
+                <td>Budget &amp; multi-device</td><td>Unlimited</td><td>Deloitte, 2025</td>
+                <td class="price">$2.49/mo<br><s style="color:#9FB0C4;font-size:0.76rem;">$16.45 monthly</s></td>
               </tr>
               <tr>
                 <td><a href="https://protonvpn.com/" target="_blank" rel="noopener">Proton VPN</a></td>
-                <td>Free tier</td><td>1 free / 10 paid</td><td class="price">Free</td>
+                <td>Free tier &amp; jurisdiction</td><td>1 free / 10 paid</td><td>Securitum, 2025</td>
+                <td class="price">Free<br><s style="color:#9FB0C4;font-size:0.76rem;">$9.99 monthly</s></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="price-note">Lowest advertised rates on multi-year plans, checked August 2026. Prices change often and renew higher — check the provider for current pricing. We have no affiliate relationship with Proton VPN; it's listed because it's the free option we'd point people to.</p>
+        <p class="price-note">Lowest advertised long-term rates shown against each provider's standard monthly rate, checked August 2026. Prices change often and renew higher — check the provider for current pricing. Audit column names the firm and year of the most recent published no-logs audit. We have no affiliate relationship with Proton VPN; it's listed because it's the free option we'd point people to.</p>
       </div>
       <p>The stakes are also different. You're often handling client data, internal systems, or financial information from networks you don't control and have no way to vet. Reliability and consistent performance become the priority, more than any single flashy feature.</p>
 
@@ -654,6 +895,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <h3>Site</h3>
         <ul>
           <li><a href="about.html">About</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
           <li><a href="index.html#disclosure">Affiliate Disclosure</a></li>
@@ -684,6 +926,11 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
     navLinks.style.gap = '16px';
   });
 </script>
+
+<div class="sticky-cta">
+  <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="btn btn-nord">Get My NordVPN Deal →</a>
+  <span class="sub">30-day money-back guarantee</span>
+</div>
 
 </body>
 </html>
