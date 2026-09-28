@@ -30,7 +30,10 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Why Public WiFi Is Risky (And What Actually Happens)",
-  "author": { "@type": "Organization", "name": "TravelConnectly" },
+  "author": { "@type": "Person", "name": "Eron", "url": "https://www.travelconnectly.com/about.html" },
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-09-17",
+  "mainEntityOfPage": "https://www.travelconnectly.com/why-public-wifi-is-risky.html",
   "publisher": { "@type": "Organization", "name": "TravelConnectly", "logo": { "@type": "ImageObject", "url": "https://www.travelconnectly.com/icon-192.png" } },
   "image": "https://www.travelconnectly.com/photo-wifi-risk.jpg",
   "about": "Public WiFi security risks for travelers"
@@ -707,7 +710,10 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   .nav-cta{ display:none; }
   .logo{ font-size:1.05rem; }
 }
+/* .breadcrumb/.article-head padding overrides .wrap's side gutter */
+.wrap.breadcrumb, .wrap.article-head{ padding-left:28px; padding-right:28px; }
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -734,9 +740,9 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       <a href="about.html">About</a>
     </div>
     <div class="nav-cta">
-      <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="btn btn-primary">Get NordVPN</a>
+      <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128&aff_sub=why-public-wifi-is-risky&aff_sub2=header" target="_blank" rel="sponsored noopener" class="btn btn-primary">Get NordVPN</a>
     </div>
-    <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
@@ -847,8 +853,8 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <h2>Protect your connection before you board</h2>
         <p>Both providers offer money-back guarantees, so there's little risk in trying the one that fits your trip.</p>
         <div class="hero-ctas">
-          <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="btn btn-nord" style="width:auto;">Get NordVPN →</a>
-          <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener" class="btn btn-surf" style="width:auto;">Get Surfshark →</a>
+          <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128&aff_sub=why-public-wifi-is-risky&aff_sub2=ctaband" target="_blank" rel="sponsored noopener" class="btn btn-nord" style="width:auto;">Get NordVPN →</a>
+          <a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567&aff_sub=why-public-wifi-is-risky&aff_sub2=ctaband" target="_blank" rel="sponsored noopener" class="btn btn-surf" style="width:auto;">Get Surfshark →</a>
         </div>
       </div>
     </div>
@@ -882,11 +888,11 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
       <div>
         <h4>Get Started</h4>
         <ul>
-          <li><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener">NordVPN Deal</a></li>
-          <li><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567" target="_blank" rel="sponsored noopener">Surfshark Deal</a></li>
-          <li><a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029" target="_blank" rel="sponsored noopener">Saily eSIM Deal</a></li>
+          <li><a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128&aff_sub=why-public-wifi-is-risky&aff_sub2=footer" target="_blank" rel="sponsored noopener">NordVPN Deal</a></li>
+          <li><a href="https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567&aff_sub=why-public-wifi-is-risky&aff_sub2=footer" target="_blank" rel="sponsored noopener">Surfshark Deal</a></li>
+          <li><a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=why-public-wifi-is-risky&aff_sub2=footer" target="_blank" rel="sponsored noopener">Saily eSIM Deal</a></li>
           <li><a href="https://safetywing.com/?referenceID=26583666&utm_source=26583666&utm_medium=Ambassador" target="_blank" rel="sponsored noopener">SafetyWing Insurance</a></li>
-          <li><a href="https://wise.prf.hn/click/camref:1011l5PJJD" target="_blank" rel="sponsored noopener">Wise Money Transfer</a></li>
+          <li><a href="https://wise.prf.hn/click/camref:1011l5PJJD/pubref:why-public-wifi-is-risky" target="_blank" rel="sponsored noopener">Wise Money Transfer</a></li>
         </ul>
       </div>
       <div>
@@ -910,6 +916,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   toggle?.addEventListener('click', () => {
     const isOpen = navLinks.style.display === 'flex';
     navLinks.style.display = isOpen ? 'none' : 'flex';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
     navLinks.style.flexDirection = 'column';
     navLinks.style.position = 'absolute';
     navLinks.style.top = '64px';
@@ -923,7 +930,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 </script>
 
 <div class="sticky-cta">
-  <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128" target="_blank" rel="sponsored noopener" class="btn btn-nord">Get My NordVPN Deal →</a>
+  <a href="https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128&aff_sub=why-public-wifi-is-risky&aff_sub2=sticky" target="_blank" rel="sponsored noopener" class="btn btn-nord">Get My NordVPN Deal →</a>
   <span class="sub">30-day money-back guarantee</span>
 </div>
 

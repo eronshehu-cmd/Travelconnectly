@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/blog/:slug.html", "destination": "/:slug.html", "permanent": true },
+    { "source": "/blog", "destination": "/guides.html", "permanent": true },
+    { "source": "/blog/", "destination": "/guides.html", "permanent": true }
+  ]
+}
