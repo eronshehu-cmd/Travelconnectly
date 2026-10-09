@@ -1,0 +1,27 @@
+# TravelConnectly
+
+> Independent guides that help travelers stay connected abroad: eSIM data plans compared by country with dated prices, and VPNs compared by trip type. Run by Eron, a solo traveler. The site earns affiliate commissions (Saily, NordVPN, Surfshark, Proton VPN, SafetyWing, Wise) and says so on every page; rankings are not paid for, and pages state where a non-partner is cheaper.
+
+## eSIM guides by country
+- [Best eSIM for the USA](https://www.travelconnectly.com/best-esim-for-usa.html): Saily vs Airalo vs Holafly, fixed and unlimited plans, Hawaii/Alaska coverage
+- [Best eSIM for Japan](https://www.travelconnectly.com/best-esim-for-japan.html): Saily vs Airalo vs Holafly, networks (KDDI, SoftBank), setup
+- [Best eSIM for Thailand](https://www.travelconnectly.com/best-esim-for-thailand.html): Saily vs Airalo vs Holafly, networks (AIS, True)
+- [Best eSIM for Turkey](https://www.travelconnectly.com/best-esim-for-turkey.html): Saily vs Airalo vs Holafly, what to install before arriving
+
+## eSIM basics and tools
+- [Best eSIM for Travelers](https://www.travelconnectly.com/best-esim-for-travelers.html): how travel eSIMs work and how to set one up
+- [Trip data calculator](https://www.travelconnectly.com/esim-data-calculator.html): estimate how many GB a trip needs
+- [Cheapest way to stay connected for months](https://www.travelconnectly.com/cheapest-way-to-stay-connected-traveling.html)
+
+## VPN guides by trip type
+- [Best VPN for travelers (homepage comparison)](https://www.travelconnectly.com/): NordVPN vs Surfshark vs Proton VPN
+- [Airport & hotel WiFi](https://www.travelconnectly.com/best-vpn-for-airport-hotel-wifi.html)
+- [Streaming Netflix & BBC iPlayer abroad](https://www.travelconnectly.com/best-vpn-for-streaming-netflix-abroad.html)
+- [Digital nomads & remote work](https://www.travelconnectly.com/best-vpn-for-digital-nomads.html)
+- [Backpacking on a budget](https://www.travelconnectly.com/best-vpn-for-backpacking.html)
+- [Free VPN vs paid VPN](https://www.travelconnectly.com/free-vpn-vs-paid-vpn.html)
+
+## About
+- [Methodology](https://www.travelconnectly.com/methodology.html): how providers are compared and how the site is funded
+- [About](https://www.travelconnectly.com/about.html)
+- [All guides](https://www.travelconnectly.com/guides.html)
