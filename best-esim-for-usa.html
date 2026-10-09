@@ -764,10 +764,102 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 @media (max-width:560px){ .glance table.fit th, .glance table.fit td{ padding:11px 9px; } }
 .glance td.best{ color:var(--teal); font-weight:600; }
 .glance td small{ display:block; color:var(--text-muted); font-size:0.74rem; font-family:'IBM Plex Mono',monospace; }
-.takeaways{ background:var(--navy-panel); border:1px solid var(--hairline); border-left:3px solid var(--teal); border-radius:0 12px 12px 0; padding:20px 24px; margin:0 0 32px; }
-.takeaways h2{ font-size:0.78rem !important; font-family:'IBM Plex Mono',monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); margin:0 0 12px !important; }
-.takeaways ul{ margin:0 0 0 18px; }
-.takeaways li{ margin-bottom:8px; font-size:0.96rem; }
+.takeaways{ background:var(--navy-panel); border:1px solid var(--hairline); border-radius:14px; padding:18px 18px 6px; }
+.takeaways h2{ font-size:0.75rem !important; font-family:'IBM Plex Mono',monospace; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:0 0 4px !important; }
+.takeaways ol{ list-style:none; margin:0; padding:0; counter-reset:kt; }
+.takeaways li{ counter-increment:kt; display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--hairline); font-size:0.95rem; line-height:1.55; }
+.takeaways li:last-child{ border-bottom:none; }
+.takeaways li::before{ content:counter(kt, decimal-leading-zero); font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--teal); padding-top:3px; }
+
+/* ---- answer-first top (from Claude Design) ---- */
+.qa-top{ padding-top:14px; }
+.qa-grid{ display:grid; grid-template-columns:minmax(0,1fr); grid-template-areas:"head" "card" "chips" "take"; align-items:start; }
+.qa-head{ grid-area:head; margin-bottom:14px; }
+.qa-head h1{ font-size:clamp(1.75rem,4.2vw,2.9rem); line-height:1.1; letter-spacing:-0.02em; margin:0; text-wrap:balance; }
+.qa-sub{ margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.02em; color:var(--text-muted); }
+.qa-card{ grid-area:card; background:var(--navy-panel); border:1px solid #2A4563; border-radius:16px; padding:16px; }
+.qa-card .qa-label{ display:flex; justify-content:space-between; gap:12px; font-family:'IBM Plex Mono',monospace; font-size:0.69rem; letter-spacing:0.12em; text-transform:uppercase; }
+.qa-card .qa-label b{ color:var(--amber); font-weight:600; }
+.qa-card .qa-label span{ color:var(--text-muted); letter-spacing:0.04em; }
+.qa-prov{ display:flex; align-items:center; gap:12px; margin-top:12px; }
+.qa-logo{ width:44px; height:44px; flex:0 0 auto; border-radius:11px; background:var(--saily-purple); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:700; }
+.qa-prov h2{ font-size:1.38rem; margin:0; line-height:1.15; }
+.qa-prov p{ margin:2px 0 0; font-size:0.875rem; line-height:1.4; color:#C9D5E2; }
+.qa-plan{ display:inline-block; margin-top:14px; line-height:36px; padding:0 12px; background:var(--navy-panel-2); border:1px solid #2A4563; border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:0.875rem; white-space:nowrap; }
+.qa-plan strong{ color:var(--teal); font-weight:600; }
+.qa-btn{ margin-top:14px; display:flex; align-items:center; justify-content:center; min-height:52px; padding:0 16px; background:var(--saily-purple); color:#fff; border-radius:12px; font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:600; text-align:center; }
+.qa-btn:hover{ background:#5A3AB8; }
+.qa-trust{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:4px 12px; font-size:0.75rem; line-height:1.5; color:var(--text-muted); }
+.qa-trust li::before{ content:"✓"; color:var(--teal); margin-right:5px; }
+.qa-chips{ grid-area:chips; display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+.qa-chip{ display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:48px; padding:10px 14px; background:var(--navy-panel); border:1px solid var(--navy-panel-2); border-radius:12px; font-size:0.875rem; line-height:1.4; }
+.qa-chip:hover{ border-color:var(--teal); }
+.qa-chip .k{ color:var(--text-muted); }
+.qa-chip .v{ font-family:'IBM Plex Mono',monospace; font-weight:600; color:var(--teal); white-space:nowrap; }
+.qa-chip .arr{ color:var(--text-muted); }
+.qa-take{ grid-area:take; margin-top:28px; }
+@media (min-width:960px){
+  .qa-top{ padding-top:36px; }
+  .qa-grid{ grid-template-columns:minmax(0,1fr) 400px; grid-template-areas:"head card" "chips card" "take card"; column-gap:56px; }
+  .qa-chips{ margin-top:4px; }
+}
+
+/* ---- compact author strip ---- */
+.author-strip{ margin-top:22px; display:flex; flex-wrap:wrap; align-items:center; gap:4px 14px; padding:8px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); }
+.author-strip .who{ display:flex; align-items:center; gap:10px; flex:1 1 auto; min-width:0; }
+.author-strip .av{ width:36px; height:36px; border-radius:50%; flex:0 0 auto; background:#1B3247; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--teal); }
+.author-strip .nm{ line-height:1.3; min-width:0; }
+.author-strip .nm b{ font-size:0.875rem; font-weight:600; }
+.author-strip .nm span{ display:block; font-size:0.78rem; color:var(--text-muted); }
+.author-strip a{ display:flex; align-items:center; min-height:48px; font-size:0.875rem; font-weight:500; color:var(--teal); text-decoration:underline; text-underline-offset:3px; }
+
+/* ---- Find your plan widget ---- */
+.planpick{ background:var(--navy-panel); border:1px solid #2A4563; border-radius:20px; padding:18px 16px; margin:8px 0 36px; }
+.planpick .pp-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.69rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--amber); }
+.planpick h2{ margin:6px 0 18px !important; font-size:1.3rem !important; }
+.pp-grid{ display:grid; gap:24px; grid-template-columns:minmax(0,1fr); }
+.pp-label{ font-size:0.875rem; font-weight:600; margin-bottom:8px; }
+.pp-label span{ font-weight:400; color:var(--text-muted); }
+.pp-days{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; padding:4px; background:var(--navy-deep); border:1px solid #2A4563; border-radius:12px; }
+.pp-days button{ min-height:52px; border:0; border-radius:9px; background:transparent; color:var(--text-light); font-family:'IBM Plex Mono',monospace; font-size:1.1rem; cursor:pointer; }
+.pp-days button[aria-checked="true"]{ background:var(--teal); color:var(--navy-deep); font-weight:600; }
+.pp-use{ display:flex; flex-direction:column; gap:8px; }
+.pp-use button{ display:flex; align-items:center; gap:12px; min-height:60px; padding:10px 14px; text-align:left; background:var(--navy-panel-2); border:1.5px solid var(--navy-panel-2); border-radius:12px; color:var(--text-light); cursor:pointer; font-family:inherit; }
+.pp-use button[aria-checked="true"]{ background:rgba(63,217,199,.1); border-color:var(--teal); }
+.pp-use .dot{ width:20px; height:20px; flex:0 0 auto; border-radius:50%; border:2px solid var(--text-muted); }
+.pp-use button[aria-checked="true"] .dot{ border-color:var(--teal); box-shadow:inset 0 0 0 4px var(--navy-panel-2), inset 0 0 0 10px var(--teal); }
+.pp-use .t{ display:flex; flex-direction:column; gap:2px; }
+.pp-use .t b{ font-size:0.94rem; }
+.pp-use .t span{ font-size:0.8rem; color:var(--text-muted); }
+.pp-wifi{ display:flex; align-items:center; justify-content:space-between; gap:14px; width:100%; min-height:60px; padding:10px 14px; text-align:left; background:var(--navy-panel-2); border:1px solid #2A4563; border-radius:12px; color:var(--text-light); cursor:pointer; font-family:inherit; }
+.pp-wifi .t b{ display:block; font-size:0.94rem; }
+.pp-wifi .t span{ font-size:0.8rem; color:var(--text-muted); }
+.pp-wifi .sw{ width:52px; height:30px; flex:0 0 auto; border-radius:999px; background:var(--navy-deep); border:1px solid #3A5878; padding:2px; display:flex; }
+.pp-wifi .sw i{ width:24px; height:24px; border-radius:50%; background:var(--text-muted); }
+.pp-wifi[aria-checked="true"] .sw{ background:var(--teal); justify-content:flex-end; border-color:var(--teal); }
+.pp-wifi[aria-checked="true"] .sw i{ background:var(--navy-deep); }
+.pp-out .empty{ border:1.5px dashed #3A5878; border-radius:16px; padding:22px 18px; color:#C9D5E2; font-size:0.94rem; line-height:1.55; }
+.pp-res{ background:var(--navy-deep); border:1px solid #2A4563; border-radius:16px; padding:18px; }
+.pp-res .lbl{ font-family:'IBM Plex Mono',monospace; font-size:0.69rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); }
+.pp-res .lbl.rec{ color:var(--amber); }
+.pp-res .est{ display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; margin-top:6px; }
+.pp-res .est b{ font-family:'IBM Plex Mono',monospace; font-size:2.4rem; font-weight:600; line-height:1; color:var(--teal); }
+.pp-res .est span{ font-size:0.8rem; color:var(--text-muted); }
+.pp-res hr{ border:0; height:1px; background:var(--navy-panel-2); margin:16px 0; }
+.pp-res .prov{ margin-top:6px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
+.pp-res .prov b{ font-family:'Space Grotesk',sans-serif; font-size:1.35rem; }
+.pp-res .prov span{ font-family:'IBM Plex Mono',monospace; font-size:0.94rem; }
+.pp-res p{ margin:8px 0 0 !important; font-size:0.875rem !important; line-height:1.5; color:#C9D5E2 !important; }
+.pp-res .note{ margin-top:14px; padding:12px 14px; background:rgba(244,168,37,.08); border:1px solid rgba(244,168,37,.45); border-radius:12px; font-size:0.875rem; }
+.pp-res .cta{ margin-top:16px; display:flex; align-items:center; justify-content:center; min-height:52px; padding:0 16px; border-radius:12px; font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:600; text-decoration:none !important; }
+.pp-res .cta.saily{ background:var(--saily-purple); color:#fff !important; }
+.pp-res .cta.other{ background:transparent; border:1.5px solid var(--teal); color:var(--teal) !important; }
+.pp-res .sub{ display:block; margin-top:8px; text-align:center; font-size:0.75rem; color:var(--text-muted); }
+@media (min-width:720px){
+  .planpick{ padding:32px; }
+  .pp-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; }
+}
+.hero-img.lower{ max-width:640px; margin-top:8px; }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -803,61 +895,95 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 <main id="top">
   <div class="wrap breadcrumb">
-    <a href="index.html">Home</a><span class="sep">/</span><a href="best-esim-for-travelers.html">eSIM</a><span class="sep">/</span>USA
+    <a href="index.html">Home</a><span class="sep">/</span><a href="guides.html#esim-countries">eSIM by country</a><span class="sep">/</span>USA
   </div>
 
-  <div class="wrap article-head">
-    <div class="eyebrow">eSIM BY COUNTRY</div>
-    <h1>Best eSIM for the USA (2026): Saily vs Airalo vs Holafly, Prices Compared</h1>
-    <div class="article-meta">
-      <span>UPDATED SEPTEMBER 2026</span><span>·</span><span>7 MIN READ</span>
-    </div>
-    <div class="credbar">
-      <div class="who">
-        <span class="av">E</span>
-        <div class="nm">
-          <b>Eron</b>
-          <span>Solo traveler &amp; founder</span>
+  <div class="wrap qa-top">
+    <div class="qa-grid">
+      <div class="qa-head">
+        <h1>Best eSIM for the USA (2026)</h1>
+        <div class="qa-sub">Saily vs Airalo vs Holafly · prices checked 29 Sep 2026</div>
+      </div>
+
+      <section class="qa-card" aria-labelledby="qa-title">
+        <div class="qa-label"><b>Quick answer</b><span>Trips up to ~2 weeks</span></div>
+        <div class="qa-prov">
+          <div class="qa-logo" aria-hidden="true">S</div>
+          <div>
+            <h2 id="qa-title">Saily</h2>
+            <p>Cheapest unlimited from 5 to 30 days — and in the US, a week of unlimited costs about the same as 10 GB.</p>
+          </div>
         </div>
+        <span class="qa-plan">Unlimited · 7 days · <strong>$24.99</strong></span>
+        <a class="qa-btn" href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=quickanswer" target="_blank" rel="sponsored noopener">Get Saily USA unlimited →</a>
+        <ul class="qa-trust"><li>Hotspot allowed</li><li>Activates when you land</li><li>Optional US number</li></ul>
+      </section>
+
+      <div class="qa-chips">
+        <a class="qa-chip" href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=chips" target="_blank" rel="sponsored noopener"><span><span class="k">Layover or one busy day:</span> Saily 1 day unlimited <span class="v">$3.49</span></span><span class="arr" aria-hidden="true">→</span></a>
+        <a class="qa-chip" href="https://www.airalo.com/united-states-esim" target="_blank" rel="noopener"><span><span class="k">Cheapest 30-day 10 GB:</span> Airalo <span class="v">$22.50</span></span><span class="arr" aria-hidden="true">→</span></a>
       </div>
-      <div class="vline"></div>
-      <span class="chk"><i>&#10003;</i>Figures sourced and dated</span>
-      <div class="meta">
-        <span class="upd">Last updated: 9 October 2026</span>
-        <a class="how" href="methodology.html">How I compare providers &rarr;</a>
+
+      <section class="qa-take takeaways" aria-labelledby="kt-title">
+        <h2 id="kt-title">Key takeaways</h2>
+        <ol>
+          <li><span><strong>Unlimited is often the better buy in the US:</strong> Saily's 7-day unlimited ($24.99) costs about the same as 10 GB for 30 days ($22.99).</span></li>
+          <li><span><strong>Cheapest unlimited from 5 to 30 days:</strong> Saily. <strong>Cheapest 30-day 5–20 GB:</strong> Airalo, by about 50 cents; it also sells 50 GB for $42.</span></li>
+          <li><span><strong>Hawaii is covered</strong> by Saily's US plan. <strong>Alaska is unclear</strong> — confirm with support before an Alaska trip.</span></li>
+          <li><span><strong>Data-only eSIMs can't receive SMS codes.</strong> Saily offers an optional US number if a service needs one.</span></li>
+        </ol>
+      </section>
+    </div>
+
+    <div class="author-strip">
+      <div class="who">
+        <span class="av" aria-hidden="true">E</span>
+        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 29 Sep 2026</span></div>
       </div>
+      <a href="methodology.html">How I compare →</a>
     </div>
   </div>
 
   <div class="wrap">
-    <img class="hero-img" src="photo-wifi.jpg" alt="Traveler using a phone on airport WiFi at a departure gate with planes outside" width="1200" height="630">
     <div class="trust-note">
-      <p><strong>Prices checked 29 September 2026</strong> in US dollars on each provider's own USA page. They change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Airalo or Holafly, and I say below where they're cheaper.</p>
+      <p><strong>How this page works:</strong> every price was checked in US dollars on each provider's own USA page on 29 Sep 2026. Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Airalo or Holafly, and I say where they're cheaper.</p>
     </div>
     <article class="article">
       <p class="lede">The US is big, car-dependent and app-driven: ride-hailing, navigation between cities and mobile tickets all need data. Mobile data costs more here than in most countries, which makes choosing the right plan size matter. Here's what a US eSIM actually costs.</p>
 
-      <div class="verdict-box">
-        <div class="eyebrow">QUICK ANSWER</div>
-        <h3>Saily for unlimited and short trips; Airalo slightly cheaper for 5–20 GB</h3>
-        <p>US data is pricey, and that flips the usual advice: Saily's 7-day unlimited plan ($24.99) costs about the same as 10 GB for 30 days ($22.99), so for trips of a week or so, unlimited is the better buy — and Saily was the cheapest unlimited option from 5 to 30 days. For longer trips on a fixed amount, Airalo's 30-day 5, 10 and 20 GB plans were about 50 cents cheaper.</p>
-        <a href="https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=verdict" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto;">See Saily's USA plans →</a>
-      </div>
-
-      <div class="takeaways">
-        <h2>Key takeaways</h2>
-        <ul>
-          <li><strong>Unlimited is often the better buy in the US:</strong> Saily's 7-day unlimited ($24.99) costs about the same as 10 GB for 30 days ($22.99).</li>
-          <li><strong>Cheapest unlimited from 5 to 30 days:</strong> Saily. <strong>Cheapest 30-day 5–20 GB:</strong> Airalo, by about 50 cents; it also sells 50 GB for $42.</li>
-          <li><strong>Hawaii is covered</strong> by Saily's US plan. <strong>Alaska is unclear</strong> — confirm with support before an Alaska trip.</li>
-          <li><strong>Data-only eSIMs can't receive SMS codes.</strong> Saily offers an optional US number if a service needs one.</li>
-          <li><strong>Install at home over WiFi</strong> and check your phone is carrier-unlocked before you fly.</li>
-        </ul>
-      </div>
+      <section class="planpick" id="planpick" aria-labelledby="find-your-plan">
+        <div class="pp-eyebrow">Find your plan</div>
+        <h2 id="find-your-plan">How much data do you need in the USA?</h2>
+        <div class="pp-grid">
+          <div style="display:flex;flex-direction:column;gap:22px;">
+            <div>
+              <div class="pp-label" id="pp-days-l">Trip length <span>(days)</span></div>
+              <div class="pp-days" role="radiogroup" aria-labelledby="pp-days-l">
+                <button type="button" role="radio" aria-checked="false" data-days="3" aria-label="3 days">3</button>
+                <button type="button" role="radio" aria-checked="false" data-days="7" aria-label="7 days">7</button>
+                <button type="button" role="radio" aria-checked="false" data-days="14" aria-label="14 days">14</button>
+                <button type="button" role="radio" aria-checked="false" data-days="30" aria-label="30 days">30</button>
+              </div>
+            </div>
+            <div>
+              <div class="pp-label" id="pp-use-l">How you use your phone</div>
+              <div class="pp-use" role="radiogroup" aria-labelledby="pp-use-l">
+                <button type="button" role="radio" aria-checked="false" data-use="light"><span class="dot" aria-hidden="true"></span><span class="t"><b>Light</b><span>Maps &amp; messaging</span></span></button>
+                <button type="button" role="radio" aria-checked="false" data-use="medium"><span class="dot" aria-hidden="true"></span><span class="t"><b>Medium</b><span>+ social media &amp; music</span></span></button>
+                <button type="button" role="radio" aria-checked="false" data-use="heavy"><span class="dot" aria-hidden="true"></span><span class="t"><b>Heavy</b><span>+ video &amp; hotspot</span></span></button>
+              </div>
+            </div>
+            <button type="button" class="pp-wifi" role="switch" aria-checked="false" data-wifi><span class="t"><b>Wi-Fi most of the time?</b><span>Hotel, café or office Wi-Fi roughly halves what you need</span></span><span class="sw" aria-hidden="true"><i></i></span></button>
+          </div>
+          <div class="pp-out" aria-live="polite"></div>
+        </div>
+        <script type="application/json" id="planpick-data">{"country": "USA", "checked": "29 Sep 2026", "fixed": [{"gb": 3, "p": "Saily", "price": 8.99, "url": "https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=picker"}, {"gb": 5, "p": "Airalo", "price": 13.5, "url": "https://www.airalo.com/united-states-esim"}, {"gb": 10, "p": "Airalo", "price": 22.5, "url": "https://www.airalo.com/united-states-esim"}, {"gb": 20, "p": "Airalo", "price": 36.5, "url": "https://www.airalo.com/united-states-esim"}, {"gb": 50, "p": "Airalo", "price": 42.0, "url": "https://www.airalo.com/united-states-esim"}], "unl": {"3": {"p": "Airalo", "price": 11.5, "days": 3, "url": "https://www.airalo.com/united-states-esim"}, "7": {"p": "Saily", "price": 24.99, "days": 7, "url": "https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=picker"}, "14": {"p": "Saily", "price": 45.99, "days": 15, "url": "https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=picker"}, "30": {"p": "Saily", "price": 67.99, "days": 30, "url": "https://go.saily.site/aff_c?offer_id=101&aff_id=16029&aff_sub=best-esim-for-usa&aff_sub2=picker"}}}</script>
+      </section>
 
       <nav class="toc" aria-label="Table of contents">
         <h2>On this page</h2>
         <ol>
+          <li><a href="#find-your-plan">Find your plan</a></li>
           <li><a href="#fixed-data-prices">Fixed-data plan prices</a></li>
           <li><a href="#unlimited-data-prices">Unlimited plan prices</a></li>
           <li><a href="#which-one-to-pick">Which one to pick</a></li>
@@ -913,6 +1039,8 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <li><strong>Road trips through rural areas and national parks:</strong> coverage varies by network there, so Holafly's two named networks (AT&T and T-Mobile) are worth the small premium.</li>
       </ul>
 
+      <img class="hero-img lower" src="photo-wifi.jpg" alt="Traveler using a phone on airport WiFi at a departure gate with planes outside" width="1200" height="630" loading="lazy">
+
       <h2 id="networks-and-coverage">Networks and coverage</h2>
       <p>The three nationwide US networks are AT&T, T-Mobile and Verizon. Travel eSIMs roam on one or more of them:</p>
       <ul>
@@ -938,7 +1066,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <li><strong>14 days:</strong> about 7.2 GB → a 10 GB plan</li>
         <li><strong>21 days:</strong> about 10.9 GB → a 20 GB plan, or 10 GB plus another small plan</li>
       </ul>
-      <p>Streaming video or tethering a laptop changes the picture fast — put in your own habits with the <a href="esim-data-calculator.html">calculator</a>.</p>
+      <p>Streaming video or tethering a laptop changes the picture fast — use <a href="#find-your-plan">Find your plan</a> above or the full <a href="esim-data-calculator.html">calculator</a>.</p>
 
       <h2 id="setting-up-before-you-fly">Setting up before you fly</h2>
       <ol>
@@ -1080,5 +1208,67 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   <span class="sub">Unlimited 7 days $24.99 · 10 GB/30 days $22.99</span>
 </div>
 
+<script>
+(function(){
+  var root = document.getElementById('planpick');
+  if (!root) return;
+  var D = JSON.parse(document.getElementById('planpick-data').textContent);
+  var USE = { light:{t:'light', d:0.25}, medium:{t:'medium', d:0.7}, heavy:{t:'heavy', d:1.8} };
+  var st = { days:null, use:null, wifi:false };
+  var out = root.querySelector('.pp-out');
+  function money(v){ return '$' + v.toFixed(2); }
+  function link(o, label){
+    var saily = o.p === 'Saily';
+    return '<a class="cta ' + (saily ? 'saily' : 'other') + '" href="' + o.url + '" target="_blank" rel="' + (saily ? 'sponsored noopener' : 'noopener') + '">' + label + '</a>'
+      + (saily ? '' : '<span class="sub">I don\'t earn a commission from ' + o.p + '.</span>');
+  }
+  function render(){
+    root.querySelectorAll('[data-days]').forEach(function(b){ b.setAttribute('aria-checked', String(+b.dataset.days === st.days)); });
+    root.querySelectorAll('[data-use]').forEach(function(b){ b.setAttribute('aria-checked', String(b.dataset.use === st.use)); });
+    root.querySelector('[data-wifi]').setAttribute('aria-checked', String(st.wifi));
+    if (!st.days || !st.use) {
+      out.innerHTML = '<div class="empty">Pick a trip length and how you use your phone. I\'ll suggest the smallest plan that covers it, at the lowest price I found on ' + D.checked + '.</div>';
+      return;
+    }
+    var est = st.days * USE[st.use].d * (st.wifi ? 0.5 : 1);
+    var need = est * 1.15;
+    var plan = null;
+    for (var i = 0; i < D.fixed.length; i++) { if (D.fixed[i].gb >= need) { plan = D.fixed[i]; break; } }
+    var overflow = !plan;
+    if (overflow) plan = D.fixed[D.fixed.length - 1];
+    var unl = D.unl[String(st.days)];
+    var rec, spec, why, note = '';
+    if (unl && (overflow || unl.price <= plan.price + 0.5)) {
+      rec = unl; spec = 'Unlimited · ' + unl.days + ' days · ' + money(unl.price);
+      why = overflow ? 'At this pace even the biggest fixed plan is tight, so unlimited is the safer buy.'
+                     : 'Costs about the same as or less than the ' + plan.gb + ' GB plan you would otherwise need.';
+      if (!overflow) note = plan.p + ' ' + plan.gb + ' GB · 30 days would be ' + money(plan.price) + '.';
+    } else {
+      rec = plan; spec = plan.gb + ' GB · 30 days · ' + money(plan.price);
+      why = 'Covers about ' + Math.max(1, Math.round(est)) + ' GB with headroom, at the lowest 30-day price I found for this size.';
+      if (unl && unl.price - plan.price <= 3) note = 'For ' + st.days + ' days, unlimited is only ' + money(unl.price - plan.price) + ' more: ' + unl.p + ' ' + unl.days + ' days for ' + money(unl.price) + '.';
+    }
+    var label = rec.p === 'Saily' ? 'Get Saily ' + D.country + (rec.gb ? ' ' + rec.gb + ' GB' : ' unlimited') + ' →' : 'See ' + rec.p + '\'s ' + D.country + ' plans →';
+    out.innerHTML = '<div class="pp-res">'
+      + '<div class="lbl">Estimated data</div>'
+      + '<div class="est"><b>' + (est < 1 ? '&lt; 1 GB' : '≈ ' + Math.round(est) + ' GB') + '</b><span>for ' + st.days + ' days, ' + USE[st.use].t + ' use' + (st.wifi ? ', mostly on Wi-Fi' : '') + '</span></div>'
+      + '<hr><div class="lbl rec">Recommended</div>'
+      + '<div class="prov"><b>' + rec.p + '</b><span>' + spec + '</span></div>'
+      + '<p>' + why + '</p>'
+      + (note ? '<div class="note">' + note + '</div>' : '')
+      + link(rec, label)
+      + '</div>';
+  }
+  root.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if (!b || !root.contains(b)) return;
+    if (b.dataset.days) st.days = +b.dataset.days;
+    else if (b.dataset.use) st.use = b.dataset.use;
+    else if (b.hasAttribute('data-wifi')) st.wifi = !st.wifi;
+    render();
+  });
+  render();
+})();
+</script>
 </body>
 </html>
