@@ -15,10 +15,13 @@ STEPS = [
     "esim_country_pages.py",  # country + Europe guides (prices live in this file)
     "saily_vs_airalo.py",     # comparison pages, built from the same data
     "saily_vs_holafly.py",
+    "saily_alternatives.py",
     "link_countries2.py",     # guides cards, homepage links, eSIM guide, sitemap, llms.txt
     "home_esim.py",           # homepage hero picker and "cheapest unlimited week" board
     "link_svsa.py",
     "link_svsh.py",
+    "link_alternatives.py",
+    "set_guide_count.py",     # homepage guide count = cards on guides.html minus the calculator
     "fix_site.py",            # affiliate tagging, Saily coupon, analytics, sticky buttons (all pages)
     "bump_country_dates.py",
     "validate.py",            # prints ISSUES: none when everything checks out

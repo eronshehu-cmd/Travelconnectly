@@ -183,7 +183,7 @@ def main_html():
         <li><strong>Mexico:</strong> at list price Holafly was cheaper than Saily for a week and a month, and Airalo cheaper than both; with my code, Saily's unlimited week ($22.49) is the cheapest of the three. See the <a href="best-esim-for-mexico.html">Mexico guide</a>.</li>
         <li><strong>China, if WhatsApp must just work:</strong> Holafly is the only one that says WhatsApp works there without a VPN; see the <a href="best-esim-for-china.html">China guide</a>.</li> Holafly lists them for each country.</li>
       </ul>
-      <p>For Saily against Airalo, see <a href="saily-vs-airalo.html">Saily vs Airalo across {N} destinations</a>. Every destination guide also has a "Find your plan" tool: {guides}.</p>
+      <p>For Saily against Airalo, see <a href="saily-vs-airalo.html">Saily vs Airalo across {N} destinations</a>; for when another provider is the better fit, see <a href="saily-alternatives.html">Saily alternatives</a>. Every destination guide also has a "Find your plan" tool: {guides}.</p>
 
       <h2 id="frequently-asked-questions">Frequently asked questions</h2>{faq_html}
     </article>

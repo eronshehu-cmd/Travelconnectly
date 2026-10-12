@@ -209,7 +209,7 @@ def main_html():
         <li><strong>You're going to Portugal, Mexico or Canada with fixed data in mind:</strong> Airalo, by a wide margin.</li>
         <li><strong>Several European countries:</strong> it depends on your route — see <a href="best-esim-for-europe.html">which countries each Europe plan covers</a>.</li>
       </ul>
-      <p>For Saily against Holafly's unlimited plans, see <a href="saily-vs-holafly.html">Saily vs Holafly</a>. Every destination guide also has a "Find your plan" tool that picks the cheapest plan for your trip length and usage: {guides}.</p>
+      <p>For Saily against Holafly's unlimited plans, see <a href="saily-vs-holafly.html">Saily vs Holafly</a>; for when another provider is the better fit, see <a href="saily-alternatives.html">Saily alternatives</a>. Every destination guide also has a "Find your plan" tool that picks the cheapest plan for your trip length and usage: {guides}.</p>
 
       <h2 id="frequently-asked-questions">Frequently asked questions</h2>{faq_html}
     </article>
