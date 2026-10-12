@@ -19,23 +19,28 @@ def money(v):
 ROWS = []
 for c in e.ALL_PAGES:
     u = {r[0]: r for r in c["unl"]}
-    ROWS.append(dict(name=c["name"], slug=c["slug"], checked=c.get("checked", e.CHECKED),
+    ROWS.append(dict(name=c["name"], slug=c["slug"], checked=c.get("checked", e.CHECKED),  # h30 is None where Holafly sells no 30-day plan
                      s7=u[7][1], h7=u[7][3], s15=u[15][1], h15=u[15][3], s30=u[30][1], h30=u[30][3]))
 N = len(ROWS)
 W7 = sum(r["s7"] < r["h7"] for r in ROWS)
 W15 = sum(r["s15"] < r["h15"] for r in ROWS)
-W30 = sum(r["s30"] < r["h30"] for r in ROWS)
-assert (W7, W15, W30) == (14, 16, 15), (W7, W15, W30)
+W30 = sum(r["h30"] is not None and r["s30"] < r["h30"] for r in ROWS)
+N30 = sum(r["h30"] is not None for r in ROWS)
+assert (W7, W15, W30, N30) == (17, 20, 18, 19), (W7, W15, W30)
 # With Saily's 10% TRAVELCONNECTLY code applied.
 C7 = sum(e.code(r["s7"]) < r["h7"] for r in ROWS)
-C30 = sum(e.code(r["s30"]) < r["h30"] for r in ROWS)
-assert (C7, C30) == (16, 16), (C7, C30)
+C30 = sum(r["h30"] is not None and e.code(r["s30"]) < r["h30"] for r in ROWS)
+assert (C7, C30) == (20, 19), (C7, C30)
 
 
 def table(days):
     out = []
     for r in ROWS:
         s, h = r[f"s{days}"], r[f"h{days}"]
+        if h is None:  # Holafly doesn't sell this length here
+            out.append(f'            <tr><td><a href="{r["slug"]}.html">{r["name"]}</a><small>{r["checked"]}</small></td>'
+                       f'<td>{money(s)}{e.code_tag(s)}</td><td>—</td><td>Not sold<small>by Holafly</small></td></tr>')
+            continue
         cwin = "Saily" if e.code(s) < h else "Holafly"
         cells = (f'<td class="best">{money(s)}{e.code_tag(s)}</td><td>{money(h)}</td>' if s < h
                  else f'<td>{money(s)}{e.code_tag(s)}</td><td class="best">{money(h)}</td>')
@@ -63,7 +68,7 @@ FEATURES = [
 
 FAQ = [
     ("Is Saily cheaper than Holafly?",
-     f"Usually, yes. Across {N} destinations checked between 29 September and 10 October 2026, Saily's 7-day unlimited plan was cheaper in {W7} of {N}, its 15-day plan in all {N}, and its 30-day plan in {W30} of {N}. Mexico and China were the exceptions at list price: Holafly was cheaper in Mexico for 7 and 30 days and in China for 7 days. With my 10% code TRAVELCONNECTLY, Saily was cheaper in all {N}, including Mexico."),
+     f"Usually, yes. Across {N} destinations checked between 29 September and 10 October 2026, Saily's 7-day unlimited plan was cheaper in {W7} of {N}, its 15-day plan in all {N}, and its 30-day plan in {W30} of the {N30} destinations where Holafly sells one. Mexico, China and Dubai were the exceptions at list price: Holafly was cheaper in Mexico for 7 and 30 days and in China and Dubai for 7 days. With my 10% code TRAVELCONNECTLY, Saily was cheaper for every length Holafly sells, in all {N} destinations."),
     ("Is Holafly really unlimited?",
      "Holafly sells unlimited-data plans, but states a fair-usage policy that can slow speeds for up to a day before resetting, and limits hotspot sharing to 1 GB a day. Saily states its limit up front: 5 GB a day at full speed in most countries (3 GB in Canada and Mexico), then up to 1 Mbps, with no hotspot restrictions."),
     ("Does Holafly sell fixed-data plans?",
@@ -106,8 +111,8 @@ def main_html():
           <div class="vs-row"><span class="k">Cheaper 15 days</span><span class="v s">Saily · {W15} of {N}</span></div>
         </div>
         <a class="qa-btn" href="{SAILY}" target="_blank" rel="sponsored noopener">See Saily's plans →</a>
-        <p class="qa-coupon">With my code <b>TRAVELCONNECTLY</b> (10% off, applied automatically), Saily was cheaper for 7 and 30 days in all {N} destinations, including Mexico.</p>
-        <ul class="qa-trust"><li>Prices from each provider's own site</li><li>Exceptions at list price: Mexico, China</li><li>I earn a commission from Saily, not Holafly</li></ul>
+        <p class="qa-coupon">With my code <b>TRAVELCONNECTLY</b> (10% off, applied automatically), Saily was cheaper for 7 days in all {N} destinations and for 30 days wherever Holafly sells it.</p>
+        <ul class="qa-trust"><li>Prices from each provider's own site</li><li>Exceptions at list price: Mexico, China, Dubai</li><li>I earn a commission from Saily, not Holafly</li></ul>
       </section>
 
       <section class="qa-take takeaways" aria-labelledby="kt-title">
@@ -152,12 +157,12 @@ def main_html():
       <h2 id="unlimited-week">Unlimited data for a week</h2>
       <p>Price of a 7-day unlimited plan in each destination. Highlighted: the cheaper one at list price. In amber: Saily with my 10% code TRAVELCONNECTLY.</p>
 {table(7)}
-      <p>Saily was cheaper in {W7} of {N} destinations — by 51 cents in several, but by $7.51 in Canada, $6.51 in Thailand and $3.51 in France. At list price Holafly was $2.49 cheaper in China and 49 cents cheaper in Mexico; with my code, Saily's week is $22.49 in Mexico (Holafly $24.50) and $26.99 in China (Holafly $27.50). For 15 days, Saily was cheaper in all {N}.</p>
+      <p>Saily was cheaper in {W7} of {N} destinations — by 51 cents in several, but by $7.51 in Canada, $6.51 in Thailand and $3.51 in France. At list price Holafly was $2.49 cheaper in China, $1.09 cheaper in Dubai and 49 cents cheaper in Mexico; with my code, Saily's week is $22.49 in Mexico (Holafly $24.50), $26.99 in China (Holafly $27.50) and $26.09 in Dubai (Holafly $27.90). For 15 days, Saily was cheaper in all {N}.</p>
 
       <h2 id="unlimited-month">Unlimited data for 30 days</h2>
       <p>Price of a 30-day unlimited plan. Highlighted: the cheaper one at list price. In amber: Saily with my 10% code TRAVELCONNECTLY.</p>
 {table(30)}
-      <p>Over a month the differences get large: Saily was $24.91 cheaper in Thailand, $13.91 in France and $9.91 in Canada. Holafly was $5.49 cheaper in Mexico at list price; with my code, Saily's 30 days there is $64.79 against $66.50.</p>
+      <p>Over a month the differences get large: Saily was $24.91 cheaper in Thailand, $13.91 in France and $9.91 in Canada. Holafly doesn't sell a 30-day plan in Dubai, and was $5.49 cheaper in Mexico at list price; with my code, Saily's 30 days in Mexico is $64.79 against $66.50.</p>
 
       <h2 id="limits">Speed limits and hotspot</h2>
       <p>Neither plan means unlimited full-speed data forever. <strong>Saily</strong> states its allowance: 5 GB a day at full speed in most countries (3 GB in Canada and Mexico), then up to 1 Mbps, with no hotspot restrictions. <strong>Holafly</strong> states a fair-usage policy that can slow speeds for up to a day before resetting, and lets you share 1 GB a day as a hotspot — so a 7-day plan includes 7 GB of hotspot data in total.</p>
@@ -230,13 +235,13 @@ def main_html():
 pagekit.TODAY = "2026-10-10"
 build(
     SLUG,
-    "Saily vs Holafly 2026: Unlimited eSIM Prices in 16 Destinations | TravelConnectly",
+    "Saily vs Holafly 2026: Unlimited eSIM Prices in 20 Destinations | TravelConnectly",
     f"Saily vs Holafly compared on real, dated unlimited-data prices in {N} destinations, plus speed limits, hotspot rules, networks and which to choose.",
     "Saily vs Holafly, Holafly vs Saily, Holafly alternative, Holafly review, Saily eSIM review, unlimited data eSIM",
-    "Saily vs Holafly 2026: Unlimited eSIM Prices in 16 Destinations",
+    "Saily vs Holafly 2026: Unlimited eSIM Prices in 20 Destinations",
     "Which unlimited eSIM is cheaper, destination by destination, at dated prices.",
     "og-saily-vs-holafly.jpg",
-    "Saily vs Holafly (2026): Unlimited eSIM Prices in 16 Destinations",
+    "Saily vs Holafly (2026): Unlimited eSIM Prices in 20 Destinations",
     FAQ, main_html(),
     f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
     f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily\'s plans →</a>\n'

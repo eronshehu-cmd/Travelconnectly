@@ -33,11 +33,11 @@ UNL_AIRALO = sum(r["a7"] < r["s7"] for r in ROWS)
 TEN_SAILY = sum(r["s10"] < r["a10"] for r in ROWS)
 TEN_AIRALO = sum(r["a10"] < r["s10"] for r in ROWS)
 N = len(ROWS)
-assert (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO) == (11, 5, 5, 11), (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO)
+assert (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO) == (13, 7, 8, 12), (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO)
 # With Saily's 10% TRAVELCONNECTLY code applied.
 UNL_CODE = sum(e.code(r["s7"]) < r["a7"] for r in ROWS)
 TEN_CODE = sum(e.code(r["s10"]) < r["a10"] for r in ROWS)
-assert (UNL_CODE, TEN_CODE) == (16, 10), (UNL_CODE, TEN_CODE)
+assert (UNL_CODE, TEN_CODE) == (20, 14), (UNL_CODE, TEN_CODE)
 CODE_SUMMARY = (f'<p class="qa-coupon">With my code <b>TRAVELCONNECTLY</b> (10% off, applied automatically), Saily was cheaper '
                 f'for an unlimited week in all {N} destinations and for 10 GB in {TEN_CODE} of {N}.</p>')
 
@@ -79,7 +79,7 @@ CSS = e.CSS + """
 
 FEATURES = [
     ("Fixed-data validity", "Mostly 30 days (1 GB plans: 7 days)", "3, 7, 15 or 30 days, depending on the plan"),
-    ("Biggest single-country plan", "20 GB in the 15 countries checked", "50 GB in 14 of those 15 countries"),
+    ("Biggest single-country plan", "20 GB in the 19 countries checked", "50 GB in 17 of those 19 countries"),
     ("Unlimited lengths", "Usually 5 to 30 days, including 20 and 25 days; 1 or 3 days in some countries", "3, 5, 7, 10, 15 or 30 days"),
     ("Unlimited full-speed allowance stated", "5 GB a day (3 GB in Canada and Mexico), then up to 1 Mbps", "Not listed on the country pages I checked"),
     ("Networks named on plan pages", "Sometimes (e.g. Japan, China, Indonesia, Portugal)", "Usually names the primary network"),
@@ -91,9 +91,9 @@ FAQ = [
     ("Is Saily cheaper than Airalo?",
      f"It depends on the plan. Across {N} destinations checked between 29 September and 10 October 2026, Saily was cheaper for a 7-day unlimited plan in {UNL_SAILY} of {N}, while Airalo was cheaper for 10 GB valid 30 days in {TEN_AIRALO} of {N}. Most differences were under $1. With my 10% code TRAVELCONNECTLY, Saily was cheaper for an unlimited week in all {N} and for 10 GB in {TEN_CODE} of {N}."),
     ("Which is better for unlimited data, Saily or Airalo?",
-     f"Saily had the cheaper 7-day unlimited plan in {UNL_SAILY} of {N} destinations, usually by a cent, and by about $3 in Canada. It also states its full-speed allowance (5 GB a day in most countries, 3 GB in Canada and Mexico) and sells 20- and 25-day plans. Airalo was cheaper for a week in Japan, Turkey, France, Mexico and China at list price."),
+     f"Saily had the cheaper 7-day unlimited plan in {UNL_SAILY} of {N} destinations, usually by a cent, and by about $3 in Canada. It also states its full-speed allowance (5 GB a day in most countries, 3 GB in Canada and Mexico) and sells 20- and 25-day plans. Airalo was cheaper for a week in Japan, Turkey, France, Mexico, China, Dubai and Australia at list price."),
     ("Which is better for fixed data?",
-     f"Airalo was cheaper for 10 GB valid 30 days in {TEN_AIRALO} of {N} destinations, by up to about $8 in Canada, and sells shorter 7- and 15-day plans and 50 GB plans in most countries. Saily was a cent cheaper in Japan, Thailand, the UK, France and South Korea."),
+     f"Airalo was cheaper for 10 GB valid 30 days in {TEN_AIRALO} of {N} destinations, by up to about $8 in Canada, and sells shorter 7- and 15-day plans and 50 GB plans in most countries. Saily was a cent cheaper in Japan, Thailand, the UK, France, South Korea, Dubai, Vietnam and Australia."),
     ("Which has the better Europe plan?",
      "Airalo's Europe plan covers more countries (41, including the western Balkans and Ukraine), and its EU + UK plan is cheaper if you stay in the EU and the UK. Saily's Europe plan covers 35 countries including the UK, Switzerland and Turkey, and had the cheaper 7-day unlimited plan. Neither Europe plan covers Kosovo; Saily's separate Balkans plan does."),
     ("Who makes Saily?",
@@ -174,12 +174,12 @@ def main_html():
       <h2 id="unlimited-week">Unlimited data for a week</h2>
       <p>Price of a 7-day unlimited plan in each destination. Highlighted: the cheaper one at list price. In amber: Saily with my 10% code TRAVELCONNECTLY.</p>
 {table("unl")}
-      <p>Saily was cheaper in {UNL_SAILY} of {N} destinations, in eight of them by a single cent. The biggest gaps: Canada (Saily $3.01 cheaper), China (Airalo $2.99 cheaper), Turkey (Airalo $2.49 cheaper), South Korea (Saily $2.01 cheaper) and Mexico (Airalo $1.49 cheaper). With my code, Saily was cheaper in all {N}.</p>
+      <p>Saily was cheaper in {UNL_SAILY} of {N} destinations, in ten of them by a single cent. The biggest gaps: Canada (Saily $3.01 cheaper), China (Airalo $2.99 cheaper), Turkey (Airalo $2.49 cheaper), South Korea (Saily $2.01 cheaper), and Mexico and Dubai (Airalo $1.49 cheaper). With my code, Saily was cheaper in all {N}.</p>
 
       <h2 id="ten-gb">10 GB valid for 30 days</h2>
       <p>Price of a 10 GB plan valid for 30 days. Highlighted: the cheaper one at list price. In amber: Saily with my 10% code TRAVELCONNECTLY.</p>
 {table("ten")}
-      <p>Airalo was cheaper in {TEN_AIRALO} of {N}. Where Saily won — Japan, Thailand, the UK, France and South Korea — it was by a single cent. Where Airalo won, the gap ranged from 49 cents (USA, Turkey, China) to $7.99 (Canada). With my code, Saily was cheaper in {TEN_CODE} of {N}; Airalo stayed cheaper in Canada, Spain, Greece, Mexico, Portugal and on the Europe plan.</p>
+      <p>Airalo was cheaper in {TEN_AIRALO} of {N}. Where Saily won — Japan, Thailand, the UK, France, South Korea, Dubai, Vietnam and Australia — it was by a single cent. Where Airalo won, the gap ranged from 49 cents (USA, Turkey, China) to $7.99 (Canada). With my code, Saily was cheaper in {TEN_CODE} of {N}; Airalo stayed cheaper in Canada, Spain, Greece, Mexico, Portugal and on the Europe plan.</p>
 
       <h2 id="big-gaps">Where the gap is big</h2>
       <ul>
@@ -257,13 +257,13 @@ if __name__ == "__main__":
   pagekit.TODAY = "2026-10-10"
   build(
     SLUG,
-    "Saily vs Airalo 2026: Prices Compared in 16 Destinations | TravelConnectly",
+    "Saily vs Airalo 2026: Prices Compared in 20 Destinations | TravelConnectly",
     f"Saily vs Airalo compared on real, dated prices in {N} destinations: who is cheaper for unlimited data and for fixed data, plan lengths, Europe coverage and which to choose.",
     "Saily vs Airalo, Airalo vs Saily, Saily or Airalo, Saily eSIM review, Airalo eSIM review, best travel eSIM",
-    "Saily vs Airalo 2026: Prices Compared in 16 Destinations",
+    "Saily vs Airalo 2026: Prices Compared in 20 Destinations",
     "Who is cheaper for unlimited and for fixed data, destination by destination, at dated prices.",
     "og-saily-vs-airalo.jpg",
-    "Saily vs Airalo (2026): Prices Compared in 16 Destinations",
+    "Saily vs Airalo (2026): Prices Compared in 20 Destinations",
     FAQ, main_html(),
     f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
     f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily\'s plans →</a>\n'

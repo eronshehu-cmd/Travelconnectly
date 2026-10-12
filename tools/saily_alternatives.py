@@ -29,7 +29,7 @@ AIRALO_10_CODE = [r for r in ROWS if r["a10"] < e.code(r["s10"])]
 SAILY_7 = [r for r in ROWS if r["s7"] < min(r["a7"], r["h7"])]
 SAILY_7_CODE = [r for r in ROWS if e.code(r["s7"]) < min(r["a7"], r["h7"])]
 HOLAFLY_BEATS_SAILY_7 = [r for r in ROWS if r["h7"] < r["s7"]]
-assert (len(AIRALO_10), len(AIRALO_10_CODE), len(SAILY_7), len(SAILY_7_CODE), len(HOLAFLY_BEATS_SAILY_7)) == (11, 6, 11, 16, 2), \
+assert (len(AIRALO_10), len(AIRALO_10_CODE), len(SAILY_7), len(SAILY_7_CODE), len(HOLAFLY_BEATS_SAILY_7)) == (12, 6, 13, 20, 3), \
     (len(AIRALO_10), len(AIRALO_10_CODE), len(SAILY_7), len(SAILY_7_CODE), len(HOLAFLY_BEATS_SAILY_7))
 
 
@@ -148,7 +148,7 @@ def main_html():
       <ul>
         <li><strong>You want a fixed amount of data.</strong> At list price Airalo was cheaper for 10 GB valid 30 days in {len(AIRALO_10)} of {N} destinations (gaps below).</li>
         <li><strong>Your trip fits a short window.</strong> Airalo sells 3-, 7- and 15-day fixed plans; Saily's fixed plans mostly last 30 days.</li>
-        <li><strong>You need a lot of data.</strong> Airalo sells 50 GB in 14 of the 15 single countries I checked; Saily's single-country plans top out at 20 GB.</li>
+        <li><strong>You need a lot of data.</strong> Airalo sells 50 GB in 17 of the 19 single countries I checked; Saily's single-country plans top out at 20 GB.</li>
         <li><strong>You're visiting the western Balkans or Ukraine on a Europe trip.</strong> Airalo's Europe plan covers 41 countries including them; Saily's covers 35. See the <a href="best-esim-for-europe.html">Europe guide</a>.</li>
       </ul>
       <p>Where Airalo's 10 GB for 30 days was cheaper than Saily's at list price, smallest gap first:</p>
@@ -218,13 +218,13 @@ if __name__ == "__main__":
     pagekit.TODAY = "2026-10-12"
     build(
         SLUG,
-        "Saily Alternatives 2026: Airalo vs Holafly in 16 Destinations | TravelConnectly",
+        "Saily Alternatives 2026: Airalo vs Holafly in 20 Destinations | TravelConnectly",
         f"The best Saily alternatives compared on real, dated prices in {N} destinations: when Airalo or Holafly beats Saily, and when Saily is still the better buy.",
         "Saily alternatives, Saily alternative, eSIM like Saily, Saily vs Airalo, Saily vs Holafly, cheaper than Saily, Saily review",
-        "Saily Alternatives 2026: Airalo vs Holafly in 16 Destinations",
+        "Saily Alternatives 2026: Airalo vs Holafly in 20 Destinations",
         "When Airalo or Holafly beats Saily, destination by destination, at dated prices.",
         "og-saily-alternatives.jpg",
-        "Saily Alternatives (2026): Airalo vs Holafly in 16 Destinations",
+        "Saily Alternatives (2026): Airalo vs Holafly in 20 Destinations",
         FAQ, main_html(),
         f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
         f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily\'s plans →</a>\n'

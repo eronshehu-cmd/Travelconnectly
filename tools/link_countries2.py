@@ -9,9 +9,14 @@ GUIDE_COUNT = 31
 ALL = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("turkey", "Turkey"),
        ("canada", "Canada"), ("italy", "Italy"), ("spain", "Spain"), ("uk", "UK"), ("france", "France"),
        ("greece", "Greece"), ("mexico", "Mexico"), ("china", "China"), ("south-korea", "South Korea"),
-       ("bali", "Bali"), ("portugal", "Portugal"), ("europe", "Europe")]
+       ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
+       ("australia", "Australia"), ("germany", "Germany"), ("europe", "Europe")]
 NEW = ALL[4:]
 BLURBS = {
+    "dubai": "UAE plans for Dubai and Abu Dhabi, plus what to know about calling apps.",
+    "vietnam": "Saily, Airalo and Holafly Vietnam plans compared at real, dated prices.",
+    "australia": "All three run on Optus — so here's who is cheapest, at real, dated prices.",
+    "germany": "Saily, Airalo and Holafly Germany plans compared at real, dated prices.",
     "china": "Which eSIMs say Google and WhatsApp work, with real, dated prices.",
     "south-korea": "Saily, Airalo and Holafly Korea plans compared, plus the map apps that work.",
     "bali": "Indonesia plans that cover Bali, compared at real, dated prices.",
@@ -26,6 +31,10 @@ BLURBS = {
     "spain": "Saily, Airalo and Holafly Spain plans compared at real, dated prices.",
 }
 LLMS = {
+    "dubai": "UAE plans: Saily vs Airalo vs Holafly, network du, WhatsApp/FaceTime calls restricted",
+    "vietnam": "Saily vs Airalo vs Holafly, network VNPT/VinaPhone",
+    "australia": "Saily vs Airalo vs Holafly, all on Optus; outback coverage",
+    "germany": "Saily vs Airalo vs Holafly, networks (O2, Vodafone), EU roaming",
     "china": "Saily vs Airalo vs Holafly, which say Google/WhatsApp/Instagram work, VPN and setup",
     "south-korea": "Saily vs Airalo vs Holafly, networks (SK Telecom, LG U+), Naver Map/KakaoMap",
     "bali": "Indonesia plans covering Bali: Saily vs Airalo vs Holafly, Telkomsel/Indosat/XL",

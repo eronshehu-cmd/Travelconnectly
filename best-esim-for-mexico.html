@@ -742,6 +742,18 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 }
 /* .breadcrumb/.article-head padding overrides .wrap's side gutter */
 .wrap.breadcrumb, .wrap.article-head{ padding-left:28px; padding-right:28px; }
+/* desktop sticky */
+.sticky-cta .sc-close{ display:none; }
+@media (min-width:761px){
+  .sticky-cta{ display:flex; flex-direction:column; gap:6px; position:fixed; right:24px; bottom:24px; z-index:60; width:300px;
+    padding:14px 16px 12px; background:rgba(13,27,42,0.97); border:1px solid #2A4563; border-radius:14px;
+    box-shadow:0 12px 32px rgba(0,0,0,.35); opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity .25s, transform .25s; }
+  .sticky-cta.show{ opacity:1; transform:none; pointer-events:auto; }
+  .sticky-cta .btn{ width:100%; padding:12px 16px; font-size:0.9rem; text-align:center; }
+  .sticky-cta .sub{ display:block; text-align:center; font-size:0.68rem; color:var(--text-muted); font-family:'IBM Plex Mono',monospace; }
+  .sticky-cta .sc-close{ display:flex; align-items:center; justify-content:center; position:absolute; top:-12px; right:-12px; width:28px; height:28px;
+    border-radius:50%; border:1px solid #2A4563; background:var(--navy-panel); color:var(--text-light); font-size:16px; line-height:1; cursor:pointer; }
+}
 
 /* ---- country eSIM tables ---- */
 .glance table.fit{ min-width:0; }
@@ -853,18 +865,6 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
   .pp-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; }
 }
 .hero-img.lower{ max-width:640px; margin-top:8px; }
-/* desktop sticky */
-.sticky-cta .sc-close{ display:none; }
-@media (min-width:761px){
-  .sticky-cta{ display:flex; flex-direction:column; gap:6px; position:fixed; right:24px; bottom:24px; z-index:60; width:300px;
-    padding:14px 16px 12px; background:rgba(13,27,42,0.97); border:1px solid #2A4563; border-radius:14px;
-    box-shadow:0 12px 32px rgba(0,0,0,.35); opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity .25s, transform .25s; }
-  .sticky-cta.show{ opacity:1; transform:none; pointer-events:auto; }
-  .sticky-cta .btn{ width:100%; padding:12px 16px; font-size:0.9rem; text-align:center; }
-  .sticky-cta .sub{ display:block; text-align:center; font-size:0.68rem; color:var(--text-muted); font-family:'IBM Plex Mono',monospace; }
-  .sticky-cta .sc-close{ display:flex; align-items:center; justify-content:center; position:absolute; top:-12px; right:-12px; width:28px; height:28px;
-    border-radius:50%; border:1px solid #2A4563; background:var(--navy-panel); color:var(--text-light); font-size:16px; line-height:1; cursor:pointer; }
-}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -1081,7 +1081,7 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
         <li><strong>Turn off data roaming on your home SIM</strong> so it can still receive calls and texts without running up charges.</li>
       </ol>
 
-      <p>More country guides: <a href="best-esim-for-japan.html">Japan</a> · <a href="best-esim-for-thailand.html">Thailand</a> · <a href="best-esim-for-usa.html">USA</a> · <a href="best-esim-for-turkey.html">Turkey</a> · <a href="best-esim-for-canada.html">Canada</a> · <a href="best-esim-for-italy.html">Italy</a> · <a href="best-esim-for-spain.html">Spain</a> · <a href="best-esim-for-uk.html">UK</a> · <a href="best-esim-for-france.html">France</a> · <a href="best-esim-for-greece.html">Greece</a> · <a href="best-esim-for-china.html">China</a> · <a href="best-esim-for-south-korea.html">South Korea</a> · <a href="best-esim-for-bali.html">Bali</a> · <a href="best-esim-for-portugal.html">Portugal</a> · <a href="best-esim-for-europe.html">Europe</a>. Comparing providers? See <a href="saily-vs-airalo.html">Saily vs Airalo</a> and <a href="saily-vs-holafly.html">Saily vs Holafly</a> across 16 destinations, or the <a href="saily-alternatives.html">best Saily alternatives</a>.</p>
+      <p>More country guides: <a href="best-esim-for-japan.html">Japan</a> · <a href="best-esim-for-thailand.html">Thailand</a> · <a href="best-esim-for-usa.html">USA</a> · <a href="best-esim-for-turkey.html">Turkey</a> · <a href="best-esim-for-canada.html">Canada</a> · <a href="best-esim-for-italy.html">Italy</a> · <a href="best-esim-for-spain.html">Spain</a> · <a href="best-esim-for-uk.html">UK</a> · <a href="best-esim-for-france.html">France</a> · <a href="best-esim-for-greece.html">Greece</a> · <a href="best-esim-for-china.html">China</a> · <a href="best-esim-for-south-korea.html">South Korea</a> · <a href="best-esim-for-bali.html">Bali</a> · <a href="best-esim-for-portugal.html">Portugal</a> · <a href="best-esim-for-dubai.html">Dubai</a> · <a href="best-esim-for-vietnam.html">Vietnam</a> · <a href="best-esim-for-australia.html">Australia</a> · <a href="best-esim-for-germany.html">Germany</a> · <a href="best-esim-for-europe.html">Europe</a>. Comparing providers? See <a href="saily-vs-airalo.html">Saily vs Airalo</a> and <a href="saily-vs-holafly.html">Saily vs Holafly</a> across 20 destinations, or the <a href="saily-alternatives.html">best Saily alternatives</a>.</p>
 
       <h2 id="frequently-asked-questions">Frequently asked questions</h2>
       <h3>What is the best eSIM for Mexico?</h3>
@@ -1211,6 +1211,25 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
 
 <script>
 (function(){
+  var s = document.querySelector('.sticky-cta');
+  if (!s) return;
+  var off = false;
+  try { off = sessionStorage.getItem('tc-sticky-off') === '1'; } catch (e) {}
+  if (off) { s.style.display = 'none'; return; }
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'sc-close'; b.setAttribute('aria-label', 'Close'); b.textContent = '\u00d7';
+  b.addEventListener('click', function(){
+    s.style.display = 'none';
+    try { sessionStorage.setItem('tc-sticky-off', '1'); } catch (e) {}
+  });
+  s.appendChild(b);
+  function onScroll(){ s.classList.toggle('show', window.scrollY > 700); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+<script>
+(function(){
   var root = document.getElementById('planpick');
   if (!root) return;
   var D = JSON.parse(document.getElementById('planpick-data').textContent);
@@ -1271,25 +1290,6 @@ footer{ border-top:1px solid var(--hairline); padding:56px 0 32px; color:var(--t
     render();
   });
   render();
-})();
-</script>
-<script>
-(function(){
-  var s = document.querySelector('.sticky-cta');
-  if (!s) return;
-  var off = false;
-  try { off = sessionStorage.getItem('tc-sticky-off') === '1'; } catch (e) {}
-  if (off) { s.style.display = 'none'; return; }
-  var b = document.createElement('button');
-  b.type = 'button'; b.className = 'sc-close'; b.setAttribute('aria-label', 'Close'); b.textContent = '\u00d7';
-  b.addEventListener('click', function(){
-    s.style.display = 'none';
-    try { sessionStorage.setItem('tc-sticky-off', '1'); } catch (e) {}
-  });
-  s.appendChild(b);
-  function onScroll(){ s.classList.toggle('show', window.scrollY > 700); }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 })();
 </script>
 </body>

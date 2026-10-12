@@ -18,7 +18,7 @@ def edit(path, fn):
 
 
 CARD = """        <a class="guide-card" href="saily-vs-holafly.html">
-          <img src="og-saily-vs-holafly.jpg" alt="Saily vs Holafly 2026: unlimited eSIM prices in 16 destinations" width="1200" height="630" loading="lazy">
+          <img src="og-saily-vs-holafly.jpg" alt="Saily vs Holafly 2026: unlimited eSIM prices in 20 destinations" width="1200" height="630" loading="lazy">
           <div class="guide-card-body">
             <span class="tag">eSIM · Comparison</span>
             <h3>Saily vs Holafly (2026)</h3>
@@ -42,7 +42,7 @@ edit("best-esim-for-travelers.html", lambda t: t if HREF in t else t.replace(
 
 edit("llms.txt", lambda t: t if "saily-vs-holafly.html" in t else t.replace(
     "\n\n## eSIM basics and tools",
-    "\n- [Saily vs Holafly](https://www.travelconnectly.com/saily-vs-holafly.html): unlimited-data prices in 16 destinations, speed limits, hotspot\n\n## eSIM basics and tools", 1))
+    "\n- [Saily vs Holafly](https://www.travelconnectly.com/saily-vs-holafly.html): unlimited-data prices in 20 destinations, speed limits, hotspot\n\n## eSIM basics and tools", 1))
 
 
 def sitemap(t):
