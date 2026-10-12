@@ -25,6 +25,9 @@ DATE = "2026-09-29"
 COUPON_LINE = '<p class="qa-coupon">10% off with code <b>TRAVELCONNECTLY</b> · applied automatically</p>'
 COUPON_STICKY = "10% off with code TRAVELCONNECTLY"
 COUPON_NOTE = " Saily prices on this page are before the 10% TRAVELCONNECTLY discount, which my Saily links apply automatically."
+# Single-country guides where a Europe-wide plan is a real alternative (they get a link to the Europe guide).
+EUROPE_TRIP_SLUGS = {"best-esim-for-italy", "best-esim-for-spain", "best-esim-for-uk", "best-esim-for-france",
+                     "best-esim-for-greece", "best-esim-for-portugal", "best-esim-for-turkey"}
 COUNTRY_LIST = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("turkey", "Turkey"),
                 ("canada", "Canada"), ("italy", "Italy"), ("spain", "Spain"), ("uk", "UK"), ("france", "France"),
                 ("greece", "Greece"), ("mexico", "Mexico"), ("china", "China"), ("south-korea", "South Korea"),
@@ -306,7 +309,10 @@ def chip_html(kind, text, price, prov, c, url=None):
 
 def page(c):
     faq_html = "".join(f"\n      <h3>{q}</h3>\n      <p>{a}</p>" for q, a in c["faq"])
-    pick_html = "\n".join(f"        <li>{p}</li>" for p in c["picks"])
+    picks = list(c["picks"])
+    if c["slug"] in EUROPE_TRIP_SLUGS and not any("best-esim-for-europe.html" in p for p in picks):
+        picks.append('<strong>Visiting several European countries?</strong> See <a href="best-esim-for-europe.html">Europe eSIM plans compared</a> — which of 33–41 countries each plan covers, and when one regional plan beats separate country plans.')
+    pick_html = "\n".join(f"        <li>{p}</li>" for p in picks)
     net_html = "\n".join(f"        <li>{n}</li>" for n in c["networks"])
     tips_html = "\n".join(f"        <li>{n}</li>" for n in c["tips"])
     take_html = "\n".join(f"          <li><span>{t}</span></li>" for t in c["takeaways"])
@@ -1075,8 +1081,8 @@ EUROPE = dict(
     sticky_label="Europe eSIM · from $4.99 →",
     sticky_sub="35 countries · unlimited week $26.99",
     headline="Best eSIM for Europe (2026): Saily vs Airalo vs Holafly, Prices and Coverage Compared",
-    title="Best eSIM for Europe 2026: Saily vs Airalo vs Holafly Prices & Countries | TravelConnectly",
-    desc="Europe eSIM plans compared from each provider's site: Saily, Airalo and Holafly prices, which countries each covers (UK, Switzerland, Turkey, the Balkans), and when a single-country plan is cheaper.",
+    title="Best eSIM for Europe 2026: 35–41 Countries Compared, Real Prices | TravelConnectly",
+    desc="One eSIM for all of Europe? Saily, Airalo and Holafly Europe plans compared on real, dated prices and on which of 33–41 countries each covers (UK, Switzerland, Turkey, the Balkans).",
     keywords="best eSIM for Europe, Europe eSIM, Saily Europe, Airalo Europe, Holafly Europe, Europe eSIM unlimited data, eSIM for Europe and UK, Balkans eSIM",
     og_title="Best eSIM for Europe 2026: Saily vs Airalo vs Holafly",
     og_desc="Real Europe eSIM prices and country coverage compared, plus when a single-country plan is cheaper.",
@@ -1138,6 +1144,14 @@ EUROPE = dict(
          "Saily's and Airalo's Europe plans include Turkey; Holafly's doesn't. Only Airalo's Europe plan includes Albania, Bosnia and Herzegovina, Montenegro, North Macedonia and Serbia. None of the three covers Kosovo, but Saily's separate Balkans plan does."),
         ("Is a Europe eSIM cheaper than a single-country eSIM?",
          "Not always. If most of your trip is in one country, a single-country plan is often cheaper: for example, Saily's Italy unlimited plan cost $22.99 for 7 days against $26.99 for its Europe plan."),
+        ("Is there one eSIM that works in all of Europe?",
+         "Not quite. Of the plans I checked, Airalo's Europe plan covers the most countries (41), Saily's covers 35 and Holafly's 33, and none of them covers Kosovo. Check every country on your route against each provider's list before you buy."),
+        ("Does a Europe eSIM keep working when I cross a border?",
+         "Yes — that's the point of a regional plan: one eSIM and one package across every covered country. Saily's Europe plan activates automatically when you arrive in the first covered country."),
+        ("How much is a Europe eSIM for 2 weeks?",
+         "For 15 days of unlimited data on a Europe-wide plan, Airalo cost $49.00, Saily $49.99 ($44.99 with my code TRAVELCONNECTLY) and Holafly $51.50 (checked 9 October 2026). If you only visit EU countries and the UK, Airalo's EU + UK plan cost $39.00 for 15 days."),
+        ("What is the cheapest eSIM for Europe?",
+         "For small amounts of data, Airalo's EU + UK plan started at $4.00 for 1 GB (3 days) and Saily's Europe plan at $4.99 (7 days). For 10 GB over 30 days, Airalo's EU + UK plan was cheapest at $24.00; on Europe-wide plans Airalo cost $31.00 and Saily $35.99 ($32.39 with my code)."),
         EU_ROAMING_FAQ,
     ],
     coverage_html=EUROPE_COVERAGE,
