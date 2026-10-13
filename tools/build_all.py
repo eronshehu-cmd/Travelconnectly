@@ -22,6 +22,7 @@ STEPS = [
     "link_svsh.py",
     "link_alternatives.py",
     "set_guide_count.py",     # homepage guide count = cards on guides.html minus the calculator
+    "vpn_refresh.py",         # VPN prices (tables, homepage cards) and Quick answer cards on VPN guides
     "fix_site.py",            # affiliate tagging, Saily coupon, analytics, sticky buttons (all pages)
     "bump_country_dates.py",
     "validate.py",            # prints ISSUES: none when everything checks out

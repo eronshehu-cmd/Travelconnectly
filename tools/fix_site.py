@@ -13,9 +13,9 @@ ANALYTICS = '<script defer src="/_vercel/insights/script.js"></script>'
 
 STICKY = {
     "nord": ('https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128', 'btn-nord',
-             'Get My NordVPN Deal →', '30-day money-back guarantee'),
+             'Get NordVPN · €3.49/mo →', '2-year plan · 30-day money-back guarantee'),
     "surf": ('https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567', 'btn-surf',
-             'Get My Surfshark Deal →', '30-day money-back guarantee'),
+             'Get Surfshark · $2.49/mo →', '2-year plan · 30-day money-back guarantee'),
     "saily": ('https://go.saily.site/aff_c?offer_id=101&aff_id=16029&coupon=travelconnectly', 'btn-saily',
               "Get Saily's eSIM Plans →", '10% off with code TRAVELCONNECTLY'),
 }
