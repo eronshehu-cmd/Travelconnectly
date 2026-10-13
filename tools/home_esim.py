@@ -32,6 +32,9 @@ DEST = [
     ("vietnam", "Vietnam", "from $3.99", 26.99, "Saily"),
     ("australia", "Australia", "from $3.99", 26.50, "Airalo"),
     ("germany", "Germany", "from $4.00", 23.99, "Saily"),
+    ("philippines", "Philippines", "from $3.99", 26.99, "Saily"),
+    ("singapore", "Singapore", "from $3.99", 26.99, "Saily"),
+    ("malaysia", "Malaysia", "from $3.99", 26.99, "Saily"),
 ]
 
 CSS = """
@@ -84,7 +87,7 @@ def hero():
           <a href="#reviews" class="link read-more">Need a VPN? NordVPN vs Surfshark ↓</a>
         </div>
         <div class="stat-strip">
-          <div><span class="n">20</span><span class="l">destinations with dated eSIM prices</span></div>
+          <div><span class="n">{len(DEST)}</span><span class="l">destinations with dated eSIM prices</span></div>
           <div><span class="n">31</span><span class="l">travel guides published</span></div>
           <div><span class="n sm">Oct 2026</span><span class="l">eSIM prices last checked</span></div>
           <div><span class="n">0</span><span class="l">sponsored placements — rankings are never paid for</span></div>

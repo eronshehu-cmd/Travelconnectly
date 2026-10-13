@@ -17,7 +17,7 @@ def edit(path, fn):
 
 
 CARD = """        <a class="guide-card" href="saily-vs-airalo.html">
-          <img src="og-saily-vs-airalo.jpg" alt="Saily vs Airalo 2026: prices compared in 20 destinations" width="1200" height="630" loading="lazy">
+          <img src="og-saily-vs-airalo.jpg" alt="Saily vs Airalo 2026: prices compared in 23 destinations" width="1200" height="630" loading="lazy">
           <div class="guide-card-body">
             <span class="tag">eSIM · Comparison</span>
             <h3>Saily vs Airalo (2026)</h3>
@@ -43,7 +43,7 @@ edit("best-esim-for-travelers.html", lambda t: t if HREF in t else re.sub(
 
 edit("llms.txt", lambda t: t if "saily-vs-airalo.html" in t else t.replace(
     "\n\n## eSIM basics and tools",
-    "\n- [Saily vs Airalo](https://www.travelconnectly.com/saily-vs-airalo.html): head-to-head prices in 20 destinations, unlimited vs fixed data\n\n## eSIM basics and tools", 1))
+    "\n- [Saily vs Airalo](https://www.travelconnectly.com/saily-vs-airalo.html): head-to-head prices in 23 destinations, unlimited vs fixed data\n\n## eSIM basics and tools", 1))
 
 
 def sitemap(t):

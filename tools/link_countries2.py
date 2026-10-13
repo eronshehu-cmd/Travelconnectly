@@ -4,15 +4,19 @@ import re
 import sys
 
 os.chdir(sys.argv[1])
-DATE = "2026-10-12"
+DATE = "2026-10-13"
 GUIDE_COUNT = 31
 ALL = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("turkey", "Turkey"),
        ("canada", "Canada"), ("italy", "Italy"), ("spain", "Spain"), ("uk", "UK"), ("france", "France"),
        ("greece", "Greece"), ("mexico", "Mexico"), ("china", "China"), ("south-korea", "South Korea"),
        ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
-       ("australia", "Australia"), ("germany", "Germany"), ("europe", "Europe")]
+       ("australia", "Australia"), ("germany", "Germany"), ("philippines", "Philippines"),
+       ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("europe", "Europe")]
 NEW = ALL[4:]
 BLURBS = {
+    "philippines": "Saily, Airalo and Holafly compared, plus coverage tips for island-hopping.",
+    "singapore": "From a stopover to a longer stay: real, dated prices on Singtel and more.",
+    "malaysia": "Saily, Airalo and Holafly Malaysia plans compared at real, dated prices.",
     "dubai": "UAE plans for Dubai and Abu Dhabi, plus what to know about calling apps.",
     "vietnam": "Saily, Airalo and Holafly Vietnam plans compared at real, dated prices.",
     "australia": "All three run on Optus — so here's who is cheapest, at real, dated prices.",
@@ -31,6 +35,9 @@ BLURBS = {
     "spain": "Saily, Airalo and Holafly Spain plans compared at real, dated prices.",
 }
 LLMS = {
+    "philippines": "Saily vs Airalo vs Holafly, networks (Smart, Globe), island coverage",
+    "singapore": "Saily vs Airalo vs Holafly, network Singtel, stopover plans",
+    "malaysia": "Saily vs Airalo vs Holafly, networks (Maxis, CelcomDigi), Borneo coverage",
     "dubai": "UAE plans: Saily vs Airalo vs Holafly, network du, WhatsApp/FaceTime calls restricted",
     "vietnam": "Saily vs Airalo vs Holafly, network VNPT/VinaPhone",
     "australia": "Saily vs Airalo vs Holafly, all on Optus; outback coverage",

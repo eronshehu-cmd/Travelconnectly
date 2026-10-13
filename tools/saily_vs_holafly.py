@@ -1,4 +1,4 @@
-"""Build saily-vs-holafly.html from the verified country-guide data (prices checked 29 Sep - 10 Oct 2026)."""
+"""Build saily-vs-holafly.html from the verified country-guide data (prices checked 29 Sep - 13 Oct 2026)."""
 import sys
 
 SITE = sys.argv[1]
@@ -26,11 +26,11 @@ W7 = sum(r["s7"] < r["h7"] for r in ROWS)
 W15 = sum(r["s15"] < r["h15"] for r in ROWS)
 W30 = sum(r["h30"] is not None and r["s30"] < r["h30"] for r in ROWS)
 N30 = sum(r["h30"] is not None for r in ROWS)
-assert (W7, W15, W30, N30) == (17, 20, 18, 19), (W7, W15, W30)
+assert (W7, W15, W30, N30) == (20, 23, 21, 22), (W7, W15, W30)
 # With Saily's 10% TRAVELCONNECTLY code applied.
 C7 = sum(e.code(r["s7"]) < r["h7"] for r in ROWS)
 C30 = sum(r["h30"] is not None and e.code(r["s30"]) < r["h30"] for r in ROWS)
-assert (C7, C30) == (20, 19), (C7, C30)
+assert (C7, C30) == (23, 22), (C7, C30)
 
 
 def table(days):
@@ -68,7 +68,7 @@ FEATURES = [
 
 FAQ = [
     ("Is Saily cheaper than Holafly?",
-     f"Usually, yes. Across {N} destinations checked between 29 September and 10 October 2026, Saily's 7-day unlimited plan was cheaper in {W7} of {N}, its 15-day plan in all {N}, and its 30-day plan in {W30} of the {N30} destinations where Holafly sells one. Mexico, China and Dubai were the exceptions at list price: Holafly was cheaper in Mexico for 7 and 30 days and in China and Dubai for 7 days. With my 10% code TRAVELCONNECTLY, Saily was cheaper for every length Holafly sells, in all {N} destinations."),
+     f"Usually, yes. Across {N} destinations checked between 29 September and 13 October 2026, Saily's 7-day unlimited plan was cheaper in {W7} of {N}, its 15-day plan in all {N}, and its 30-day plan in {W30} of the {N30} destinations where Holafly sells one. Mexico, China and Dubai were the exceptions at list price: Holafly was cheaper in Mexico for 7 and 30 days and in China and Dubai for 7 days. With my 10% code TRAVELCONNECTLY, Saily was cheaper for every length Holafly sells, in all {N} destinations."),
     ("Is Holafly really unlimited?",
      "Holafly sells unlimited-data plans, but states a fair-usage policy that can slow speeds for up to a day before resetting, and limits hotspot sharing to 1 GB a day. Saily states its limit up front: 5 GB a day at full speed in most countries (3 GB in Canada and Mexico), then up to 1 Mbps, with no hotspot restrictions."),
     ("Does Holafly sell fixed-data plans?",
@@ -94,7 +94,7 @@ def main_html():
     <div class="qa-grid">
       <div class="qa-head">
         <h1>Saily vs Holafly (2026)</h1>
-        <div class="qa-sub">{N} destinations · prices checked 29 Sep – 10 Oct 2026</div>
+        <div class="qa-sub">{N} destinations · prices checked 29 Sep – 13 Oct 2026</div>
       </div>
 
       <section class="qa-card" aria-labelledby="qa-title">
@@ -129,7 +129,7 @@ def main_html():
     <div class="author-strip">
       <div class="who">
         <span class="av" aria-hidden="true">E</span>
-        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 29 Sep – 10 Oct 2026</span></div>
+        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 29 Sep – 13 Oct 2026</span></div>
       </div>
       <a href="methodology.html">How I compare →</a>
     </div>
@@ -137,7 +137,7 @@ def main_html():
 
   <div class="wrap">
     <div class="trust-note">
-      <p><strong>How this page works:</strong> every price comes from my country guides, where each was checked in US dollars on Saily's and Holafly's own pages between 29 September and 10 October 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Holafly, and this page shows where Holafly is cheaper.{e.COUPON_NOTE}</p>
+      <p><strong>How this page works:</strong> every price comes from my country guides, where each was checked in US dollars on Saily's and Holafly's own pages between 29 September and 13 October 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Holafly, and this page shows where Holafly is cheaper.{e.COUPON_NOTE}</p>
     </div>
     <article class="article">
       <p class="lede">Holafly is one of the most advertised travel-eSIM brands, and it sells only unlimited data. Saily sells both unlimited and fixed-data plans. Comparing their unlimited plans destination by destination, Saily was cheaper almost everywhere — but there's one clear exception, and a couple of things Holafly does better.</p>
@@ -177,7 +177,7 @@ def main_html():
           </tbody>
         </table>
       </div>
-      <p class="price-note">From each provider's own plan pages for the destinations above, checked 29 September – 10 October 2026.</p>
+      <p class="price-note">From each provider's own plan pages for the destinations above, checked 29 September – 13 October 2026.</p>
       <p>Saily plans activate automatically when you arrive and can be activated any time within 180 days of purchase. Saily also adds security features from the NordVPN team and gives 3% of each purchase back as Saily credits.</p>
 
       <h2 id="which-to-choose">Which one to choose</h2>
@@ -235,13 +235,13 @@ def main_html():
 pagekit.TODAY = "2026-10-10"
 build(
     SLUG,
-    "Saily vs Holafly 2026: Unlimited eSIM Prices in 20 Destinations | TravelConnectly",
+    "Saily vs Holafly 2026: Unlimited eSIM Prices in 23 Destinations | TravelConnectly",
     f"Saily vs Holafly compared on real, dated unlimited-data prices in {N} destinations, plus speed limits, hotspot rules, networks and which to choose.",
     "Saily vs Holafly, Holafly vs Saily, Holafly alternative, Holafly review, Saily eSIM review, unlimited data eSIM",
-    "Saily vs Holafly 2026: Unlimited eSIM Prices in 20 Destinations",
+    "Saily vs Holafly 2026: Unlimited eSIM Prices in 23 Destinations",
     "Which unlimited eSIM is cheaper, destination by destination, at dated prices.",
     "og-saily-vs-holafly.jpg",
-    "Saily vs Holafly (2026): Unlimited eSIM Prices in 20 Destinations",
+    "Saily vs Holafly (2026): Unlimited eSIM Prices in 23 Destinations",
     FAQ, main_html(),
     f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
     f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily\'s plans →</a>\n'
