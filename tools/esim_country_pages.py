@@ -699,7 +699,8 @@ USA = dict(
     qa_reason="Cheapest unlimited from 5 to 30 days — and in the US, a week of unlimited costs about the same as 10 GB.",
     qa_plan="Unlimited · 7 days", qa_price="$24.99", qa_cta="Get Saily USA unlimited →",
     qa_trust=["Hotspot allowed", "Activates when you land", "Optional US number"],
-    qa_chips=[("Layover or one busy day:", "Saily 1 day unlimited", 3.49, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 22.50, "Airalo")],
+    qa_chips=[("Layover or one busy day:", "Saily 1 day unlimited", 3.49, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 22.50, "Airalo"),
+              ("Two weeks:", "Saily 15 days unlimited", 45.99, "Saily")],
     takeaways=[
         "<strong>Unlimited is often the better buy in the US:</strong> Saily's 7-day unlimited ($24.99) costs about the same as 10 GB for 30 days ($22.99).",
         "<strong>Cheapest unlimited from 5 to 30 days:</strong> Saily. <strong>Cheapest 30-day 5–20 GB:</strong> Airalo, by about 50 cents; it also sells 50 GB for $42.",
@@ -924,7 +925,8 @@ ITALY = dict(
     qa_reason="Cheapest unlimited from 5 to 30 days — a cent below Airalo — with 5 GB a day at full speed.",
     qa_plan="Unlimited · 7 days", qa_price="$22.99", qa_cta="Get Saily Italy unlimited →",
     qa_trust=TRUST,
-    qa_chips=[("Light use:", "Saily 3 GB · 30 days", 8.99, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 19.00, "Airalo")],
+    qa_chips=[("Two weeks:", "Saily 15 days unlimited", 43.99, "Saily"), ("Light use:", "Saily 3 GB · 30 days", 8.99, "Saily"),
+              ("Cheapest 30-day 10 GB:", "Airalo", 19.00, "Airalo")],
     takeaways=[
         "<strong>Unlimited: Saily and Airalo are effectively tied</strong> — Saily is a cent cheaper from 5 to 30 days ($22.99 vs $23.00 for a week).",
         "<strong>Fixed data: Airalo is $1–3 cheaper</strong> at 30-day validity (10 GB for $19.00 vs $20.99).",
@@ -994,7 +996,8 @@ SPAIN = dict(
     qa_reason="Cheapest unlimited for 5, 7 and 10 days, with 5 GB a day at full speed and no hotspot limits.",
     qa_plan="Unlimited · 7 days", qa_price="$22.99", qa_cta="Get Saily Spain unlimited →",
     qa_trust=TRUST,
-    qa_chips=[("Cheapest 30-day 10 GB:", "Airalo", 14.00, "Airalo"), ("Unlimited for 2 weeks:", "Airalo 15 days", 43.00, "Airalo")],
+    qa_chips=[("Ten days:", "Saily 10 days unlimited", 31.99, "Saily"), ("Unlimited for 2 weeks:", "Airalo 15 days", 43.00, "Airalo"),
+              ("Cheapest 30-day 10 GB:", "Airalo", 14.00, "Airalo")],
     takeaways=[
         "<strong>Unlimited for 5–10 days: Saily is cheapest</strong> — $22.99 for a week vs $23.50 at Airalo and $24.50 at Holafly.",
         "<strong>Unlimited for 15 or 30 days: Airalo</strong>, by 99 cents.",
@@ -1095,7 +1098,8 @@ EUROPE = dict(
     qa_plan="Unlimited · 7 days", qa_price="$26.99", qa_cta="Get Saily Europe unlimited →",
     qa_trust=["35 countries", "Hotspot allowed", "Activates in your first country"],
     qa_chips=[("Only EU + UK?", "Airalo EU + UK 7 days", 23.50, "Airalo", "https://www.airalo.com/eu-plus-uk-esim"),
-              ("Longer trip:", "Airalo Europe 15 days unlimited", 49.00, "Airalo")],
+              ("Longer trip:", "Airalo Europe 15 days unlimited", 49.00, "Airalo"),
+              ("Two weeks with my code:", "Saily 15 days unlimited", 44.99, "Saily")],
     takeaways=[
         "<strong>Coverage differs more than price:</strong> Airalo covers 41 countries including the western Balkans and Ukraine; Saily covers 35 including Turkey; Holafly covers 33.",
         "<strong>Saily is cheapest for a 7-day unlimited plan</strong> ($26.99) and 30-day 5 GB ($19.49), each by a cent. Airalo is cheaper for most other lengths and sizes.",
@@ -1535,7 +1539,8 @@ KOREA = dict(
     qa_reason="A cent cheaper than Airalo on every 30-day plan from 5 to 20 GB, and the cheapest unlimited from 5 to 15 days.",
     qa_plan="10 GB · 30 days", qa_price="$18.99", qa_cta="Get Saily South Korea 10 GB →",
     qa_trust=TRUST,
-    qa_chips=[("Unlimited week:", "Saily 7 days", 26.99, "Saily"), ("Heavy use:", "Airalo 50 GB · 30 days", 49.00, "Airalo")],
+    qa_chips=[("Unlimited week:", "Saily 7 days", 26.99, "Saily"), ("Two weeks:", "Saily 15 days unlimited", 48.99, "Saily"),
+              ("Heavy use:", "Airalo 50 GB · 30 days", 49.00, "Airalo")],
     takeaways=[
         "<strong>Saily is a cent cheaper</strong> on every 30-day plan from 5 to 20 GB (10 GB for $18.99).",
         "<strong>Unlimited: Saily is cheapest from 5 to 15 days</strong> — $26.99 for a week vs $27.50 at Holafly and $29.00 at Airalo.",
@@ -1950,7 +1955,8 @@ GERMANY = dict(
     qa_reason="The cheapest unlimited from 5 to 15 days (by a cent), with 5 GB a day at full speed and no hotspot limits.",
     qa_plan="Unlimited · 7 days", qa_price="$23.99", qa_cta="Get Saily Germany unlimited →",
     qa_trust=TRUST,
-    qa_chips=[("Cheapest 30-day 10 GB:", "Airalo", 16.00, "Airalo"), ("Heavy use:", "Airalo 50 GB · 30 days", 36.00, "Airalo")],
+    qa_chips=[("Two weeks:", "Saily 15 days unlimited", 41.99, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 16.00, "Airalo"),
+              ("Heavy use:", "Airalo 50 GB · 30 days", 36.00, "Airalo")],
     takeaways=[
         "<strong>Unlimited for 5–15 days: Saily is cheapest</strong> by a cent — $23.99 for a week vs $24.00 at Airalo and $27.50 at Holafly.",
         "<strong>Fixed data is close:</strong> Saily is a cent cheaper at 5 and 20 GB; Airalo is 99 cents cheaper at 10 GB ($16.00).",
