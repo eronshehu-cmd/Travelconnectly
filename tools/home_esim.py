@@ -35,6 +35,7 @@ DEST = [
     ("philippines", "Philippines", "from $3.99", 26.99, "Saily"),
     ("singapore", "Singapore", "from $3.99", 26.99, "Saily"),
     ("malaysia", "Malaysia", "from $3.99", 26.99, "Saily"),
+    ("asia", "Asia", "from $4.00", 26.00, "Airalo"),
 ]
 
 CSS = """
@@ -105,7 +106,7 @@ def hero():
           <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily's eSIM plans</a>
         </div>
         <p class="board-coupon">10% off with code <b>TRAVELCONNECTLY</b> · applied automatically</p>
-        <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe: Europe-wide plans). I earn a commission from Saily, not from Airalo.</p>
+        <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe and Asia: regional plans). I earn a commission from Saily, not from Airalo.</p>
       </div>
     </div>
   </section>"""

@@ -4,16 +4,17 @@ import re
 import sys
 
 os.chdir(sys.argv[1])
-DATE = "2026-10-13"
+DATE = "2026-10-16"
 GUIDE_COUNT = 31
 ALL = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("turkey", "Turkey"),
        ("canada", "Canada"), ("italy", "Italy"), ("spain", "Spain"), ("uk", "UK"), ("france", "France"),
        ("greece", "Greece"), ("mexico", "Mexico"), ("china", "China"), ("south-korea", "South Korea"),
        ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
        ("australia", "Australia"), ("germany", "Germany"), ("philippines", "Philippines"),
-       ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("europe", "Europe")]
+       ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("asia", "Asia"), ("europe", "Europe")]
 NEW = ALL[4:]
 BLURBS = {
+    "asia": "Which of 16–22 countries each Asia plan covers, with real, dated prices.",
     "philippines": "Saily, Airalo and Holafly compared, plus coverage tips for island-hopping.",
     "singapore": "From a stopover to a longer stay: real, dated prices on Singtel and more.",
     "malaysia": "Saily, Airalo and Holafly Malaysia plans compared at real, dated prices.",
@@ -35,6 +36,7 @@ BLURBS = {
     "spain": "Saily, Airalo and Holafly Spain plans compared at real, dated prices.",
 }
 LLMS = {
+    "asia": "regional plans compared: Airalo cheapest, Saily covers most countries (India, Australia, NZ); coverage table",
     "philippines": "Saily vs Airalo vs Holafly, networks (Smart, Globe), island coverage",
     "singapore": "Saily vs Airalo vs Holafly, network Singtel, stopover plans",
     "malaysia": "Saily vs Airalo vs Holafly, networks (Maxis, CelcomDigi), Borneo coverage",

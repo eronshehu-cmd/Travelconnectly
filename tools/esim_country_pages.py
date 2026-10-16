@@ -33,7 +33,10 @@ COUNTRY_LIST = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("
                 ("greece", "Greece"), ("mexico", "Mexico"), ("china", "China"), ("south-korea", "South Korea"),
                 ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
                 ("australia", "Australia"), ("germany", "Germany"), ("philippines", "Philippines"),
-                ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("europe", "Europe")]
+                ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("asia", "Asia"), ("europe", "Europe")]
+# Asian destinations whose guides link to the Asia regional guide.
+ASIA_TRIP_SLUGS = {f"best-esim-for-{s}" for s in ("thailand", "vietnam", "bali", "philippines", "singapore", "malaysia",
+                                                   "japan", "south-korea", "china")}
 
 CSS = """
 /* ---- country eSIM tables ---- */
@@ -309,11 +312,23 @@ def chip_html(kind, text, price, prov, c, url=None):
             f'<span class="arr" aria-hidden="true">→</span></a>')
 
 
+def sticky_label(c):
+    # Oct 2026: Quick-answer clicks bought full plans ($31-45), "from $3.49" sticky clicks bought 1-day plans,
+    # so the sticky names the Quick answer plan. Pages whose Quick answer isn't Saily keep their own label.
+    if c.get("qa_provider", "Saily") != "Saily":
+        return c["sticky_label"]
+    size, length = c["qa_plan"].split(" · ")
+    plan = ("unlimited week" if length == "7 days" else f"unlimited, {length}") if size == "Unlimited" else f"{size}, {length}"
+    return f"{c['name']} {plan} · {c['qa_price']} →"
+
+
 def page(c):
     faq_html = "".join(f"\n      <h3>{q}</h3>\n      <p>{a}</p>" for q, a in c["faq"])
     picks = list(c["picks"])
     if c["slug"] in EUROPE_TRIP_SLUGS and not any("best-esim-for-europe.html" in p for p in picks):
         picks.append('<strong>Visiting several European countries?</strong> See <a href="best-esim-for-europe.html">Europe eSIM plans compared</a> — which of 33–41 countries each plan covers, and when one regional plan beats separate country plans.')
+    if c["slug"] in ASIA_TRIP_SLUGS:
+        picks.append('<strong>Visiting several Asian countries?</strong> See <a href="best-esim-for-asia.html">Asia eSIM plans compared</a> — which of 16–22 countries each regional plan covers, and when it beats separate country plans.')
     pick_html = "\n".join(f"        <li>{p}</li>" for p in picks)
     net_html = "\n".join(f"        <li>{n}</li>" for n in c["networks"])
     tips_html = "\n".join(f"        <li>{n}</li>" for n in c["tips"])
@@ -532,7 +547,7 @@ def page(c):
         c["faq"], main,
         f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
         # data-custom keeps fix_site.py from replacing this plan-specific sticky button.
-        f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{c["sticky_label"]}</a>\n  <span class="sub">{COUPON_STICKY}</span>\n</div>',
+        f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{sticky_label(c)}</a>\n  <span class="sub">{COUPON_STICKY}</span>\n</div>',
         CSS, PLANPICK_JS,
     )
 
@@ -2221,6 +2236,117 @@ MALAYSIA = dict(
 ALL_PAGES = (JAPAN, THAILAND, USA, TURKEY, CANADA, ITALY, SPAIN, UK, FRANCE, GREECE, MEXICO, CHINA, KOREA, BALI, PORTUGAL,
              DUBAI, VIETNAM, AUSTRALIA, GERMANY, PHILIPPINES, SINGAPORE, MALAYSIA, EUROPE)
 
+# ---- Asia regional plans, checked 16 Oct 2026: saily.com/esim-asia-and-oceania (22 countries),
+# airalo.com/asia-esim (18) and esim.holafly.com/esim-asia (16; 7 days spot-checked live).
+# Kept out of ALL_PAGES so the per-destination comparison pages stay country-by-country.
+ASIA_COVERAGE_ROWS = [
+    ("Countries covered", "22", "18", "16"),
+    ("Thailand, Vietnam, Cambodia, Laos", Y, Y, Y),
+    ("Malaysia, Singapore, Indonesia (Bali), Philippines", Y, Y, Y),
+    ("Japan, South Korea, Taiwan", Y, Y, Y),
+    ("China, Hong Kong, Macau", Y, Y, Y),
+    ("Sri Lanka, Pakistan", Y, Y, Y),
+    ("India, Bangladesh", Y, Y, N),
+    ("Australia, New Zealand", Y, N, N),
+    ("Kazakhstan, Uzbekistan", Y, N, N),
+    ("Nepal, Maldives, Myanmar", N, N, N),
+]
+ASIA_COVERAGE = """
+      <h2 id="countries-covered">Which countries are covered</h2>
+      <p>The three Asia plans share a core of 16 countries from Japan to Sri Lanka; the differences are at the edges. Check every country on your route before you buy.</p>
+      <div class="table-wrap glance">
+        <table class="fit cov">
+          <thead><tr><th>Country</th><th>Saily Asia &amp; Oceania</th><th>Airalo Asia</th><th>Holafly Asia</th></tr></thead>
+          <tbody>
+""" + "\n".join(f"            <tr><td>{r[0]}</td>" + "".join(f"<td>{v}</td>" for v in r[1:]) + "</tr>" for r in ASIA_COVERAGE_ROWS) + """
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note">From each provider's own country list, checked 16 October 2026.</p>
+      <p><strong>Asia plus Australia or New Zealand?</strong> Saily's Asia &amp; Oceania plan is the only one of the three that includes them, so one eSIM can cover a Southeast Asia trip that ends in Sydney or Auckland.</p>
+"""
+
+ASIA = dict(
+    checked="16 Oct 2026", checked_long="16 October 2026", date="2026-10-16",
+    slug="best-esim-for-asia", name="Asia", name_h1="Asia", plan_name="Asia",
+    airalo_url="https://www.airalo.com/asia-esim", holafly_url="https://esim.holafly.com/esim-asia/",
+    sticky_label="Saily Asia &amp; Oceania · from $4.99 →", sticky_sub="",
+    headline="Best eSIM for Asia (2026): Saily vs Airalo vs Holafly Regional Plans, Prices and Coverage Compared",
+    title="Best eSIM for Asia 2026: Regional Plans, 16–22 Countries Compared | TravelConnectly",
+    desc="One eSIM for a multi-country Asia trip? Saily, Airalo and Holafly Asia plans compared on real, dated prices and on which countries each covers (Thailand, Vietnam, Bali, Japan, China, India, Australia).",
+    keywords="best eSIM for Asia, Asia eSIM, Southeast Asia eSIM, regional eSIM Asia, Airalo Asia, Saily Asia, Holafly Asia, eSIM for backpacking Asia",
+    og_title="Best eSIM for Asia 2026: Saily vs Airalo vs Holafly",
+    og_desc="Real Asia regional eSIM prices and country coverage compared, plus when a country plan is cheaper.",
+    og_image="og-esim-asia.jpg",
+    photo="photo-backpacking.jpg", photo_alt="Backpacker with a phone planning the next stop of a trip",
+    qa_provider="Airalo",
+    qa_label="Multi-country trip",
+    qa_reason="The cheapest Asia-wide plan at every unlimited length and every data size, across 18 countries from Japan to Sri Lanka.",
+    qa_plan="Unlimited · 7 days", qa_price="$26.00", qa_cta="See Airalo's Asia plans →",
+    qa_trust=["18 countries", "Unlimited or fixed data", "Networks listed per country"],
+    qa_chips=[("Thailand only?", "Saily Thailand 7 days unlimited", 20.99, "Saily"),
+              ("Asia plus Australia/NZ:", "Saily Asia & Oceania 7 days", 28.99, "Saily"),
+              ("A month, heavy use:", "Airalo Asia 50 GB · 30 days", 59.00, "Airalo")],
+    takeaways=[
+        "<strong>Airalo's Asia plan is the cheapest regional option:</strong> $26.00 for an unlimited week vs $27.50 at Holafly and $28.99 at Saily, and $25.00 for 10 GB over 30 days vs $35.99 at Saily.",
+        "<strong>Saily covers the most countries (22)</strong>, including India, Australia, New Zealand, Kazakhstan and Uzbekistan. Airalo covers 18 and Holafly 16.",
+        "<strong>One country, or mostly one?</strong> A country plan can be cheaper: Saily Thailand is $20.99 for an unlimited week. For most other countries a single-country week costs about as much as a whole Asia week.",
+        "<strong>None of the three covers Nepal, the Maldives or Myanmar.</strong>",
+    ],
+    lede="Backpacking routes in Asia cross a border every week or two — Thailand to Laos, Vietnam to Cambodia, Singapore to Malaysia — and buying a new plan in every country gets old fast. A regional eSIM keeps one plan running across the whole trip. Here's what each provider's Asia plan costs, which countries it really covers, and when a single-country plan is the better deal.",
+    fixed=[
+        ("1 GB", [(4.99, 7)], [(4.00, 3)]),
+        ("3 GB", [(12.49, 30)], [(9.00, 3), (9.50, 7)]),
+        ("5 GB", [(19.49, 30)], [(14.00, 7), (14.50, 15), (15.00, 30)]),
+        ("10 GB", [(35.99, 30)], [(23.00, 7), (24.00, 15), (25.00, 30)]),
+        ("20 GB", [], [(38.00, 15), (39.00, 30)]),
+        ("25 GB", [(48.99, 60)], []),
+        ("50 GB", [], [(59.00, 30), (69.00, 90)]),
+        ("100 GB", [], [(89.00, 180)]),
+    ],
+    fixed_note="<strong>What that means:</strong> on Asia-wide plans Airalo is cheaper at every size — 10 GB for 30 days is $25.00 against $35.99 at Saily ($32.39 with my code). Saily's 25 GB plan lasts 60 days ($48.99), which suits slow travel; Airalo sells 50 GB for 90 days ($69.00) and 100 GB for 180 days ($89.00) for long trips.",
+    unl=[(3, None, 11.50, 11.90), (5, 21.99, 19.00, 20.50), (7, 28.99, 26.00, 27.50),
+         (10, 38.99, 35.00, 37.50), (15, 54.99, 49.00, 51.50), (30, 86.99, 73.50, 76.50)],
+    unl_note="Airalo was the cheapest Asia-wide unlimited plan at every length, and Holafly second. Saily's Asia &amp; Oceania plan costs more — even with my 10% code it's 9 cents to $4.79 above Airalo — but it covers 22 countries including Australia and New Zealand, and also sells 20- and 25-day plans ($68.99 and $78.99).",
+    picks=[
+        "<strong>A multi-country trip within the core 16 (Southeast Asia, Japan, Korea, Taiwan, China, Sri Lanka):</strong> Airalo Asia — the cheapest regional plan at every length.",
+        f'<strong>Asia plus Australia, New Zealand, India or Central Asia:</strong> <a href="{SAILY}" target="_blank" rel="sponsored noopener">Saily Asia &amp; Oceania</a> — the only one of the three covering all of them.',
+        f'<strong>Mostly one country:</strong> a country plan — for example <a href="best-esim-for-thailand.html">Thailand</a> ($20.99 for an unlimited week at Saily), or see the <a href="best-esim-for-vietnam.html">Vietnam</a>, <a href="best-esim-for-bali.html">Bali</a>, <a href="best-esim-for-japan.html">Japan</a> and <a href="best-esim-for-philippines.html">Philippines</a> guides.',
+        "<strong>Several months on the road:</strong> local SIMs bought on arrival are usually cheapest for long stays in one country; keep a travel eSIM for arrival days, short stops and China.",
+    ],
+    net_intro="Regional plans roam on local networks in each country:",
+    networks=[
+        "<strong>Saily:</strong> doesn't name networks on its Asia &amp; Oceania page.",
+        "<strong>Airalo:</strong> names one to three networks per country — for example AIS, Dtac and True in Thailand, Globe and Smart in the Philippines, and China Unicom, China Mobile and China Telecom in China.",
+        "<strong>Holafly:</strong> names its networks per country — for example True and DTAC in Thailand, Globe in the Philippines and China Mobile in China and Hong Kong.",
+    ],
+    tips_title="Asia tips",
+    tips=[
+        "<strong>Going to China?</strong> Google, WhatsApp and Instagram are blocked on Chinese SIMs and WiFi. Check what each provider says about these apps before you rely on a regional plan there — see <a href=\"best-esim-for-china.html\">the China guide</a>.",
+        "<strong>Border crossings by land</strong> (Thailand–Laos, Vietnam–Cambodia, Singapore–Malaysia) are where a regional plan pays off: it keeps working on the other side without a new purchase.",
+        "<strong>Ride-hailing apps differ by country</strong> — Grab across most of Southeast Asia, Gojek in Indonesia — and all of them need data, so keep your eSIM on from the moment you land.",
+        "<strong>Hostel and café WiFi is everywhere but shared</strong> — use a VPN on it. See <a href=\"best-vpn-for-backpacking.html\">the best VPN for backpacking</a>.",
+    ],
+    faq=[
+        ("What is the best eSIM for Asia?",
+         "For a multi-country trip within the core Asia countries, Airalo's Asia plan was the cheapest on 16 October 2026: $26.00 for an unlimited week and $25.00 for 10 GB over 30 days, across 18 countries. Saily's Asia &amp; Oceania plan costs more but covers the most countries (22), including India, Australia and New Zealand."),
+        ("How much is an Asia eSIM?",
+         "Prices started at $4.00 for 1 GB (Airalo, 3 days). An unlimited week cost $26.00–28.99, and 10 GB for 30 days cost $25.00 at Airalo or $35.99 at Saily."),
+        ("Which countries does an Asia eSIM cover?",
+         "All three plans compared here cover Thailand, Vietnam, Cambodia, Laos, Malaysia, Singapore, Indonesia, the Philippines, Japan, South Korea, Taiwan, China, Hong Kong, Macau, Sri Lanka and Pakistan. Saily and Airalo add India and Bangladesh; only Saily adds Australia, New Zealand, Kazakhstan and Uzbekistan. None covers Nepal, the Maldives or Myanmar."),
+        ("Is an Asia eSIM cheaper than separate country eSIMs?",
+         "Usually, once you visit two or more countries. A single-country unlimited week cost about the same as Airalo's Asia week in Vietnam, Bali, Japan and the Philippines ($26–27), so the regional plan covers more for the same money. Thailand is the exception: Saily Thailand was $20.99 for a week."),
+        ("Does an Asia eSIM work in Australia?",
+         "Only Saily's Asia &amp; Oceania plan includes Australia and New Zealand. Airalo's and Holafly's Asia plans don't."),
+        ("Does an Asia eSIM work in India?",
+         "Saily's and Airalo's Asia plans include India; Holafly's Asia plan doesn't."),
+        ("Do Asia eSIMs include a phone number?",
+         "No. These are data-only eSIMs, so use WhatsApp, LINE, KakaoTalk or other internet calling. Keep your home SIM active for texts such as bank codes, with its data roaming turned off."),
+    ],
+    coverage_html=ASIA_COVERAGE,
+    related_href="best-esim-for-thailand.html", related_tag="eSIM · Thailand", related_title="Best eSIM for Thailand (2026)",
+)
+
 if __name__ == "__main__":
-    for country in ALL_PAGES:
+    for country in ALL_PAGES + (ASIA,):
         page(country)
