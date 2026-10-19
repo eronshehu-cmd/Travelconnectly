@@ -7,6 +7,7 @@ Prices checked 29 Sept 2026 in USD on each provider's own country page
 (saily.com, airalo.com with currency=USD, esim.holafly.com with USD selected).
 """
 import json
+from urllib.parse import quote
 import os
 import sys
 from decimal import ROUND_HALF_UP, Decimal
@@ -315,6 +316,28 @@ def chip_html(kind, text, price, prov, c, url=None):
             f'<span class="arr" aria-hidden="true">→</span></a>')
 
 
+# ---- Saily deep links (19 Oct 2026). The plain affiliate link lands on saily.com/special/, so visitors had to
+# search for their country again. HasOffers fills the {macros} inside url=, keeping the transaction id that
+# credits the sale (tested: lands on saily.com/esim-italy/ with aff_transaction_id and the coupon applied).
+SAILY_PATHS = {
+    "japan": "esim-japan", "thailand": "esim-thailand", "usa": "esim-united-states", "turkey": "esim-turkey",
+    "canada": "esim-canada", "italy": "esim-italy", "spain": "esim-spain", "uk": "esim-united-kingdom",
+    "france": "esim-france", "greece": "esim-greece", "mexico": "esim-mexico", "china": "esim-china",
+    "south-korea": "esim-south-korea", "bali": "esim-indonesia", "portugal": "esim-portugal",
+    "dubai": "esim-united-arab-emirates", "vietnam": "esim-vietnam", "australia": "esim-australia",
+    "germany": "esim-germany", "philippines": "esim-philippines", "singapore": "esim-singapore",
+    "malaysia": "esim-malaysia", "europe": "esim-europe", "asia": "esim-asia-and-oceania",
+}
+
+
+def saily_deep(c):
+    path = SAILY_PATHS[c["slug"].removeprefix("best-esim-for-")]
+    target = (f"https://saily.com/{path}/?coupon=travelconnectly&utm_source={{affiliate_id}}&utm_medium=affiliate"
+              "&utm_campaign={offer_id}&aff_transaction_id={transaction_id}&aff_offer_id={offer_id}"
+              "&aff_id={affiliate_id}&aff_sub={aff_sub}")
+    return f"{SAILY}&url={quote(target, safe='')}"
+
+
 def sticky_label(c):
     # Oct 2026: Quick-answer clicks bought full plans ($31-45), "from $3.49" sticky clicks bought 1-day plans,
     # so the sticky names the Quick answer plan. Pages whose Quick answer isn't Saily keep their own label.
@@ -371,6 +394,7 @@ def with_maya_qa(c):
 
 def page(c):
     c = with_maya_qa(c)
+    deep = saily_deep(c)
     faq_html = "".join(f"\n      <h3>{q}</h3>\n      <p>{a}</p>" for q, a in c["faq"])
     picks = list(c["picks"])
     if c["slug"] in EUROPE_TRIP_SLUGS and not any("best-esim-for-europe.html" in p for p in picks):
@@ -602,12 +626,12 @@ def page(c):
     pagekit.TODAY = c.get("date", DATE)
     build(
         c["slug"], c["title"], c["desc"], c["keywords"], c["og_title"], c["og_desc"], c["og_image"], c["headline"],
-        c["faq"], main,
-        f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
+        c["faq"], main.replace(SAILY, deep),
+        f'<a href="{deep}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
         # data-custom keeps fix_site.py from replacing this plan-specific sticky button.
         (f'<div class="sticky-cta" data-custom="plan">\n  <a href="{MAYA}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{c["name"]} unlimited week · $19.99 →</a>\n  <span class="sub">Maya · one plan, 165+ countries</span>\n</div>'
          if qa_prov == "Maya" else
-         f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{sticky_label(c)}</a>\n  <span class="sub">{COUPON_STICKY}</span>\n</div>'),
+         f'<div class="sticky-cta" data-custom="plan">\n  <a href="{deep}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{sticky_label(c)}</a>\n  <span class="sub">{COUPON_STICKY}</span>\n</div>'),
         CSS, PLANPICK_JS,
     )
 
