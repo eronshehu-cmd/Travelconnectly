@@ -9,6 +9,8 @@ BASE = "https://www.travelconnectly.com/"
 NORD = "https://go.nordvpn.net/aff_c?offer_id=725&aff_id=141128"
 SURF = "https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567"
 SAILY = "https://go.saily.site/aff_c?offer_id=101&aff_id=16029&coupon=travelconnectly"
+# Maya Mobile via Impact (approved 19 Oct 2026); fix_site.py adds subId1 (page) and subId2 (position).
+MAYA = "https://mayamobile.pxf.io/KBLO5v"
 
 tpl = open("best-esim-for-travelers.html", encoding="utf-8").read()
 # Start from untagged links so fix_site.py re-tags them with the new page's slug.

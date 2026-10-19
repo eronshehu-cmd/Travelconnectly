@@ -5,7 +5,7 @@ SITE = sys.argv[1]
 sys.argv = [sys.argv[0], SITE]
 import esim_country_pages as e  # noqa: E402
 import pagekit  # noqa: E402
-from pagekit import NORD, SAILY, build  # noqa: E402
+from pagekit import MAYA, NORD, SAILY, build  # noqa: E402
 from saily_vs_airalo import CSS  # noqa: E402
 
 AIRALO = "https://www.airalo.com/"
@@ -163,6 +163,7 @@ def main_html():
           <div class="vs-row"><span class="k">Cheaper 10 GB · 30 days (list price)</span><span class="v a">Airalo · {len(AIRALO_10)} of {N}</span></div>
           <div class="vs-row"><span class="k">Unlimited week vs Airalo &amp; Holafly</span><span class="v s">Saily · {len(SAILY_7)} of {N}</span></div>
         </div>
+        <a class="qa-btn other" href="{MAYA}" target="_blank" rel="sponsored noopener">See Maya's global unlimited →</a>
         <a class="qa-btn other" href="{AIRALO}" target="_blank" rel="noopener">See Airalo's plans →</a>
         <p class="qa-note">I don't earn a commission from Airalo.</p>
         <a class="qa-btn" href="{SAILY}" target="_blank" rel="sponsored noopener">Or Saily with 10% off →</a>
@@ -192,7 +193,7 @@ def main_html():
 
   <div class="wrap">
     <div class="trust-note">
-      <p><strong>How this page works:</strong> every price comes from my destination guides, where each was checked in US dollars on Saily's, Airalo's and Holafly's own pages between 29 September and 13 October 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Airalo, Holafly, Maya, Kolet, Jetpac or Roamless, and this page is about when they're the better choice.{e.COUPON_NOTE}</p>
+      <p><strong>How this page works:</strong> every price comes from my destination guides, where each was checked in US dollars on Saily's, Airalo's and Holafly's own pages between 29 September and 13 October 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily and Maya Mobile; I have no affiliate relationship with Airalo, Holafly, Kolet, Jetpac or Roamless, and this page is about when they're the better choice.{e.COUPON_NOTE}</p>
     </div>
     <article class="article">
       <p class="lede">Saily is a strong travel eSIM, but it isn't the cheapest or best fit for every trip. Here's when Airalo, Holafly or one of the newer global eSIMs — Maya Mobile, Kolet, Jetpac and Roamless — is the better choice, based on prices I checked on each provider's own site — and when it's worth sticking with Saily.</p>
@@ -241,7 +242,7 @@ def main_html():
 {newer_table("ten")}
       <p class="price-note">Maya, Kolet, Jetpac and Roamless checked {NEWER_CHECKED}; Saily from the linked guides. Maya sells unlimited plans only; Jetpac's 10 GB plan in Italy lasts 7 days, so it isn't listed.</p>
       <ul>
-        <li><strong>Maya Mobile — the cheapest unlimited.</strong> One global plan with the same price in every country: $9.99 for 3 days, $19.99 for 7, $27.99 for 14 and $49.99 for 30. Its coverage list includes 188 countries, Kosovo among them. It doesn't state a daily full-speed allowance; its acceptable use policy says it may deprioritise usage that isn't normal individual use during network congestion. No fixed-data plans.</li>
+        <li><strong><a href="{MAYA}" target="_blank" rel="sponsored noopener">Maya Mobile</a> — the cheapest unlimited.</strong> One global plan with the same price in every country: $9.99 for 3 days, $19.99 for 7, $27.99 for 14 and $49.99 for 30. Its coverage list includes 188 countries, Kosovo among them. It doesn't state a daily full-speed allowance; its acceptable use policy says it may deprioritise usage that isn't normal individual use during network congestion. No fixed-data plans.</li>
         <li><strong>Kolet — flexible, but not the cheapest.</strong> Fixed plans last 30 days, and unlimited is priced by the day with 5 GB a day at full speed. It was more expensive than Saily for an unlimited week in all four destinations. You can turn unused data into credit or transfer it to someone else.</li>
         <li><strong>Jetpac — cheap fixed data in some countries.</strong> Cheapest 10 GB for 30 days in the USA ($19.00) and an unlimited week below Saily's list price in Japan and Italy. Its unlimited plans give 3 GB a day at full speed, then up to 1 Mbps.</li>
         <li><strong>Roamless — cheap fixed data and pay-as-you-go.</strong> The cheapest 10 GB for 30 days in Japan ($14.95), Thailand ($10.95) and Italy ($18.95) at list price, plus credits that never expire. Unlimited gives 3 GB a day at full speed.</li>

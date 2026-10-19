@@ -15,7 +15,7 @@ os.environ["SITE_DIR"] = sys.argv[1]
 os.environ["PAGE_DATE"] = "2026-09-29"
 sys.path.insert(0, os.path.dirname(__file__))
 import pagekit  # noqa: E402
-from pagekit import NORD, SAILY, build  # noqa: E402
+from pagekit import MAYA, NORD, SAILY, build  # noqa: E402
 
 # Defaults for the first four guides; newer guides set checked / checked_long / date in their config.
 CHECKED = "29 Sep 2026"
@@ -24,6 +24,7 @@ DATE = "2026-09-29"
 # Saily affiliate coupon (10% off, confirmed by Saily on 12 Oct 2026); links carry coupon= so it applies automatically.
 COUPON_LINE = '<p class="qa-coupon">10% off with code <b>TRAVELCONNECTLY</b> · applied automatically</p>'
 COUPON_STICKY = "10% off with code TRAVELCONNECTLY"
+MAYA_WEEK = 19.99  # Maya global unlimited, 7 days, same price in every country (checked 17-19 Oct 2026)
 COUPON_NOTE = " Saily prices on this page are before the 10% TRAVELCONNECTLY discount, which my Saily links apply automatically."
 # Single-country guides where a Europe-wide plan is a real alternative (they get a link to the Europe guide).
 EUROPE_TRIP_SLUGS = {"best-esim-for-italy", "best-esim-for-spain", "best-esim-for-uk", "best-esim-for-france",
@@ -305,6 +306,8 @@ def planner_data(c):
 def chip_html(kind, text, price, prov, c, url=None):
     if prov == "Saily":
         href, rel = SAILY, "sponsored noopener"
+    elif prov == "Maya":
+        href, rel = MAYA, "sponsored noopener"
     else:
         href, rel = url or (c["airalo_url"] if prov == "Airalo" else c["holafly_url"]), "noopener"
     return (f'        <a class="qa-chip" href="{href}" target="_blank" rel="{rel}">'
@@ -334,7 +337,13 @@ def page(c):
     tips_html = "\n".join(f"        <li>{n}</li>" for n in c["tips"])
     take_html = "\n".join(f"          <li><span>{t}</span></li>" for t in c["takeaways"])
     trust_html = "".join(f"<li>{t}</li>" for t in c["qa_trust"])
-    chips = "\n".join(chip_html(*ch[:4], c, *ch[4:]) for ch in c["qa_chips"])
+    chip_list = list(c["qa_chips"])
+    # Maya's global unlimited plan (checked 17-19 Oct 2026) costs the same everywhere; show it where it beats the
+    # cheapest 7-day unlimited plan among Saily, Airalo and Holafly on this page.
+    week = next((r for r in c["unl"] if r[0] == 7), None)
+    if week and min(p for p in week[1:] if p is not None) > MAYA_WEEK:
+        chip_list.append(("Cheaper global unlimited:", "Maya 7 days, any country", MAYA_WEEK, "Maya"))
+    chips = "\n".join(chip_html(*ch[:4], c, *ch[4:]) for ch in chip_list)
     # Quick answer normally recommends Saily; where a non-partner is clearly cheaper, it recommends that one instead.
     qa_prov = c.get("qa_provider", "Saily")
     if qa_prov == "Saily":
@@ -401,7 +410,7 @@ def page(c):
 
   <div class="wrap">
     <div class="trust-note">
-      <p><strong>How this page works:</strong> every price was checked in US dollars on each provider's own {c.get('plan_name', c['name'])} page on {CHECKED}. Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Airalo or Holafly, and I say where they're cheaper.{COUPON_NOTE}</p>
+      <p><strong>How this page works:</strong> every price was checked in US dollars on each provider's own {c.get('plan_name', c['name'])} page on {CHECKED}. Prices change often, so confirm at checkout. I earn a commission from Saily and Maya Mobile; I have no affiliate relationship with Airalo or Holafly, and I say where they're cheaper.{COUPON_NOTE}</p>
     </div>
     <article class="article">
       <p class="lede">{c['lede']}</p>

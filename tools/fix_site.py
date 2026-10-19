@@ -116,6 +116,11 @@ def tag_links(t, slug):
         return f'href="{m.group(1)}/pubref:{slug}"'
 
     t2 = re.sub(r'href="(https://wise\.prf\.hn/click/camref:[A-Za-z0-9]+)"', wise, t2)
+
+    def maya(m):  # Impact link: subId1 = page, subId2 = position
+        return f'href="{m.group(1)}?subId1={slug}&subId2={position_of(t2, m.start())}"'
+
+    t2 = re.sub(r'href="(https://mayamobile\.pxf\.io/[A-Za-z0-9]+)"', maya, t2)
     return t2
 
 
