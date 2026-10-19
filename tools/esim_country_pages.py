@@ -325,7 +325,52 @@ def sticky_label(c):
     return f"{c['name']} {plan} · {c['qa_price']} →"
 
 
+# ---- Maya Mobile (affiliate since 19 Oct 2026). One global unlimited plan, same price in every country,
+# checked 17-19 Oct 2026 on maya.net: 3 days $9.99, 7 days $19.99, 14 days $27.99, 30 days $49.99.
+# Maya's FAQ says it never caps or throttles speed and allows hotspot; its acceptable use policy allows
+# deprioritising unusual usage during congestion. No auto-renew unless the buyer turns on Auto Top-Up.
+MAYA_14 = 27.99
+MAYA_CHECKED_LONG = "19 October 2026"
+# Pages whose Quick answer recommended a Saily unlimited week: Maya's global week is cheaper on every one.
+MAYA_QA_SLUGS = {f"best-esim-for-{s}" for s in ("usa", "canada", "italy", "spain", "europe", "greece", "bali",
+                                                 "germany", "malaysia")}
+MAYA_TABLE_NOTE = (
+    '<p><strong>Not in the table:</strong> <a href="{maya}" target="_blank" rel="sponsored noopener">Maya Mobile</a> '
+    "sells one global unlimited plan at the same price in every country — $9.99 for 3 days, $19.99 for 7, "
+    "$27.99 for 14 and $49.99 for 30 (checked {checked}). For a week or two that's cheaper than any unlimited plan "
+    "above. Maya says it doesn't cap or throttle speeds and allows hotspot use; its acceptable use policy lets it "
+    "deprioritise unusual usage when networks are congested.</p>")
+
+
+def with_maya_qa(c):
+    """Switch a Saily-unlimited Quick answer to Maya's cheaper global week, keeping Saily as an option."""
+    if c["slug"] not in MAYA_QA_SLUGS:
+        return c
+    week = next(r for r in c["unl"] if r[0] == 7)
+    low = min(p for p in week[1:] if p is not None)
+    assert low > MAYA_WEEK and week[1] is not None, c["slug"]
+    fup = c.get("saily_fup", "5 GB")
+    chips = [(f"Saily, {fup}/day stated:", "7 days unlimited", week[1], "Saily"),
+             ("Two weeks:", "Maya 14 days unlimited", MAYA_14, "Maya")]
+    chips += [ch for ch in c["qa_chips"] if ch[3] != "Saily"][:1]
+    faq = [(q, f"For the lowest unlimited price, Maya Mobile's global plan: $19.99 for 7 days (checked {MAYA_CHECKED_LONG}). "
+               f"Among Saily, Airalo and Holafly: {a}") if q.startswith("What is the best eSIM") else (q, a)
+           for q, a in c["faq"]]
+    return dict(
+        c, qa_provider="Maya",
+        qa_reason=(f"One global unlimited plan: $19.99 for a week, against ${low:.2f} for the cheapest of Saily, Airalo and "
+                   "Holafly here. Maya says it doesn't cap speeds, and hotspot is allowed."),
+        qa_plan="Unlimited · 7 days", qa_price="$19.99", qa_cta=f"Get Maya unlimited for {c['name']} →",
+        qa_trust=["Hotspot allowed", "Same price in 165+ countries", "No auto-renew unless you opt in"],
+        qa_chips=chips, faq=faq,
+        takeaways=[f"<strong>Cheapest unlimited overall: Maya's global plan</strong> — $19.99 for 7 days and $27.99 for 14, "
+                   f"the same in every country (checked {MAYA_CHECKED_LONG}). The points below compare Saily, Airalo and Holafly."]
+        + list(c["takeaways"]),
+    )
+
+
 def page(c):
+    c = with_maya_qa(c)
     faq_html = "".join(f"\n      <h3>{q}</h3>\n      <p>{a}</p>" for q, a in c["faq"])
     picks = list(c["picks"])
     if c["slug"] in EUROPE_TRIP_SLUGS and not any("best-esim-for-europe.html" in p for p in picks):
@@ -341,7 +386,7 @@ def page(c):
     # Maya's global unlimited plan (checked 17-19 Oct 2026) costs the same everywhere; show it where it beats the
     # cheapest 7-day unlimited plan among Saily, Airalo and Holafly on this page.
     week = next((r for r in c["unl"] if r[0] == 7), None)
-    if week and min(p for p in week[1:] if p is not None) > MAYA_WEEK:
+    if c.get("qa_provider") != "Maya" and week and min(p for p in week[1:] if p is not None) > MAYA_WEEK:
         chip_list.append(("Cheaper global unlimited:", "Maya 7 days, any country", MAYA_WEEK, "Maya"))
     chips = "\n".join(chip_html(*ch[:4], c, *ch[4:]) for ch in chip_list)
     # Quick answer normally recommends Saily; where a non-partner is clearly cheaper, it recommends that one instead.
@@ -350,6 +395,9 @@ def page(c):
         qa_code = money(code(float(c["qa_price"].lstrip("$"))))
         qa_note = (f'\n        <p class="qa-coupon">{qa_code} with code <b>TRAVELCONNECTLY</b> (10% off) · applied automatically</p>')
         qa_other, qa_href, qa_rel = "", SAILY, "sponsored noopener"
+    elif qa_prov == "Maya":
+        qa_other, qa_href, qa_rel = " other", MAYA, "sponsored noopener"
+        qa_note = '\n        <p class="qa-note">One global plan, the same price in every country it covers.</p>'
     else:
         qa_other = " other"
         qa_href = c["airalo_url"] if qa_prov == "Airalo" else c["holafly_url"]
@@ -469,6 +517,7 @@ def page(c):
 {unlimited_table(c['unl'])}
       <p class="price-note">Prices in USD from each provider's {c.get('plan_name', c['name'])} page, checked {checked_long}. Highlighted: cheapest for that length at list price. In amber: Saily with code TRAVELCONNECTLY. — = not sold at that length.</p>
       <p>{c['unl_note']}</p>
+      {MAYA_TABLE_NOTE.format(maya=MAYA, checked=MAYA_CHECKED_LONG)}
       <p>"Unlimited" rarely means unlimited full speed. <strong>Saily</strong> states {c.get('saily_fup', '5 GB')} per day at full speed, then up to 1 Mbps, with no hotspot restrictions. <strong>Holafly</strong> states a fair-usage policy that can slow speeds for up to a day, and lets you share 1 GB per day as a hotspot. <strong>Airalo's</strong> page didn't list its unlimited limits, so check the plan details before buying.</p>
 
       <h2 id="which-one-to-pick">Which one to pick</h2>
@@ -556,7 +605,9 @@ def page(c):
         c["faq"], main,
         f'<a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">Get Saily</a>',
         # data-custom keeps fix_site.py from replacing this plan-specific sticky button.
-        f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{sticky_label(c)}</a>\n  <span class="sub">{COUPON_STICKY}</span>\n</div>',
+        (f'<div class="sticky-cta" data-custom="plan">\n  <a href="{MAYA}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{c["name"]} unlimited week · $19.99 →</a>\n  <span class="sub">Maya · one plan, 165+ countries</span>\n</div>'
+         if qa_prov == "Maya" else
+         f'<div class="sticky-cta" data-custom="plan">\n  <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">{sticky_label(c)}</a>\n  <span class="sub">{COUPON_STICKY}</span>\n</div>'),
         CSS, PLANPICK_JS,
     )
 
