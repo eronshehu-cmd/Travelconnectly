@@ -366,7 +366,11 @@ MAYA_TABLE_NOTE = (
 
 
 def with_maya_qa(c):
-    """Switch a Saily-unlimited Quick answer to Maya's cheaper global week, keeping Saily as an option."""
+    """Pages whose Quick answer is a Saily unlimited week: say up front that Maya's global week is cheaper.
+
+    26 Oct 2026: Maya was the Quick answer on these pages for a week with no sales; its link leads to sign-up and an
+    app download, while Saily's deep link opens the country's plans with the coupon applied. So Saily is the
+    Quick answer again, and Maya is shown honestly as the cheaper (app-only) option."""
     if c["slug"] not in MAYA_QA_SLUGS:
         return c
     week = next(r for r in c["unl"] if r[0] == 7)
@@ -380,12 +384,7 @@ def with_maya_qa(c):
                f"Among Saily, Airalo and Holafly: {a}") if q.startswith("What is the best eSIM") else (q, a)
            for q, a in c["faq"]]
     return dict(
-        c, qa_provider="Maya",
-        qa_reason=(f"One global unlimited plan: $19.99 for a week, against ${low:.2f} for the cheapest of Saily, Airalo and "
-                   "Holafly here. Maya says it doesn't cap speeds, and hotspot is allowed."),
-        qa_plan="Unlimited · 7 days", qa_price="$19.99", qa_cta=f"Get Maya unlimited for {c['name']} →",
-        qa_trust=["Hotspot allowed", "Same price in 165+ countries", "No auto-renew unless you opt in"],
-        qa_chips=chips, faq=faq,
+        c, faq=faq,
         takeaways=[f"<strong>Cheapest unlimited overall: Maya's global plan</strong> — $19.99 for 7 days and $27.99 for 14, "
                    f"the same in every country (checked {MAYA_CHECKED_LONG}). The points below compare Saily, Airalo and Holafly."]
         + list(c["takeaways"]),
@@ -411,7 +410,7 @@ def page(c):
     # cheapest 7-day unlimited plan among Saily, Airalo and Holafly on this page.
     week = next((r for r in c["unl"] if r[0] == 7), None)
     if c.get("qa_provider") != "Maya" and week and min(p for p in week[1:] if p is not None) > MAYA_WEEK:
-        chip_list.append(("Cheaper global unlimited:", "Maya 7 days, any country", MAYA_WEEK, "Maya"))
+        chip_list.append(("Cheaper global unlimited:", "Maya 7 days, any country (bought in its app)", MAYA_WEEK, "Maya"))
     chips = "\n".join(chip_html(*ch[:4], c, *ch[4:]) for ch in chip_list)
     # Quick answer normally recommends Saily; where a non-partner is clearly cheaper, it recommends that one instead.
     qa_prov = c.get("qa_provider", "Saily")
@@ -795,7 +794,7 @@ USA = dict(
     og_image="og-esim-usa.jpg",
     photo="photo-wifi.jpg", photo_alt="Traveler using a phone on airport WiFi at a departure gate with planes outside",
     qa_label="Trips up to ~2 weeks",
-    qa_reason="Cheapest unlimited from 5 to 30 days — and in the US, a week of unlimited costs about the same as 10 GB.",
+    qa_reason="Cheaper than Airalo and Holafly for unlimited from 5 to 30 days — and in the US, a week of unlimited costs about the same as 10 GB.",
     qa_plan="Unlimited · 7 days", qa_price="$24.99", qa_cta="Get Saily USA unlimited →",
     qa_trust=["Hotspot allowed", "Activates when you land", "Optional US number"],
     qa_chips=[("Layover or one busy day:", "Saily 1 day unlimited", 3.49, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 22.50, "Airalo"),
@@ -947,7 +946,7 @@ CANADA = dict(
     og_image="og-esim-canada.jpg",
     photo="photo-business.jpg", photo_alt="Business traveler working on a laptop in an airport terminal",
     qa_label="Trips of 5 days to a month",
-    qa_reason="Cheapest unlimited from 5 to 30 days. Canadian data is pricey, so 5 days of unlimited costs about the same as 5 GB.",
+    qa_reason="Cheaper than Airalo and Holafly for unlimited from 5 to 30 days. Canadian data is pricey, so 5 days of unlimited costs about the same as 5 GB.",
     qa_plan="Unlimited · 7 days", qa_price="$28.99", qa_cta="Get Saily Canada unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Shorter trip:", "Saily 5 days unlimited", 19.99, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 23.00, "Airalo")],
@@ -1021,7 +1020,7 @@ ITALY = dict(
     og_image="og-esim-italy.jpg",
     photo="photo-nomads.jpg", photo_alt="Laptop open on a table at an outdoor cafe, a typical digital nomad remote work setup",
     qa_label="Trips of 5 days to a month",
-    qa_reason="Cheapest unlimited from 5 to 30 days — a cent below Airalo — with 5 GB a day at full speed.",
+    qa_reason="Cheaper than Airalo and Holafly for unlimited from 5 to 30 days — a cent below Airalo — with 5 GB a day at full speed.",
     qa_plan="Unlimited · 7 days", qa_price="$22.99", qa_cta="Get Saily Italy unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Two weeks:", "Saily 15 days unlimited", 43.99, "Saily"), ("Light use:", "Saily 3 GB · 30 days", 8.99, "Saily"),
@@ -1092,7 +1091,7 @@ SPAIN = dict(
     og_image="og-esim-spain.jpg",
     photo="photo-budget.jpg", photo_alt="Backpackers adjusting travel packs at a budget hostel entrance",
     qa_label="Trips of 5–10 days",
-    qa_reason="Cheapest unlimited for 5, 7 and 10 days, with 5 GB a day at full speed and no hotspot limits.",
+    qa_reason="Cheaper than Airalo and Holafly for 5, 7 and 10 days of unlimited, with 5 GB a day at full speed and no hotspot limits.",
     qa_plan="Unlimited · 7 days", qa_price="$22.99", qa_cta="Get Saily Spain unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Ten days:", "Saily 10 days unlimited", 31.99, "Saily"), ("Unlimited for 2 weeks:", "Airalo 15 days", 43.00, "Airalo"),
@@ -1193,7 +1192,7 @@ EUROPE = dict(
     og_image="og-esim-europe.jpg",
     photo="photo-longterm.jpg", photo_alt="Two backpackers with large travel backpacks walking down a hostel corridor",
     qa_label="One-week trip, several countries",
-    qa_reason="Cheapest Europe-wide unlimited week (by a cent), 35 countries including the UK, Switzerland and Turkey, 5 GB a day at full speed.",
+    qa_reason="Cheaper than Airalo and Holafly for a Europe-wide unlimited week (by a cent), 35 countries including the UK, Switzerland and Turkey, 5 GB a day at full speed.",
     qa_plan="Unlimited · 7 days", qa_price="$26.99", qa_cta="Get Saily Europe unlimited →",
     qa_trust=["35 countries", "Hotspot allowed", "Activates in your first country"],
     qa_chips=[("Only EU + UK?", "Airalo EU + UK 7 days", 23.50, "Airalo", "https://www.airalo.com/eu-plus-uk-esim"),
@@ -1422,7 +1421,7 @@ GREECE = dict(
     og_image="og-esim-greece.jpg",
     photo="photo-solo.jpg", photo_alt="Solo female traveler with a backpack checking her phone in a train station",
     qa_label="A week of island-hopping",
-    qa_reason="Cheapest unlimited for 5 and 7 days (by a cent), 5 GB a day at full speed, and no hotspot limits.",
+    qa_reason="Cheaper than Airalo and Holafly for 5 and 7 days of unlimited (by a cent), 5 GB a day at full speed, and no hotspot limits.",
     qa_plan="Unlimited · 7 days", qa_price="$26.99", qa_cta="Get Saily Greece unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Cheapest 30-day 10 GB:", "Airalo", 20.00, "Airalo"), ("Unlimited for 2 weeks:", "Airalo 15 days", 48.00, "Airalo")],
@@ -1706,7 +1705,7 @@ BALI = dict(
     og_image="og-esim-bali.jpg",
     photo="photo-nomads.jpg", photo_alt="Laptop open on a table at an outdoor cafe, a typical digital nomad remote work setup",
     qa_label="A week in Bali",
-    qa_reason="Cheapest unlimited for 5 and 7 days (by a cent), on Telkomsel — which Saily says covers Bali and most Indonesian islands.",
+    qa_reason="Cheaper than Airalo and Holafly for 5 and 7 days of unlimited (by a cent), on Telkomsel — which Saily says covers Bali and most Indonesian islands.",
     qa_plan="Unlimited · 7 days", qa_price="$26.99", qa_cta="Get Saily Indonesia unlimited →",
     qa_trust=["Telkomsel network", "Hotspot allowed", "Activates when you land"],
     qa_chips=[("Cheapest 30-day 10 GB:", "Airalo", 21.00, "Airalo"), ("Long stay:", "Airalo 50 GB · 30 days", 49.00, "Airalo")],
@@ -2051,7 +2050,7 @@ GERMANY = dict(
     og_image="og-esim-germany.jpg",
     photo="photo-wifi.jpg", photo_alt="Traveler using a phone on airport WiFi at a departure gate with planes outside",
     qa_label="A week or two",
-    qa_reason="The cheapest unlimited from 5 to 15 days (by a cent), with 5 GB a day at full speed and no hotspot limits.",
+    qa_reason="Cheaper than Airalo and Holafly for 5 to 15 days of unlimited (by a cent), with 5 GB a day at full speed and no hotspot limits.",
     qa_plan="Unlimited · 7 days", qa_price="$23.99", qa_cta="Get Saily Germany unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Two weeks:", "Saily 15 days unlimited", 41.99, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 16.00, "Airalo"),
@@ -2260,7 +2259,7 @@ MALAYSIA = dict(
     og_image="og-esim-malaysia.jpg",
     photo="photo-connected.jpg", photo_alt="Traveler with a laptop, suitcase and passport staying connected at an airport",
     qa_label="A week in Malaysia",
-    qa_reason="Cheapest unlimited for 5 and 7 days (by a cent), with 5 GB a day at full speed and no hotspot limits.",
+    qa_reason="Cheaper than Airalo and Holafly for 5 and 7 days of unlimited (by a cent), with 5 GB a day at full speed and no hotspot limits.",
     qa_plan="Unlimited · 7 days", qa_price="$26.99", qa_cta="Get Saily Malaysia unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Cheapest 30-day 10 GB:", "Airalo", 20.00, "Airalo"), ("Heavy use:", "Airalo 50 GB · 30 days", 49.00, "Airalo")],
