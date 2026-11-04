@@ -579,7 +579,7 @@ def page(c):
         <li><strong>Turn off data roaming on your home SIM</strong> so it can still receive calls and texts without running up charges.</li>
       </ol>
 
-      <p>More country guides: {more}. Comparing providers? See <a href="saily-vs-airalo.html">Saily vs Airalo</a> and <a href="saily-vs-holafly.html">Saily vs Holafly</a> across {len(ALL_PAGES)} destinations, or the <a href="saily-alternatives.html">best Saily alternatives</a>.</p>
+      <p>More country guides: {more}. Comparing providers? See <a href="saily-vs-airalo.html">Saily vs Airalo</a> and <a href="saily-vs-holafly.html">Saily vs Holafly</a> across {len(ALL_PAGES)} destinations, or the <a href="saily-alternatives.html">best Saily alternatives</a>. Saily is 10% off with my <a href="saily-promo-code.html">Saily promo code</a>.</p>
 
       <h2 id="frequently-asked-questions">Frequently asked questions</h2>{faq_html}
     </article>
