@@ -946,7 +946,7 @@ CANADA = dict(
     og_image="og-esim-canada.jpg",
     photo="photo-business.jpg", photo_alt="Business traveler working on a laptop in an airport terminal",
     qa_label="Trips of 5 days to a month",
-    qa_reason="Within 12 cents of Airalo's unlimited week at list price, and the cheapest with my 10% code. Canadian data is pricey, so 5 days of unlimited costs about the same as 5 GB.",
+    qa_reason="The cheapest unlimited week in Canada with my 10% code — $26.09 — with 3 GB a day at full speed. Canadian data is pricey, so 5 days of unlimited costs about the same as 5 GB.",
     qa_plan="Unlimited · 7 days", qa_price="$28.99", qa_cta="Get Saily Canada unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Shorter trip:", "Saily 5 days unlimited", 19.99, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 23.00, "Airalo")],
