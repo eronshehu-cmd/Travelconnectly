@@ -80,6 +80,8 @@ def fix_home(t):
         t = t[:m.start()] + block + t[m.end():]
     t = re.sub(r'<p class="price-note">Prices are each provider\'s lowest advertised long-term rate, checked [A-Za-z]+ \d{4}, shown against their standard monthly rate\. Renewal prices are usually higher\.',
                f'<p class="price-note">Prices are each provider\'s lowest long-term rate and first-term total, checked {CHECKED}. NordVPN showed me euro prices from my location; Surfshark and Proton showed US dollars. Renewal prices are usually higher.', t)
+    t = re.sub(r"(lowest long-term rate and first-term total, checked |Lowest rates on multi-year plans, checked )\d{1,2} [A-Za-z]+ 2026",
+               lambda m: m.group(1) + CHECKED, t)
     t = re.sub(r'<tr><td>Lowest price</td><td class="nord">.*?</td><td class="surf">.*?</td></tr>',
                f'<tr><td>Lowest price</td><td class="nord">{VPN["nord"]["rate"]}/mo</td><td class="surf">{VPN["surf"]["rate"]}/mo</td></tr>', t)
     t = re.sub(r'<p class="price-note">Lowest advertised rates on multi-year plans, checked [A-Za-z]+ \d{4}\. Prices change often and renew higher — check the provider for current pricing\.</p>',

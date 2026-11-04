@@ -1,4 +1,4 @@
-"""Build saily-alternatives.html from the verified country-guide data (prices checked 29 Sep - 13 Oct 2026)."""
+"""Build saily-alternatives.html from the verified country-guide data (prices re-checked 4 Nov 2026)."""
 import sys
 
 SITE = sys.argv[1]
@@ -29,7 +29,7 @@ AIRALO_10_CODE = [r for r in ROWS if r["a10"] < e.code(r["s10"])]
 SAILY_7 = [r for r in ROWS if r["s7"] < min(r["a7"], r["h7"])]
 SAILY_7_CODE = [r for r in ROWS if e.code(r["s7"]) < min(r["a7"], r["h7"])]
 HOLAFLY_BEATS_SAILY_7 = [r for r in ROWS if r["h7"] < r["s7"]]
-assert (len(AIRALO_10), len(AIRALO_10_CODE), len(SAILY_7), len(SAILY_7_CODE), len(HOLAFLY_BEATS_SAILY_7)) == (13, 6, 16, 23, 3), \
+assert (len(AIRALO_10), len(AIRALO_10_CODE), len(SAILY_7), len(SAILY_7_CODE), len(HOLAFLY_BEATS_SAILY_7)) == (13, 6, 15, 23, 3), \
     (len(AIRALO_10), len(AIRALO_10_CODE), len(SAILY_7), len(SAILY_7_CODE), len(HOLAFLY_BEATS_SAILY_7))
 
 
@@ -118,7 +118,7 @@ def table():
 
 FAQ = [
     ("What is the best alternative to Saily?",
-     f"For the cheapest unlimited data, Maya Mobile ($19.99 a week in any country, checked {NEWER_CHECKED}). For fixed amounts of data, Airalo: at list price it was cheaper than Saily for 10 GB valid 30 days in {len(AIRALO_10)} of {N} destinations I checked between 29 September and 13 October 2026, and it sells 7- and 15-day plans and 50 GB plans. For WhatsApp in China without a VPN, or to know the network you'll use, Holafly."),
+     f"For the cheapest unlimited data, Maya Mobile ($19.99 a week in any country, checked {NEWER_CHECKED}). For fixed amounts of data, Airalo: at list price it was cheaper than Saily for 10 GB valid 30 days in {len(AIRALO_10)} of {N} destinations I checked on 4 November 2026, and it sells 7- and 15-day plans and 50 GB plans. For WhatsApp in China without a VPN, or to know the network you'll use, Holafly."),
     ("Is Airalo better than Saily?",
      f"It depends on the plan. Airalo was cheaper for 10 GB in {len(AIRALO_10)} of {N} destinations at list price, while Saily had the cheaper unlimited week in {len(SAILY_7)} of {N}. With my 10% code TRAVELCONNECTLY, Saily was cheaper for an unlimited week in all {N} and Airalo stayed cheaper for 10 GB in {len(AIRALO_10_CODE)}: {names(AIRALO_10_CODE)}."),
     ("Is Holafly better than Saily?",
@@ -152,7 +152,7 @@ def main_html():
     <div class="qa-grid">
       <div class="qa-head">
         <h1>Saily Alternatives (2026)</h1>
-        <div class="qa-sub">Airalo, Holafly, Maya, Kolet, Jetpac and Roamless · prices checked 29 Sep – 17 Oct 2026</div>
+        <div class="qa-sub">Airalo, Holafly, Maya, Kolet, Jetpac and Roamless · prices checked 17 Oct – 4 Nov 2026</div>
       </div>
 
       <section class="qa-card" aria-labelledby="qa-title">
@@ -185,7 +185,7 @@ def main_html():
     <div class="author-strip">
       <div class="who">
         <span class="av" aria-hidden="true">E</span>
-        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 29 Sep – 17 Oct 2026</span></div>
+        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 17 Oct – 4 Nov 2026</span></div>
       </div>
       <a href="methodology.html">How I compare →</a>
     </div>
@@ -193,7 +193,7 @@ def main_html():
 
   <div class="wrap">
     <div class="trust-note">
-      <p><strong>How this page works:</strong> every price comes from my destination guides, where each was checked in US dollars on Saily's, Airalo's and Holafly's own pages between 29 September and 13 October 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily and Maya Mobile; I have no affiliate relationship with Airalo, Holafly, Kolet, Jetpac or Roamless, and this page is about when they're the better choice.{e.COUPON_NOTE}</p>
+      <p><strong>How this page works:</strong> every price comes from my destination guides, where each was checked in US dollars on Saily's, Airalo's and Holafly's own pages on 4 November 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily and Maya Mobile; I have no affiliate relationship with Airalo, Holafly, Kolet, Jetpac or Roamless, and this page is about when they're the better choice.{e.COUPON_NOTE}</p>
     </div>
     <article class="article">
       <p class="lede">Saily is a strong travel eSIM, but it isn't the cheapest or best fit for every trip. Here's when Airalo, Holafly or one of the newer global eSIMs — Maya Mobile, Kolet, Jetpac and Roamless — is the better choice, based on prices I checked on each provider's own site — and when it's worth sticking with Saily.</p>

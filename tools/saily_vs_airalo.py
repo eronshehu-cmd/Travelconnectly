@@ -1,4 +1,4 @@
-"""Build saily-vs-airalo.html from the verified country-guide data (prices checked 29 Sep - 13 Oct 2026)."""
+"""Build saily-vs-airalo.html from the verified country-guide data (prices re-checked 4 Nov 2026)."""
 import sys
 
 SITE = sys.argv[1]
@@ -33,7 +33,7 @@ UNL_AIRALO = sum(r["a7"] < r["s7"] for r in ROWS)
 TEN_SAILY = sum(r["s10"] < r["a10"] for r in ROWS)
 TEN_AIRALO = sum(r["a10"] < r["s10"] for r in ROWS)
 N = len(ROWS)
-assert (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO) == (16, 7, 10, 13), (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO)
+assert (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO) == (15, 8, 10, 13), (UNL_SAILY, UNL_AIRALO, TEN_SAILY, TEN_AIRALO)
 # With Saily's 10% TRAVELCONNECTLY code applied.
 UNL_CODE = sum(e.code(r["s7"]) < r["a7"] for r in ROWS)
 TEN_CODE = sum(e.code(r["s10"]) < r["a10"] for r in ROWS)
@@ -89,9 +89,9 @@ FEATURES = [
 
 FAQ = [
     ("Is Saily cheaper than Airalo?",
-     f"It depends on the plan. Across {N} destinations checked between 29 September and 13 October 2026, Saily was cheaper for a 7-day unlimited plan in {UNL_SAILY} of {N}, while Airalo was cheaper for 10 GB valid 30 days in {TEN_AIRALO} of {N}. Most differences were under $1. With my 10% code TRAVELCONNECTLY, Saily was cheaper for an unlimited week in all {N} and for 10 GB in {TEN_CODE} of {N}."),
+     f"It depends on the plan. Across {N} destinations checked on 4 November 2026, Saily was cheaper for a 7-day unlimited plan in {UNL_SAILY} of {N}, while Airalo was cheaper for 10 GB valid 30 days in {TEN_AIRALO} of {N}. Most differences were under $1. With my 10% code TRAVELCONNECTLY, Saily was cheaper for an unlimited week in all {N} and for 10 GB in {TEN_CODE} of {N}."),
     ("Which is better for unlimited data, Saily or Airalo?",
-     f"Saily had the cheaper 7-day unlimited plan in {UNL_SAILY} of {N} destinations, usually by a cent, and by about $3 in Canada. It also states its full-speed allowance (5 GB a day in most countries, 3 GB in Canada and Mexico) and sells 20- and 25-day plans. Airalo was cheaper for a week in Japan, Turkey, France, Mexico, China, Dubai and Australia at list price."),
+     f"Saily had the cheaper 7-day unlimited plan in {UNL_SAILY} of {N} destinations, usually by a cent. It also states its full-speed allowance (5 GB a day in most countries, 3 GB in Canada and Mexico) and sells 20- and 25-day plans. Airalo was cheaper for a week in Japan, Turkey, Canada, France, Mexico, China, Dubai and Australia at list price."),
     ("Which is better for fixed data?",
      f"Airalo was cheaper for 10 GB valid 30 days in {TEN_AIRALO} of {N} destinations, by up to about $8 in Canada, and sells shorter 7- and 15-day plans and 50 GB plans in most countries. Saily was a cent cheaper in Japan, Thailand, the UK, France, South Korea, Dubai, Vietnam, Australia, the Philippines and Singapore."),
     ("Which has the better Europe plan?",
@@ -115,7 +115,7 @@ def main_html():
     <div class="qa-grid">
       <div class="qa-head">
         <h1>Saily vs Airalo (2026)</h1>
-        <div class="qa-sub">{N} destinations · prices checked 29 Sep – 13 Oct 2026</div>
+        <div class="qa-sub">{N} destinations · prices checked 4 Nov 2026</div>
       </div>
 
       <section class="qa-card" aria-labelledby="qa-title">
@@ -134,7 +134,7 @@ def main_html():
       <section class="qa-take takeaways" aria-labelledby="kt-title">
         <h2 id="kt-title">Key takeaways</h2>
         <ol>
-          <li><span><strong>Unlimited: Saily was cheaper in {UNL_SAILY} of {N} destinations</strong> — usually by a cent, but by $3.01 in Canada.</span></li>
+          <li><span><strong>Unlimited: Saily was cheaper in {UNL_SAILY} of {N} destinations</strong> — usually by a cent, but by $2.01 in South Korea.</span></li>
           <li><span><strong>10 GB for 30 days: Airalo was cheaper in {TEN_AIRALO} of {N}</strong> at list price — by $7.99 in Canada, $5.99 in Portugal and $5.49 in Mexico.</span></li>
           <li><span><strong>With my 10% code TRAVELCONNECTLY,</strong> Saily was cheaper for an unlimited week in all {N} destinations and for 10 GB in {TEN_CODE} of {N}.</span></li>
           <li><span><strong>Airalo has more plan shapes:</strong> 7- and 15-day fixed plans and 50 GB in most countries. Saily's fixed plans mostly last 30 days.</span></li>
@@ -146,7 +146,7 @@ def main_html():
     <div class="author-strip">
       <div class="who">
         <span class="av" aria-hidden="true">E</span>
-        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 29 Sep – 13 Oct 2026</span></div>
+        <div class="nm"><b>Eron</b> · <span style="display:inline;">Solo traveler &amp; founder</span><span>Prices checked on provider sites · 4 Nov 2026</span></div>
       </div>
       <a href="methodology.html">How I compare →</a>
     </div>
@@ -154,7 +154,7 @@ def main_html():
 
   <div class="wrap">
     <div class="trust-note">
-      <p><strong>How this page works:</strong> every price comes from my country guides, where each was checked in US dollars on Saily's and Airalo's own pages between 29 September and 13 October 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Airalo, and this page shows where Airalo is cheaper.{e.COUPON_NOTE}</p>
+      <p><strong>How this page works:</strong> every price comes from my country guides, where each was checked in US dollars on Saily's and Airalo's own pages on 4 November 2026 (the date is next to each destination). Prices change often, so confirm at checkout. I earn a commission from Saily; I have no affiliate relationship with Airalo, and this page shows where Airalo is cheaper.{e.COUPON_NOTE}</p>
     </div>
     <article class="article">
       <p class="lede">Saily and Airalo are two of the biggest travel-eSIM brands, and they're close on price more often than not. The real difference is which kind of plan you want: in my checks, Saily was usually cheaper for unlimited data and Airalo for fixed data. Here's the destination-by-destination picture.</p>
@@ -174,7 +174,7 @@ def main_html():
       <h2 id="unlimited-week">Unlimited data for a week</h2>
       <p>Price of a 7-day unlimited plan in each destination. Highlighted: the cheaper one at list price. In amber: Saily with my 10% code TRAVELCONNECTLY.</p>
 {table("unl")}
-      <p>Saily was cheaper in {UNL_SAILY} of {N} destinations, in thirteen of them by a single cent. The biggest gaps: Canada (Saily $3.01 cheaper), China (Airalo $2.99 cheaper), Turkey (Airalo $2.49 cheaper), South Korea (Saily $2.01 cheaper), and Mexico and Dubai (Airalo $1.49 cheaper). With my code, Saily was cheaper in all {N}.</p>
+      <p>Saily was cheaper in {UNL_SAILY} of {N} destinations, in thirteen of them by a single cent. The biggest gaps: China (Airalo $2.99 cheaper), Turkey (Airalo $2.49 cheaper), South Korea (Saily $2.01 cheaper), and Mexico and Dubai (Airalo $1.49 cheaper). With my code, Saily was cheaper in all {N}.</p>
 
       <h2 id="ten-gb">10 GB valid for 30 days</h2>
       <p>Price of a 10 GB plan valid for 30 days. Highlighted: the cheaper one at list price. In amber: Saily with my 10% code TRAVELCONNECTLY.</p>
@@ -183,7 +183,7 @@ def main_html():
 
       <h2 id="big-gaps">Where the gap is big</h2>
       <ul>
-        <li><strong>Canada:</strong> Saily's unlimited week was $3.01 cheaper ($28.99), but Airalo's 10 GB for 30 days was $7.99 cheaper ($23.00). See the <a href="best-esim-for-canada.html">Canada guide</a>.</li>
+        <li><strong>Canada:</strong> Airalo's unlimited week was 12 cents cheaper ($28.87 vs $28.99; Saily wins with my code), and its 10 GB for 30 days was $7.99 cheaper ($23.00). See the <a href="best-esim-for-canada.html">Canada guide</a>.</li>
         <li><strong>Mexico:</strong> at list price Airalo was cheaper on both — $5.49 less for 10 GB and $1.49 less for a week of unlimited. With my code, Saily's unlimited week ($22.49) beats Airalo's $23.50, but Airalo's 10 GB is still cheaper. See the <a href="best-esim-for-mexico.html">Mexico guide</a>.</li>
         <li><strong>Europe-wide plans:</strong> Airalo's 10 GB was $4.99 cheaper; Saily's unlimited week a cent cheaper. See the <a href="best-esim-for-europe.html">Europe guide</a>.</li>
         <li><strong>Portugal:</strong> Airalo's 10 GB was $5.99 cheaper ($11.00), and still cheaper with my code. See the <a href="best-esim-for-portugal.html">Portugal guide</a>.</li> Airalo's unlimited week was $2.49 cheaper at list price; with my code, Saily's ($24.29) is 21 cents cheaper. See the <a href="best-esim-for-turkey.html">Turkey guide</a>.</li>
@@ -198,7 +198,7 @@ def main_html():
           </tbody>
         </table>
       </div>
-      <p class="price-note">From each provider's own plan pages for the destinations above, checked 29 September – 13 October 2026.</p>
+      <p class="price-note">From each provider's own plan pages for the destinations above, checked 4 November 2026.</p>
       <p>Saily plans activate automatically when you arrive and can be activated any time within 180 days of purchase. Saily also adds security features from the NordVPN team — a virtual location, an ad blocker and protection against malicious sites — and gives 3% of each purchase back as Saily credits.</p>
 
       <h2 id="which-to-choose">Which one to choose</h2>

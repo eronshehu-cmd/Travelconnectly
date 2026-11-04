@@ -19,9 +19,9 @@ import pagekit  # noqa: E402
 from pagekit import MAYA, NORD, SAILY, build  # noqa: E402
 
 # Defaults for the first four guides; newer guides set checked / checked_long / date in their config.
-CHECKED = "29 Sep 2026"
-CHECKED_LONG = "29 September 2026"
-DATE = "2026-09-29"
+CHECKED = "4 Nov 2026"
+CHECKED_LONG = "4 November 2026"
+DATE = "2026-11-04"
 # Saily affiliate coupon (10% off, confirmed by Saily on 12 Oct 2026); links carry coupon= so it applies automatically.
 COUPON_LINE = '<p class="qa-coupon">10% off with code <b>TRAVELCONNECTLY</b> · applied automatically</p>'
 COUPON_STICKY = "10% off with code TRAVELCONNECTLY"
@@ -697,7 +697,7 @@ JAPAN = dict(
         ("Do I need an eSIM for Japan?",
          "You don't strictly need one, but mobile data makes Japan much easier: train connections, Google Maps walking directions and camera translation of menus and signs all need a connection. An eSIM is usually cheaper than roaming and quicker than buying a SIM or renting pocket WiFi at the airport."),
         ("What is the cheapest eSIM for Japan?",
-         "On 29 September 2026, the cheapest fixed-data plans were within a few cents of each other: Saily charged $10.99 for 5 GB valid 30 days and Airalo $11.00 for the same. Airalo was slightly cheaper for short-validity and unlimited plans, for example $26.50 for 7 days unlimited versus $26.99 at Saily and $27.50 at Holafly."),
+         "On 4 November 2026, the cheapest fixed-data plans were within a few cents of each other: Saily charged $10.99 for 5 GB valid 30 days and Airalo $11.00 for the same. Airalo was slightly cheaper for short-validity and unlimited plans, for example $26.50 for 7 days unlimited versus $26.99 at Saily and $27.50 at Holafly."),
         ("Which network do Japan travel eSIMs use?",
          "Saily says it partners with KDDI and SoftBank, Holafly lists KDDI and SoftBank, and Airalo lists SoftBank plus one other network. KDDI (au) and SoftBank are two of Japan's major nationwide networks."),
         ("Do Japan eSIMs include a phone number?",
@@ -767,7 +767,7 @@ THAILAND = dict(
     ],
     faq=[
         ("What is the best eSIM for Thailand?",
-         "On 29 September 2026, Saily was the cheapest or within a cent for 30-day plans up to 10 GB and for every unlimited length it sells in Thailand, with 5 GB for $7.99 and 10 GB for $10.99. Airalo was cheaper for shorter 3- and 7-day plans and for 20 GB, and is the only one of the three selling 50 GB ($27.50)."),
+         "On 4 November 2026, Saily was the cheapest or within a cent for 30-day plans up to 10 GB and for every unlimited length it sells in Thailand, with 5 GB for $7.99 and 10 GB for $10.99. Airalo was cheaper for shorter 3- and 7-day plans and for 20 GB, and is the only one of the three selling 50 GB ($27.50)."),
         ("How much is an eSIM for Thailand?",
          "Prices started at $2.99 for 1 GB (Saily, 7 days). A typical 10 GB plan cost about $11, and unlimited data cost about $21 for a week or $49 for 30 days from Saily or Airalo."),
         ("Which network is best in Thailand?",
@@ -840,7 +840,7 @@ USA = dict(
     ],
     faq=[
         ("What is the best eSIM for the USA?",
-         "On 29 September 2026, Saily had the cheapest unlimited plans from 5 to 30 days (for example $24.99 for 7 days), while Airalo was about 50 cents cheaper for 30-day 5, 10 and 20 GB plans and sells 50 GB for $42."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans from 5 to 30 days (for example $24.99 for 7 days), while Airalo was about 50 cents cheaper for 30-day 5, 10 and 20 GB plans and sells 50 GB for $42."),
         ("How much is an eSIM for the USA?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $22.50–$23 for 30 days, and unlimited data cost about $25 for a week or $68 for 30 days from Saily or Airalo."),
         ("Is unlimited data worth it in the USA?",
@@ -913,7 +913,7 @@ TURKEY = dict(
     ],
     faq=[
         ("What is the best eSIM for Turkey?",
-         "On 29 September 2026, Saily was cheapest or tied for 30-day plans up to 5 GB (5 GB for $9.99), while Airalo was cheaper for shorter plans, for 10 GB and above, and for unlimited data at every length, for example $39.00 for 15 days against $48.99 at Saily."),
+         "On 4 November 2026, Saily was cheapest or tied for 30-day plans up to 5 GB (5 GB for $9.99), while Airalo was cheaper for shorter plans, for 10 GB and above, and for unlimited data at every length, for example $39.00 for 15 days against $48.99 at Saily."),
         ("How much is an eSIM for Turkey?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $15.50–$16 for 30 days, and unlimited data cost from $24.50 for a week at Airalo."),
         ("Can I buy an eSIM once I'm in Turkey?",
@@ -928,7 +928,7 @@ TURKEY = dict(
 
 # ---- Added 9 Oct 2026: prices checked that day in USD on saily.com, airalo.com (currency=USD) and
 # esim.holafly.com (USD table, spot-checked live at 7 days). Holafly prices differ by country here.
-OCT9 = dict(checked="9 Oct 2026", checked_long="9 October 2026", date="2026-10-09")
+OCT9 = dict(checked="4 Nov 2026", checked_long="4 November 2026", date="2026-11-04")  # re-checked 4 Nov
 EU_ROAMING_FAQ = ("Do I need a travel eSIM if I live in the EU?",
                   "Often not. Under EU roaming rules, many EU mobile plans can be used across the EU at no extra cost, within your operator's fair-use limits. Check your plan first; a travel eSIM makes sense if your allowance is small or you're coming from outside the EU.")
 
@@ -946,13 +946,13 @@ CANADA = dict(
     og_image="og-esim-canada.jpg",
     photo="photo-business.jpg", photo_alt="Business traveler working on a laptop in an airport terminal",
     qa_label="Trips of 5 days to a month",
-    qa_reason="Cheaper than Airalo and Holafly for unlimited from 5 to 30 days. Canadian data is pricey, so 5 days of unlimited costs about the same as 5 GB.",
+    qa_reason="Within 12 cents of Airalo's unlimited week at list price, and the cheapest with my 10% code. Canadian data is pricey, so 5 days of unlimited costs about the same as 5 GB.",
     qa_plan="Unlimited · 7 days", qa_price="$28.99", qa_cta="Get Saily Canada unlimited →",
     qa_trust=TRUST,
     qa_chips=[("Shorter trip:", "Saily 5 days unlimited", 19.99, "Saily"), ("Cheapest 30-day 10 GB:", "Airalo", 23.00, "Airalo")],
     takeaways=[
         "<strong>Canadian data is expensive, so unlimited often wins:</strong> Saily's 5-day unlimited ($19.99) costs about the same as a 5 GB plan ($17.99).",
-        "<strong>Cheapest unlimited from 5 to 30 days: Saily</strong> — $28.99 for a week vs $32.00 at Airalo and $36.50 at Holafly.",
+        "<strong>Unlimited is close between Saily and Airalo:</strong> Saily is cheapest for 5 days ($19.99 vs $23.24) and 15 days; Airalo is 12 cents cheaper for a week ($28.87) and $5 cheaper for 30 days. With my code, Saily is cheapest at every length it sells.",
         "<strong>For 10 GB or more over a month, Airalo is cheaper:</strong> 10 GB for $23.00 vs $30.99 at Saily.",
         "<strong>Saily's Canada unlimited is 3 GB a day at full speed</strong>, then up to 1 Mbps — less than the 5 GB a day it offers in many countries.",
     ],
@@ -966,11 +966,11 @@ CANADA = dict(
         ("50 GB", [], [(84.00, 30)]),
     ],
     fixed_note="<strong>What that means:</strong> small plans are close, but from 10 GB up Airalo is much cheaper in Canada — $23.00 for 10 GB over 30 days against $30.99 at Saily, and $18.00 if your trip fits a 7-day window. Saily is cheaper for 1 GB, and its 3 GB plan lasts 30 days instead of 3 or 7.",
-    unl=[(3, None, 19.00, 19.90), (5, 19.99, 27.00, 28.90), (7, 28.99, 32.00, 36.50),
-         (10, 33.99, 35.00, 39.50), (15, 43.99, 45.00, 50.50), (30, 85.99, 86.00, 95.90)],
-    unl_note="Saily was the cheapest unlimited option from 5 to 30 days — by $7 for 5 days and $3 for a week — and also sells 20- and 25-day plans ($56.99 and $72.99). Airalo was cheapest for 3 days. Holafly costs the most here, but names two networks, Bell and Telus.",
+    unl=[(3, None, 17.61, 19.90), (5, 19.99, 23.24, 28.90), (7, 28.99, 28.87, 36.50),
+         (10, 33.99, 33.80, 39.50), (15, 43.99, 44.01, 50.50), (30, 85.99, 80.99, 95.90)],
+    unl_note="Saily was cheapest for 5 days, by $3.25, and for 15 days by 2 cents; Airalo was cheapest for 3, 7, 10 and 30 days — by 12 cents for a week and $5 for a month. With my 10% code Saily comes out cheapest at every length it sells, and it also sells 20- and 25-day plans ($56.99 and $72.99). Holafly costs the most here, but names two networks, Bell and Telus.",
     picks=[
-        f'<strong>Trips of 5 days to a month:</strong> Saily unlimited — the cheapest from 5 to 30 days, and <a href="{SAILY}" target="_blank" rel="sponsored noopener">5 days of unlimited costs about the same as 5 GB</a>.',
+        f'<strong>Trips of 5 days to a month:</strong> Saily unlimited — the cheapest for 5 days, within cents of Airalo for a week, cheapest at every length with my code, and <a href="{SAILY}" target="_blank" rel="sponsored noopener">5 days of unlimited costs about the same as 5 GB</a>.',
         "<strong>A month with moderate use:</strong> Airalo's 30-day 10 GB ($23.00) or 20 GB ($37.00).",
         "<strong>A short city break with light use:</strong> Saily's 1 GB for 7 days ($5.29), or Airalo's 3 GB for 7 days ($9.00).",
         "<strong>Canada and the US on one trip:</strong> a Canada-only plan won't work across the border. Saily and Airalo both sell North America regional plans that include Canada — compare one against two separate country plans.",
@@ -991,9 +991,9 @@ CANADA = dict(
     ],
     faq=[
         ("What is the best eSIM for Canada?",
-         "On 9 October 2026, Saily had the cheapest unlimited plans from 5 to 30 days (for example $28.99 for 7 days), while Airalo was clearly cheaper for 30-day plans of 10 GB or more, with 10 GB for $23.00 against $30.99 at Saily."),
+         "On 4 November 2026, Saily had the cheapest unlimited plan for 5 days ($19.99) and, with my 10% code, at every length; at list price Airalo was 12 cents cheaper for a week ($28.87) and $5 cheaper for 30 days. Airalo was clearly cheaper for 30-day plans of 10 GB or more, with 10 GB for $23.00 against $30.99 at Saily."),
         ("How much is an eSIM for Canada?",
-         "Prices started at $5.29 for 1 GB (Saily, 7 days). A 10 GB plan cost $23.00 for 30 days at Airalo, and unlimited data cost from $19.99 for 5 days or $28.99 for a week at Saily."),
+         "Prices started at $5.29 for 1 GB (Saily, 7 days). A 10 GB plan cost $23.00 for 30 days at Airalo, and unlimited data cost from $19.99 for 5 days (Saily) or about $29 for a week."),
         ("Is unlimited data worth it in Canada?",
          "Often, yes. Because Canadian data is expensive, Saily's 5-day unlimited plan ($19.99) cost about the same as a 5 GB plan ($17.99 at Saily, $18.00 at Airalo). Saily's Canada unlimited plan gives 3 GB a day at full speed, then up to 1 Mbps."),
         ("Which network do Canada travel eSIMs use?",
@@ -1065,7 +1065,7 @@ ITALY = dict(
     ],
     faq=[
         ("What is the best eSIM for Italy?",
-         "On 9 October 2026, Saily had the cheapest unlimited plans from 5 to 30 days, a cent below Airalo (for example $22.99 for 7 days), while Airalo was $1–3 cheaper for 30-day fixed-data plans, with 10 GB for $19.00 against $20.99 at Saily."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans from 5 to 30 days, a cent below Airalo (for example $22.99 for 7 days), while Airalo was $1–3 cheaper for 30-day fixed-data plans, with 10 GB for $19.00 against $20.99 at Saily."),
         ("How much is an eSIM for Italy?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost $19–21 for 30 days, and unlimited data cost about $23 for a week or $64 for 30 days from any of the three."),
         ("Which network do Italy travel eSIMs use?",
@@ -1136,7 +1136,7 @@ SPAIN = dict(
     ],
     faq=[
         ("What is the best eSIM for Spain?",
-         "On 9 October 2026, Saily had the cheapest unlimited plans for 5 to 10 days ($22.99 for 7 days), Airalo was cheapest for 15- and 30-day unlimited by 99 cents, and Airalo was $1–3 cheaper for 30-day fixed-data plans, with 10 GB for $14.00 against $15.99 at Saily."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans for 5 to 10 days ($22.99 for 7 days), Airalo was cheapest for 15- and 30-day unlimited by 99 cents, and Airalo was $1–3 cheaper for 30-day fixed-data plans, with 10 GB for $14.00 against $15.99 at Saily."),
         ("How much is an eSIM for Spain?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost $14–16 for 30 days, and unlimited data cost about $23 for a week or $63–64 for 30 days from Saily or Airalo."),
         ("Which network do Spain travel eSIMs use?",
@@ -1214,9 +1214,9 @@ EUROPE = dict(
         ("50 GB", [(95.99, 90)], [(70.00, 30), (100.00, 90)]),
     ],
     fixed_note="<strong>What that means:</strong> Saily is a cent cheaper for 5 GB over 30 days and its 3 GB plan lasts a full month, but Airalo is about $5 cheaper at 10 GB and sells 20 GB, which Saily's Europe plan doesn't. For long trips, Saily's 50 GB lasts 90 days for $95.99; Airalo's 50 GB is $70.00 for 30 days or $100.00 for 90, and it also sells 100 GB for 180 days ($185.00). Airalo's EU + UK plan is cheaper again if you stay inside the EU and the UK, for example 10 GB for 30 days at $24.00.",
-    unl=[(3, None, 11.50, 11.90), (5, None, 19.50, 20.50), (7, 26.99, 27.00, 27.50),
+    unl=[(3, 11.99, 11.50, 11.90), (5, 18.99, 19.50, 20.50), (7, 26.99, 27.00, 27.50),
          (10, 35.99, 35.00, 37.50), (15, 49.99, 49.00, 51.50), (30, 71.99, 71.00, 76.50)],
-    unl_note="Across the three Europe-wide plans, Saily was cheapest for 7 days by a cent and Airalo for every other length, by up to $1. Saily also sells 20- and 25-day plans ($59.99 and $65.99). Holafly costs a little more. If you're only visiting EU countries and the UK, Airalo's EU + UK unlimited plans are cheaper: $23.50 for 7 days, $39.00 for 15 and $58.00 for 30.",
+    unl_note="Across the three Europe-wide plans, Saily was cheapest for 5 days (by 51 cents) and 7 days (by a cent), and Airalo for every other length, by up to $1. Saily also sells 20- and 25-day plans ($59.99 and $65.99). Holafly costs a little more. If you're only visiting EU countries and the UK, Airalo's EU + UK unlimited plans are cheaper: $23.50 for 7 days, $39.00 for 15 and $58.00 for 30.",
     picks=[
         f'<strong>A week across several countries, including the UK, Switzerland or Turkey:</strong> <a href="{SAILY}" target="_blank" rel="sponsored noopener">Saily Europe unlimited</a> — the cheapest Europe-wide week, with no hotspot limits.',
         "<strong>Only EU countries and the UK:</strong> Airalo's EU + UK plan is the cheapest option at most lengths.",
@@ -1239,7 +1239,7 @@ EUROPE = dict(
     ],
     faq=[
         ("What is the best eSIM for Europe?",
-         "It depends on your route. On 9 October 2026, Saily had the cheapest Europe-wide 7-day unlimited plan ($26.99) and covers 35 countries including the UK, Switzerland and Turkey. Airalo's Europe plan covers the most countries (41, including the western Balkans and Ukraine) and was cheaper at most other lengths, and its EU + UK plan was cheapest if you only visit the EU and the UK."),
+         "It depends on your route. On 4 November 2026, Saily had the cheapest Europe-wide 7-day unlimited plan ($26.99) and covers 35 countries including the UK, Switzerland and Turkey. Airalo's Europe plan covers the most countries (41, including the western Balkans and Ukraine) and was cheaper at most other lengths, and its EU + UK plan was cheapest if you only visit the EU and the UK."),
         ("How much is an eSIM for Europe?",
          "Prices started at $4.99 for 1 GB (Saily Europe, 7 days). A week of unlimited data cost about $27 on a Europe-wide plan, or $23.50 on Airalo's EU + UK plan. 10 GB for 30 days cost $31.00 at Airalo and $35.99 at Saily."),
         ("Does a Europe eSIM work in the UK and Switzerland?",
@@ -1253,7 +1253,7 @@ EUROPE = dict(
         ("Does a Europe eSIM keep working when I cross a border?",
          "Yes — that's the point of a regional plan: one eSIM and one package across every covered country. Saily's Europe plan activates automatically when you arrive in the first covered country."),
         ("How much is a Europe eSIM for 2 weeks?",
-         "For 15 days of unlimited data on a Europe-wide plan, Airalo cost $49.00, Saily $49.99 ($44.99 with my code TRAVELCONNECTLY) and Holafly $51.50 (checked 9 October 2026). If you only visit EU countries and the UK, Airalo's EU + UK plan cost $39.00 for 15 days."),
+         "For 15 days of unlimited data on a Europe-wide plan, Airalo cost $49.00, Saily $49.99 ($44.99 with my code TRAVELCONNECTLY) and Holafly $51.50 (checked 4 November 2026). If you only visit EU countries and the UK, Airalo's EU + UK plan cost $39.00 for 15 days."),
         ("What is the cheapest eSIM for Europe?",
          "For small amounts of data, Airalo's EU + UK plan started at $4.00 for 1 GB (3 days) and Saily's Europe plan at $4.99 (7 days). For 10 GB over 30 days, Airalo's EU + UK plan was cheapest at $24.00; on Europe-wide plans Airalo cost $31.00 and Saily $35.99 ($32.39 with my code)."),
         EU_ROAMING_FAQ,
@@ -1264,7 +1264,7 @@ EUROPE = dict(
 
 # ---- Added 10 Oct 2026: prices checked that day in USD on saily.com, airalo.com (currency=USD) and
 # esim.holafly.com (USD table, spot-checked live at 7 days).
-OCT10 = dict(checked="10 Oct 2026", checked_long="10 October 2026", date="2026-10-10")
+OCT10 = dict(checked="4 Nov 2026", checked_long="4 November 2026", date="2026-11-04")  # re-checked 4 Nov
 
 UK = dict(
     OCT10, slug="best-esim-for-uk", name="UK", name_h1="the UK",
@@ -1324,7 +1324,7 @@ UK = dict(
     ],
     faq=[
         ("What is the best eSIM for the UK?",
-         "On 10 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $18.99) and cheapest for a 7-day unlimited plan ($26.99). Airalo was cheaper for other unlimited lengths and is the only one of the three selling 50 GB ($39.00)."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $18.99) and cheapest for a 7-day unlimited plan ($26.99). Airalo was cheaper for other unlimited lengths and is the only one of the three selling 50 GB ($39.00)."),
         ("How much is an eSIM for the UK?",
          "Prices started at $4.00 for 1 GB (Airalo, 3 days). A 10 GB plan cost about $19 for 30 days, and unlimited data cost about $27 for a week or $69–72 for 30 days from Saily or Airalo."),
         ("Does my EU phone plan work in the UK?",
@@ -1395,7 +1395,7 @@ FRANCE = dict(
     ],
     faq=[
         ("What is the best eSIM for France?",
-         "On 10 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $16.99), while Airalo was cheaper for most unlimited lengths ($23.50 for 7 days) and is the only one of the three selling 50 GB ($35.00)."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $16.99), while Airalo was cheaper for most unlimited lengths ($23.50 for 7 days) and is the only one of the three selling 50 GB ($35.00)."),
         ("How much is an eSIM for France?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $17 for 30 days, and unlimited data cost about $24 for a week or $59–60 for 30 days from Saily or Airalo."),
         ("Which network do France travel eSIMs use?",
@@ -1465,7 +1465,7 @@ GREECE = dict(
     ],
     faq=[
         ("What is the best eSIM for Greece?",
-         "On 10 October 2026, Saily had the cheapest unlimited plans for 5 and 7 days ($26.99 for a week), while Airalo was cheaper for fixed-data plans (10 GB for 30 days at $20.00 against $22.99 at Saily) and for unlimited plans of 10 days or more."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans for 5 and 7 days ($26.99 for a week), while Airalo was cheaper for fixed-data plans (10 GB for 30 days at $20.00 against $22.99 at Saily) and for unlimited plans of 10 days or more."),
         ("How much is an eSIM for Greece?",
          "Prices started at $4.00 for 1 GB (Airalo, 3 days). A 10 GB plan cost $20–23 for 30 days, and unlimited data cost about $27 for a week or $69–72 for 30 days from Saily or Airalo."),
         ("Do eSIMs work on Greek ferries and islands?",
@@ -1536,7 +1536,7 @@ MEXICO = dict(
     ],
     faq=[
         ("What is the best eSIM for Mexico?",
-         "On 10 October 2026, Airalo was the cheapest for most trips: 10 GB for 30 days cost $18.50 against $23.99 at Saily, and Airalo had the cheapest unlimited plan at every length, for example $23.50 for 7 days. Saily's 3 GB plan ($9.99) was the only small plan valid for 30 days."),
+         "On 4 November 2026, Airalo was the cheapest for most trips: 10 GB for 30 days cost $18.50 against $23.99 at Saily, and Airalo had the cheapest unlimited plan at every length, for example $23.50 for 7 days. Saily's 3 GB plan ($9.99) was the only small plan valid for 30 days."),
         ("How much is an eSIM for Mexico?",
          "Prices started at $4.00 for 1 GB (Airalo, 3 days). A 10 GB plan cost $18.50 for 30 days at Airalo, and unlimited data cost from $23.50 for a week."),
         ("Which network do Mexico travel eSIMs use?",
@@ -1549,7 +1549,7 @@ MEXICO = dict(
 
 # ---- Added 12 Oct 2026: prices checked that day in USD on saily.com (coupon cookie cleared, list prices),
 # airalo.com (currency=USD) and esim.holafly.com (USD table, spot-checked live at 7 days).
-OCT12 = dict(checked="12 Oct 2026", checked_long="12 October 2026", date="2026-10-12")
+OCT12 = dict(checked="4 Nov 2026", checked_long="4 November 2026", date="2026-11-04")  # re-checked 4 Nov
 
 CHINA = dict(
     OCT12, slug="best-esim-for-china", name="China", name_h1="China",
@@ -1610,7 +1610,7 @@ CHINA = dict(
         ("Do I need a VPN in China if I have an eSIM?",
          "It depends on the eSIM. Holafly says WhatsApp, Google and Instagram work with its China eSIM without installing a separate VPN, and that a VPN is included. Saily says Google and Instagram work through its app's virtual location feature, but WhatsApp needs a VPN. Airalo's China page doesn't say. Whatever you choose, install your apps before you travel."),
         ("What is the best eSIM for China?",
-         "On 12 October 2026, Airalo had the lowest list prices for most plans (10 GB for 30 days at $26.50, an unlimited week at $27.00). With my 10% code, Saily was cheaper for 30-day plans from 5 GB (10 GB for $24.29). Holafly costs a little more but is the only one that says WhatsApp works without a VPN."),
+         "On 4 November 2026, Airalo had the lowest list prices for most plans (10 GB for 30 days at $26.50, an unlimited week at $27.00). With my 10% code, Saily was cheaper for 30-day plans from 5 GB (10 GB for $24.29). Holafly costs a little more but is the only one that says WhatsApp works without a VPN."),
         ("How much is an eSIM for China?",
          "Prices started at $4.00 for 1 GB (Airalo, 3 days). A 10 GB plan cost $26.50–$26.99 for 30 days, and unlimited data cost about $27–30 for a week."),
         ("Does a China eSIM work in Hong Kong?",
@@ -1679,7 +1679,7 @@ KOREA = dict(
     ],
     faq=[
         ("What is the best eSIM for South Korea?",
-         "On 12 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $18.99) and had the cheapest unlimited plans from 5 to 15 days ($26.99 for a week). Airalo was cheaper for 3- and 30-day unlimited and is the only one of the three selling 50 GB."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $18.99) and had the cheapest unlimited plans from 5 to 15 days ($26.99 for a week). Airalo was cheaper for 3- and 30-day unlimited and is the only one of the three selling 50 GB."),
         ("How much is an eSIM for South Korea?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $19 for 30 days, and unlimited data cost from $26.99 for a week."),
         ("Does Google Maps work in South Korea?",
@@ -1751,7 +1751,7 @@ BALI = dict(
         ("Does an eSIM work in Bali?",
          "Yes. Bali is part of Indonesia, so an Indonesia eSIM covers it. Saily says its Indonesia plan covers Jakarta, Bali and most Indonesian islands on Telkomsel's 4G and 5G networks."),
         ("What is the best eSIM for Bali?",
-         "On 12 October 2026, Saily had the cheapest unlimited plans for 5 and 7 days ($26.99 for a week), while Airalo was 49 cents to $1 cheaper for 30-day fixed plans at list price. With my 10% code, Saily's 30-day plans were cheaper too."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans for 5 and 7 days ($26.99 for a week), while Airalo was 49 cents to $1 cheaper for 30-day fixed plans at list price. With my 10% code, Saily's 30-day plans were cheaper too."),
         ("How much is an eSIM for Bali?",
          "Prices started at $4.50 for 1 GB (Airalo, 3 days). A 10 GB plan cost $21–22 for 30 days, and unlimited data cost about $27 for a week."),
         ("Which network do Bali travel eSIMs use?",
@@ -1820,7 +1820,7 @@ PORTUGAL = dict(
     ],
     faq=[
         ("What is the best eSIM for Portugal?",
-         "On 12 October 2026, Airalo was the cheapest for fixed data — 10 GB for 30 days cost $11.00 against $16.99 at Saily — and for unlimited plans of 10 days or more. Saily was a cent cheaper for 5- and 7-day unlimited plans."),
+         "On 4 November 2026, Airalo was the cheapest for fixed data — 10 GB for 30 days cost $11.00 against $16.99 at Saily — and for unlimited plans of 10 days or more. Saily was a cent cheaper for 5- and 7-day unlimited plans."),
         ("How much is an eSIM for Portugal?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). 10 GB cost $11.00 for 30 days at Airalo, and unlimited data cost about $27 for a week."),
         ("Which network do Portugal travel eSIMs use?",
@@ -1888,7 +1888,7 @@ DUBAI = dict(
     ],
     faq=[
         ("What is the best eSIM for Dubai?",
-         "On 12 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $19.99), while Airalo had the cheapest unlimited week at list price ($27.50) and the cheapest 1 GB plan ($4.00 for 3 days)."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $19.99), while Airalo had the cheapest unlimited week at list price ($27.50) and the cheapest 1 GB plan ($4.00 for 3 days)."),
         ("Does a Dubai eSIM work in Abu Dhabi and the rest of the UAE?",
          "Yes. These are UAE plans: Saily and Airalo sell them as United Arab Emirates eSIMs, and Holafly says its Dubai eSIM works across the country."),
         ("Can I make WhatsApp calls in Dubai?",
@@ -1958,7 +1958,7 @@ VIETNAM = dict(
     ],
     faq=[
         ("What is the best eSIM for Vietnam?",
-         "On 12 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $17.99) and for a 7-day unlimited plan ($26.99). Airalo was cheaper for other unlimited lengths and is the only one selling 50 GB ($49.00)."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $17.99) and for a 7-day unlimited plan ($26.99). Airalo was cheaper for other unlimited lengths and is the only one selling 50 GB ($49.00)."),
         ("How much is an eSIM for Vietnam?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $18 for 30 days, and unlimited data cost about $27 for a week."),
         ("Which network do Vietnam travel eSIMs use?",
@@ -2026,7 +2026,7 @@ AUSTRALIA = dict(
     ],
     faq=[
         ("What is the best eSIM for Australia?",
-         "On 12 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $17.99), while Airalo had the cheapest unlimited plans at every length ($26.50 for a week) and sells 50 GB for $45.00."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $17.99), while Airalo had the cheapest unlimited plans at every length ($26.50 for a week) and sells 50 GB for $45.00."),
         ("How much is an eSIM for Australia?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $18 for 30 days, and unlimited data cost from $26.50 for a week."),
         ("Which network do Australia travel eSIMs use?",
@@ -2094,7 +2094,7 @@ GERMANY = dict(
     ],
     faq=[
         ("What is the best eSIM for Germany?",
-         "On 12 October 2026, Saily had the cheapest unlimited plans from 5 to 15 days ($23.99 for a week), while fixed data was within a dollar: Saily was a cent cheaper at 5 and 20 GB and Airalo 99 cents cheaper at 10 GB ($16.00). Airalo is the only one selling 50 GB ($36.00)."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans from 5 to 15 days ($23.99 for a week), while fixed data was within a dollar: Saily was a cent cheaper at 5 and 20 GB and Airalo 99 cents cheaper at 10 GB ($16.00). Airalo is the only one selling 50 GB ($36.00)."),
         ("How much is an eSIM for Germany?",
          "Prices started at $4.00 for 1 GB (Airalo, 3 days). 10 GB for 30 days cost $16–17, and unlimited data cost about $24 for a week."),
         ("Which network do Germany travel eSIMs use?",
@@ -2104,7 +2104,7 @@ GERMANY = dict(
     related_href="best-esim-for-europe.html", related_tag="eSIM · Europe", related_title="Best eSIM for Europe (2026)",
 )
 
-OCT13 = dict(checked="13 Oct 2026", checked_long="13 October 2026", date="2026-10-13")
+OCT13 = dict(checked="4 Nov 2026", checked_long="4 November 2026", date="2026-11-04")  # re-checked 4 Nov
 
 PHILIPPINES = dict(
     OCT13, slug="best-esim-for-philippines", name="Philippines", name_h1="the Philippines",
@@ -2163,7 +2163,7 @@ PHILIPPINES = dict(
     ],
     faq=[
         ("What is the best eSIM for the Philippines?",
-         "On 13 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $18.99) and on a 7-day unlimited plan ($26.99). Airalo was cheaper on most other unlimited lengths and sells 50 GB for $48.00. With my 10% code, Saily was cheaper on every plan it sells."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB (10 GB for $18.99) and on a 7-day unlimited plan ($26.99). Airalo was cheaper on most other unlimited lengths and sells 50 GB for $48.00. With my 10% code, Saily was cheaper on every plan it sells."),
         ("How much is an eSIM for the Philippines?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost about $19 for 30 days, and unlimited data cost about $27 for a week."),
         ("Which network do Philippines travel eSIMs use?",
@@ -2233,7 +2233,7 @@ SINGAPORE = dict(
     ],
     faq=[
         ("What is the best eSIM for Singapore?",
-         "On 13 October 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB and on a 7-day unlimited plan ($26.99). Airalo had cheaper unlimited plans at other lengths, including 30 days for $69.00."),
+         "On 4 November 2026, Saily was a cent cheaper than Airalo on every 30-day plan from 5 to 20 GB and on a 7-day unlimited plan ($26.99). Airalo had cheaper unlimited plans at other lengths, including 30 days for $69.00."),
         ("How much is an eSIM for Singapore?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). 3 GB cost $6.50–7.00, 10 GB for 30 days cost about $16, and unlimited data cost about $27 for a week."),
         ("What's the best eSIM for a Singapore stopover?",
@@ -2303,7 +2303,7 @@ MALAYSIA = dict(
     ],
     faq=[
         ("What is the best eSIM for Malaysia?",
-         "On 13 October 2026, Saily had the cheapest unlimited plans for 5 and 7 days ($26.99 for a week), while Airalo was 99 cents to $3.99 cheaper on 30-day fixed plans at list price. With my 10% code, Saily's 5 GB and 10 GB plans were cheaper too."),
+         "On 4 November 2026, Saily had the cheapest unlimited plans for 5 and 7 days ($26.99 for a week), while Airalo was 99 cents to $3.99 cheaper on 30-day fixed plans at list price. With my 10% code, Saily's 5 GB and 10 GB plans were cheaper too."),
         ("How much is an eSIM for Malaysia?",
          "Prices started at $3.99 for 1 GB (Saily, 7 days). A 10 GB plan cost $20–22 for 30 days, and unlimited data cost about $27 for a week."),
         ("Which network do Malaysia travel eSIMs use?",
@@ -2350,7 +2350,7 @@ ASIA_COVERAGE = """
 """
 
 ASIA = dict(
-    checked="16 Oct 2026", checked_long="16 October 2026", date="2026-10-16",
+    checked="4 Nov 2026", checked_long="4 November 2026", date="2026-11-04",
     slug="best-esim-for-asia", name="Asia", name_h1="Asia", plan_name="Asia",
     airalo_url="https://www.airalo.com/asia-esim", holafly_url="https://esim.holafly.com/esim-asia/",
     sticky_label="Saily Asia &amp; Oceania · from $4.99 →", sticky_sub="",

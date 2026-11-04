@@ -1,7 +1,6 @@
 """Homepage: eSIM-first hero (destination picker + cheapest unlimited week board). Idempotent.
 
-Prices come from the published country guides (checked 29 Sep 2026 for Japan/Thailand/USA/Turkey,
-9 Oct 2026 for Canada/Italy/Spain/Europe).
+Prices come from the published country guides (all re-checked 4 Nov 2026).
 """
 import os
 import re
@@ -19,7 +18,7 @@ DEST = [
     ("italy", "Italy", "from $3.99", 22.99, "Saily"),
     ("spain", "Spain", "from $3.99", 22.99, "Saily"),
     ("turkey", "Turkey", "from $3.99", 24.50, "Airalo"),
-    ("canada", "Canada", "from $5.29", 28.99, "Saily"),
+    ("canada", "Canada", "from $5.29", 28.87, "Airalo"),
     ("uk", "UK", "from $4.00", 26.99, "Saily"),
     ("france", "France", "from $3.99", 23.50, "Airalo"),
     ("greece", "Greece", "from $4.00", 26.99, "Saily"),
@@ -90,7 +89,7 @@ def hero():
         <div class="stat-strip">
           <div><span class="n">{len(DEST)}</span><span class="l">destinations with dated eSIM prices</span></div>
           <div><span class="n">31</span><span class="l">travel guides published</span></div>
-          <div><span class="n sm">Oct 2026</span><span class="l">eSIM prices last checked</span></div>
+          <div><span class="n sm">Nov 2026</span><span class="l">eSIM prices last checked</span></div>
           <div><span class="n">0</span><span class="l">sponsored placements — rankings are never paid for</span></div>
         </div>
       </div>
@@ -98,7 +97,7 @@ def hero():
       <div class="board esim-board">
         <div class="board-head">
           <div class="mono">Cheapest unlimited week</div>
-          <div class="board-status"><span class="dot"></span> CHECKED SEP–OCT 2026</div>
+          <div class="board-status"><span class="dot"></span> CHECKED 4 NOV 2026</div>
         </div>
         <div class="board-cols"><span>Destination</span><span>7 days</span><span>Provider</span></div>
 {rows}
