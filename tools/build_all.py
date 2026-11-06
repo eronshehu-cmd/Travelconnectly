@@ -17,12 +17,14 @@ STEPS = [
     "saily_vs_holafly.py",
     "saily_alternatives.py",
     "saily_promo.py",         # saily-promo-code.html (savings table from the guides)
+    "saily_review.py",        # saily-review.html (numbers from the comparisons)
     "link_countries2.py",     # guides cards, homepage links, eSIM guide, sitemap, llms.txt
     "home_esim.py",           # homepage hero picker and "cheapest unlimited week" board
     "link_svsa.py",
     "link_svsh.py",
     "link_alternatives.py",
     "link_promo.py",
+    "link_review.py",
     "set_guide_count.py",     # homepage guide count = cards on guides.html minus the calculator
     "vpn_refresh.py",         # VPN prices (tables, homepage cards) and Quick answer cards on VPN guides
     "fix_site.py",            # affiliate tagging, Saily coupon, analytics, sticky buttons (all pages)
