@@ -104,7 +104,7 @@ def hero():
         <div class="board-foot">
           <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily's eSIM plans</a>
         </div>
-        <p class="board-coupon">10% off with code <b>TRAVELCONNECTLY</b> · applied automatically</p>
+        <p class="board-coupon">10% off your first Saily order · code <b>TRAVELCONNECTLY</b> · applied automatically</p>
         <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe and Asia: regional plans). Cheaper still: Maya Mobile's global plan, $19.99 for 7 days in any country. I earn a commission from Saily and Maya, not from Airalo.</p>
       </div>
     </div>

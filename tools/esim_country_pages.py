@@ -24,9 +24,9 @@ CHECKED_LONG = "4 November 2026"
 DATE = "2026-11-04"
 # Saily affiliate coupon (10% off, confirmed by Saily on 12 Oct 2026); links carry coupon= so it applies automatically.
 COUPON_LINE = '<p class="qa-coupon">10% off with code <b>TRAVELCONNECTLY</b> · applied automatically</p>'
-COUPON_STICKY = "10% off with code TRAVELCONNECTLY"
+COUPON_STICKY = "10% off your first order · code TRAVELCONNECTLY"
 MAYA_WEEK = 19.99  # Maya global unlimited, 7 days, same price in every country (checked 17-19 Oct 2026)
-COUPON_NOTE = " Saily prices on this page are before the 10% TRAVELCONNECTLY discount, which my Saily links apply automatically."
+COUPON_NOTE = " Saily prices on this page are before the 10% TRAVELCONNECTLY discount on a first Saily order, which my Saily links apply automatically."
 # Single-country guides where a Europe-wide plan is a real alternative (they get a link to the Europe guide).
 EUROPE_TRIP_SLUGS = {"best-esim-for-italy", "best-esim-for-spain", "best-esim-for-uk", "best-esim-for-france",
                      "best-esim-for-greece", "best-esim-for-portugal", "best-esim-for-turkey", "best-esim-for-germany"}
@@ -165,7 +165,7 @@ PLANPICK_JS = """<script>
   function link(o, label){
     var saily = o.p === 'Saily';
     return '<a class="cta ' + (saily ? 'saily' : 'other') + '" href="' + o.url + '" target="_blank" rel="' + (saily ? 'sponsored noopener' : 'noopener') + '">' + label + '</a>'
-      + (saily ? '<span class="sub">10% off with code TRAVELCONNECTLY, applied automatically.</span>' : '<span class="sub">I don\\'t earn a commission from ' + o.p + '.</span>');
+      + (saily ? '<span class="sub">10% off a first Saily order with code TRAVELCONNECTLY, applied automatically.</span>' : '<span class="sub">I don\\'t earn a commission from ' + o.p + '.</span>');
   }
   function render(){
     root.querySelectorAll('[data-days]').forEach(function(b){ b.setAttribute('aria-checked', String(+b.dataset.days === st.days)); });
@@ -416,7 +416,7 @@ def page(c):
     qa_prov = c.get("qa_provider", "Saily")
     if qa_prov == "Saily":
         qa_code = money(code(float(c["qa_price"].lstrip("$"))))
-        qa_note = (f'\n        <p class="qa-coupon">{qa_code} with code <b>TRAVELCONNECTLY</b> (10% off) · applied automatically</p>')
+        qa_note = (f'\n        <p class="qa-coupon">{qa_code} with code <b>TRAVELCONNECTLY</b> (10% off your first Saily order) · applied automatically</p>')
         qa_other, qa_href, qa_rel = "", SAILY, "sponsored noopener"
     elif qa_prov == "Maya":
         qa_other, qa_href, qa_rel = " other", MAYA, "sponsored noopener"
@@ -613,7 +613,7 @@ def page(c):
       <div class="cta-band">
         <div class="eyebrow" style="justify-content:center;">HEADING TO {c['name'].upper()}?</div>
         <h2>Sort your data before you board</h2>
-        <p>Install a Saily {c.get('plan_name', c['name'])} plan at home and it switches on when you land — 10% off with code TRAVELCONNECTLY, applied automatically. Add a VPN for hotel and café WiFi.</p>
+        <p>Install a Saily {c.get('plan_name', c['name'])} plan at home and it switches on when you land — 10% off your first order with code TRAVELCONNECTLY, applied automatically. Add a VPN for hotel and café WiFi.</p>
         <div class="hero-ctas">
           <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto;">Get Saily for {c['name']} →</a>
           <a href="{NORD}" target="_blank" rel="sponsored noopener" class="btn btn-nord" style="width:auto;">Get NordVPN →</a>

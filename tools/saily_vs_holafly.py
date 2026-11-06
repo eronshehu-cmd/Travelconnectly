@@ -222,7 +222,7 @@ def main_html():
       <div class="cta-band">
         <div class="eyebrow" style="justify-content:center;">STILL DECIDING?</div>
         <h2>Pick your destination, then your plan</h2>
-        <p>Each destination guide compares Saily, Airalo and Holafly at dated prices. Saily is 10% off with code TRAVELCONNECTLY, applied automatically through my links.</p>
+        <p>Each destination guide compares Saily, Airalo and Holafly at dated prices. Saily is 10% off your first order with code TRAVELCONNECTLY, applied automatically through my links.</p>
         <div class="hero-ctas">
           <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto;">See Saily's plans →</a>
           <a href="{NORD}" target="_blank" rel="sponsored noopener" class="btn btn-nord" style="width:auto;">Get NordVPN →</a>

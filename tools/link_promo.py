@@ -20,7 +20,7 @@ CARD = """        <a class="guide-card" href="saily-promo-code.html">
           <div class="guide-card-body">
             <span class="tag">eSIM · Deal</span>
             <h3>Saily Promo Code: 10% Off</h3>
-            <p>What TRAVELCONNECTLY takes off real plans, and what's confirmed.</p>
+            <p>10% off your first Saily order: real savings and the confirmed terms.</p>
           </div>
         </a>
 """
@@ -38,7 +38,7 @@ edit("best-esim-for-travelers.html", lambda t: t if HREF in t else t.replace(
 
 edit("llms.txt", lambda t: t if "saily-promo-code.html" in t else t.replace(
     "\n\n## eSIM basics and tools",
-    "\n- [Saily promo code](https://www.travelconnectly.com/saily-promo-code.html): TRAVELCONNECTLY, 10% off Saily plans, with real savings and what's confirmed\n\n## eSIM basics and tools", 1))
+    "\n- [Saily promo code](https://www.travelconnectly.com/saily-promo-code.html): TRAVELCONNECTLY, 10% off a first Saily order (no expiry, all plans, works with Saily sales)\n\n## eSIM basics and tools", 1))
 
 
 def sitemap(t):

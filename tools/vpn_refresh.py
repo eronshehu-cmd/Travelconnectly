@@ -148,7 +148,7 @@ BF_NEW_FAQ = ("What is a good VPN Black Friday price in 2026?",
               f"({VPN['proton']['total']}), checked {BF_CHECKED}. Compare the total you pay upfront, not the percentage.")
 BF_ESIM_FAQ = ("Do eSIMs have Black Friday deals?",
                "Seasonal eSIM deals tend to be discount codes or bonus data, and plans are bought per trip, so there's no need to "
-               "stock up. Saily is 10% off all year with my code TRAVELCONNECTLY, and Maya Mobile's global unlimited plan costs "
+               "stock up. Saily is 10% off a first order with my code TRAVELCONNECTLY (no expiry, and it works alongside Saily's public sales), and Maya Mobile's global unlimited plan costs "
                "$19.99 for 7 days in any country. Buy close to your departure date.")
 
 
@@ -191,7 +191,7 @@ def fix_black_friday(t):
                f"(from their pricing pages, {BF_CHECKED}). Put a reminder in your calendar for a week before renewal." + m.group(2),
                t, count=1, flags=re.S)
     esim = (f'<h2 id="esim-deals">eSIM deals</h2>\n      <p>eSIM plans are bought per trip, not as subscriptions, so there\'s no point stocking up months ahead — work out the size you need with the <a href="esim-data-calculator.html">trip data calculator</a> and buy close to departure. Two offers that don\'t depend on Black Friday:</p>\n'
-            f'      <ul>\n        <li><strong>Saily:</strong> 10% off every plan with my code TRAVELCONNECTLY, applied automatically through my links. <a href="{SAILY}&aff_sub={BF_SLUG}&aff_sub2=content" target="_blank" rel="sponsored noopener">See Saily\'s plans →</a></li>\n'
+            f'      <ul>\n        <li><strong>Saily:</strong> 10% off your first order, on any plan, with my code TRAVELCONNECTLY — applied automatically through my links, and Saily says it also works alongside its public sales. <a href="{SAILY}&aff_sub={BF_SLUG}&aff_sub2=content" target="_blank" rel="sponsored noopener">See Saily\'s plans →</a></li>\n'
             f'        <li><strong>Maya Mobile:</strong> one global unlimited plan at the same price in every country — $19.99 for 7 days, $27.99 for 14 (checked {BF_CHECKED}). <a href="{MAYA}?subId1={BF_SLUG}&subId2=content" target="_blank" rel="sponsored noopener">See Maya\'s plans →</a></li>\n'
             '      </ul>\n      <p>For prices in your destination, see the <a href="guides.html#esim-countries">eSIM guides by country</a>.</p>\n\n      ')
     t = re.sub(r'<h2 id="esim-deals">eSIM deals</h2>.*?(?=<h2 id="frequently-asked-questions">)', lambda m: esim, t, count=1, flags=re.S)

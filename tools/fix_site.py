@@ -17,7 +17,7 @@ STICKY = {
     "surf": ('https://get.surfshark.net/aff_c?offer_id=926&aff_id=44567', 'btn-surf',
              'Get Surfshark · $2.49/mo →', '2-year plan · 30-day money-back guarantee'),
     "saily": ('https://go.saily.site/aff_c?offer_id=101&aff_id=16029&coupon=travelconnectly', 'btn-saily',
-              "Get Saily's eSIM Plans →", '10% off with code TRAVELCONNECTLY'),
+              "Get Saily's eSIM Plans →", '10% off your first order · code TRAVELCONNECTLY'),
 }
 
 
