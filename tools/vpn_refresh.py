@@ -3,6 +3,7 @@
 Prices checked 13 Oct 2026 and re-checked 19 Oct 2026 on each provider's pricing page. NordVPN only showed euro prices from Kosovo
 (no currency switch); Surfshark and Proton showed US dollars. To update: change VPN and CHECKED, rerun build_all.
 """
+import datetime
 import json
 import os
 import re
@@ -269,25 +270,53 @@ def fix_black_friday(t):
     return re.sub(r'"dateModified": "[^"]+"', '"dateModified": "2026-11-06"', t, count=1)
 
 
+# ---- Temporary Black Friday strip on the VPN pages and homepage. Shown until Cyber Monday (30 Nov 2026); the first
+# build after that removes it. It's a notice, not new content, so it doesn't bump page dates or the sitemap.
+BF_STRIP_UNTIL = datetime.date(2026, 11, 30)
+BF_STRIP_CSS = """/* bf strip */
+.bf-strip{ background:rgba(245,166,35,.10); border-bottom:1px solid rgba(245,166,35,.35); padding:10px 0; font-size:0.86rem; line-height:1.5; color:var(--text-light); }
+.bf-strip b{ color:var(--amber); font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; margin-right:8px; }
+.bf-strip a{ color:var(--teal); white-space:nowrap; margin-left:6px; }
+/* end bf strip */
+"""
+
+
+def bf_strip(t):
+    t = re.sub(r'\n  <div class="bf-strip".*?</div></div>', "", t, flags=re.S)
+    t = re.sub(r"/\* bf strip \*/.*?/\* end bf strip \*/\n", "", t, flags=re.S)
+    if datetime.date.today() > BF_STRIP_UNTIL:
+        return t
+    nord, surf = BF_DEALS[0], BF_DEALS[1]
+    strip = (f'\n  <div class="bf-strip" role="note"><div class="wrap"><b>Black Friday</b>{nord[0]} Complete {nord[3]} (was €4.49)'
+             f' · {surf[0]} One {surf[3]} <a href="{BF_SLUG}.html">See all deals →</a></div></div>')
+    t = t.replace('<main id="top">', '<main id="top">' + strip, 1)
+    return t.replace("</style>", BF_STRIP_CSS + "</style>", 1)
+
+
 changed = []
 for f in sorted(os.listdir(".")):
     if not f.endswith(".html"):
         continue
     t = open(f, encoding="utf-8").read()
     orig = t
+    vpn_page = f.startswith("best-vpn-for-") or f in ("best-budget-vpn-for-travelers.html", "free-vpn-vs-paid-vpn.html")
     if f == "index.html":
         t = fix_home(t)
     elif f == BF_SLUG + ".html":
         t = fix_black_friday(t)
-    elif f.startswith("best-vpn-for-") or f in ("best-budget-vpn-for-travelers.html", "free-vpn-vs-paid-vpn.html"):
+    elif vpn_page:
         t = fix_table_rows(t)
         t = fix_notes(t)
         t = add_quick_answer(t, f[:-5])
         if t != orig:
             t = bump_dates(t)
+    content_changed = t != orig
+    if f == "index.html" or vpn_page:
+        t = bf_strip(t)
     if t != orig:
         open(f, "w", encoding="utf-8", newline="\r\n").write(t)
-        changed.append(f)
+        if content_changed:
+            changed.append(f)
 
 sm = open("sitemap.xml", encoding="utf-8").read()
 for f in changed:
