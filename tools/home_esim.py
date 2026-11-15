@@ -37,6 +37,7 @@ DEST = [
     ("albania", "Albania", "from $3.99", 27.00, "Airalo"),  # Airalo's Europe plan covers Albania (checked 14 Nov 2026)
     ("kosovo", "Kosovo", "from $5.00", 36.90, "Holafly"),
     ("asia", "Asia", "from $4.00", 26.00, "Airalo"),
+    ("balkans", "Balkans", "from $5.00", 27.00, "Airalo"),  # Airalo Europe; doesn't cover Kosovo (14 Nov 2026)
 ]
 
 CSS = """
@@ -107,7 +108,7 @@ def hero():
           <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily's eSIM plans</a>
         </div>
         <p class="board-coupon">10% off your first Saily order · code <b>TRAVELCONNECTLY</b> · applied automatically</p>
-        <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe and Asia: regional plans; Albania: Airalo's Europe plan, which covers it). Cheaper still: Maya Mobile's global plan, $19.99 for 7 days in any country. I earn a commission from Saily and Maya, not from Airalo.</p>
+        <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe, Asia and Balkans: regional plans; Albania and Balkans: Airalo's Europe plan, which doesn't cover Kosovo). Cheaper still: Maya Mobile's global plan, $19.99 for 7 days in any country. I earn a commission from Saily and Maya, not from Airalo.</p>
       </div>
     </div>
   </section>"""

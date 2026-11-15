@@ -12,9 +12,10 @@ ALL = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("turkey", 
        ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
        ("australia", "Australia"), ("germany", "Germany"), ("philippines", "Philippines"),
        ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("albania", "Albania"), ("kosovo", "Kosovo"),
-       ("asia", "Asia"), ("europe", "Europe")]
+       ("asia", "Asia"), ("balkans", "Balkans"), ("europe", "Europe")]
 NEW = ALL[4:]
 BLURBS = {
+    "balkans": "Which regional plans cover Kosovo, Albania and the rest, at real, dated prices.",
     "albania": "Real, dated prices, which Europe plans cover Albania, and local tips.",
     "kosovo": "Most Europe eSIMs skip Kosovo — here's which ones work, at real, dated prices.",
     "asia": "Which of 16–22 countries each Asia plan covers, with real, dated prices.",
@@ -39,6 +40,7 @@ BLURBS = {
     "spain": "Saily, Airalo and Holafly Spain plans compared at real, dated prices.",
 }
 LLMS = {
+    "balkans": "regional plans compared: Saily Balkans (9 countries, only one incl. Kosovo) vs Airalo Europe (cheapest, no Kosovo) vs Holafly Balkans (5); coverage table",
     "albania": "Saily vs Airalo vs Holafly, networks (One Albania, Vodafone), which Europe plans cover Albania (Airalo yes, Saily/Holafly no), Balkans plan for Albania + Kosovo",
     "kosovo": "which eSIMs work in Kosovo (no Europe-wide plan from Saily, Airalo or Holafly covers it), Saily Balkans vs Airalo vs Holafly prices, networks (IPKO, Vala), no EU roaming",
     "asia": "regional plans compared: Airalo cheapest, Saily covers most countries (India, Australia, NZ); coverage table",

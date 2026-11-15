@@ -36,7 +36,7 @@ COUNTRY_LIST = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("
                 ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
                 ("australia", "Australia"), ("germany", "Germany"), ("philippines", "Philippines"),
                 ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("albania", "Albania"), ("kosovo", "Kosovo"),
-                ("asia", "Asia"), ("europe", "Europe")]
+                ("asia", "Asia"), ("balkans", "Balkans"), ("europe", "Europe")]
 # Asian destinations whose guides link to the Asia regional guide.
 ASIA_TRIP_SLUGS = {f"best-esim-for-{s}" for s in ("thailand", "vietnam", "bali", "philippines", "singapore", "malaysia",
                                                    "japan", "south-korea", "china")}
@@ -329,7 +329,7 @@ SAILY_PATHS = {
     "germany": "esim-germany", "philippines": "esim-philippines", "singapore": "esim-singapore",
     "malaysia": "esim-malaysia", "europe": "esim-europe", "asia": "esim-asia-and-oceania",
     # Kosovo: Saily's Balkans plan covers Kosovo and was cheaper than its Kosovo-only plan at every size (14 Nov 2026).
-    "albania": "esim-albania", "kosovo": "esim-balkans",
+    "albania": "esim-albania", "kosovo": "esim-balkans", "balkans": "esim-balkans",
 }
 
 
@@ -629,11 +629,11 @@ def page(c):
   <section>
     <div class="wrap">
       <div class="cta-band">
-        <div class="eyebrow" style="justify-content:center;">HEADING TO {c['name'].upper()}?</div>
+        <div class="eyebrow" style="justify-content:center;">HEADING TO {c.get('cta_name', c['name']).upper()}?</div>
         <h2>Sort your data before you board</h2>
-        <p>Install a Saily {c.get('plan_name', c['name'])} plan at home and it switches on when you land — 10% off your first order with code TRAVELCONNECTLY, applied automatically. Add a VPN for hotel and café WiFi.</p>
+        <p>Install a Saily {c.get('cta_plan_name', c.get('plan_name', c['name']))} plan at home and it switches on when you land — 10% off your first order with code TRAVELCONNECTLY, applied automatically. Add a VPN for hotel and café WiFi.</p>
         <div class="hero-ctas">
-          <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto;">Get Saily for {c['name']} →</a>
+          <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily" style="width:auto;">Get Saily for {c.get('cta_name', c['name'])} →</a>
           <a href="{NORD}" target="_blank" rel="sponsored noopener" class="btn btn-nord" style="width:auto;">Get NordVPN →</a>
         </div>
       </div>
@@ -1239,7 +1239,7 @@ EUROPE = dict(
         f'<strong>A week across several countries, including the UK, Switzerland or Turkey:</strong> <a href="{SAILY}" target="_blank" rel="sponsored noopener">Saily Europe unlimited</a> — the cheapest Europe-wide week, with no hotspot limits.',
         "<strong>Only EU countries and the UK:</strong> Airalo's EU + UK plan is the cheapest option at most lengths.",
         "<strong>Including the western Balkans, Ukraine or Georgia:</strong> Airalo Europe (41 countries) is the only one of the three that covers them.",
-        f'<strong>Kosovo, Albania and the Balkans:</strong> Saily\'s separate Balkans plan is the only regional plan of the three that covers Kosovo — see the <a href="best-esim-for-kosovo.html">Kosovo</a> and <a href="best-esim-for-albania.html">Albania</a> guides.',
+        f'<strong>Kosovo, Albania and the Balkans:</strong> Saily\'s separate Balkans plan is the only regional plan of the three that covers Kosovo — see <a href="best-esim-for-balkans.html">Balkans eSIM plans compared</a> and the <a href="best-esim-for-kosovo.html">Kosovo</a> and <a href="best-esim-for-albania.html">Albania</a> guides.',
         "<strong>Most of the trip in one country:</strong> a single-country plan is usually cheaper — see the <a href=\"best-esim-for-italy.html\">Italy</a>, <a href=\"best-esim-for-spain.html\">Spain</a> and <a href=\"best-esim-for-turkey.html\">Turkey</a> guides.",
     ],
     net_intro="Regional plans roam on local networks in each country:",
@@ -2474,7 +2474,7 @@ BALKAN_COVERAGE = """
         </table>
       </div>
       <p class="price-note">From each provider's own plan pages, checked 14 November 2026 (Holafly Europe: its country list, checked 4 November 2026).</p>
-      <p><strong>One eSIM for both countries:</strong> <a href=\"""" + SAILY_BALKANS + """\" target="_blank" rel="sponsored noopener">Saily's Balkans plan</a> covers Albania, Kosovo, North Macedonia, Montenegro, Serbia, Bosnia and Herzegovina, Croatia, Greece and Bulgaria. Holafly's Balkans plan covers five of them but not Kosovo, and Airalo doesn't sell a Balkans plan. Maya's global plan also covers both.</p>
+      <p><strong>One eSIM for both countries:</strong> <a href=\"""" + SAILY_BALKANS + """\" target="_blank" rel="sponsored noopener">Saily's Balkans plan</a> covers Albania, Kosovo, North Macedonia, Montenegro, Serbia, Bosnia and Herzegovina, Croatia, Greece and Bulgaria. Holafly's Balkans plan covers five of them but not Kosovo, and Airalo doesn't sell a Balkans plan. Maya's global plan also covers both. Full comparison of the regional plans: <a href="best-esim-for-balkans.html">Balkans eSIM plans compared</a>.</p>
 """
 BALKAN_PHONE_FAQ = ("Do these eSIMs include a phone number?",
                     "No. These are data-only eSIMs, so use WhatsApp, Viber or other internet calling — both are widely used in Albania and Kosovo. Keep your home SIM active for texts such as bank codes, with its data roaming turned off.")
@@ -2626,6 +2626,113 @@ KOSOVO = dict(
     related_href="best-esim-for-albania.html", related_tag="eSIM · Albania", related_title="Best eSIM for Albania (2026)",
 )
 
+# ---- Balkans regional guide (15 Nov 2026). Saily Balkans (9 countries) and Airalo Europe/Eurolink prices checked
+# 14 Nov 2026, Holafly Balkans (5 countries) re-checked 15 Nov; Airalo Europe's 41-country list and Maya's country
+# pages (all 9 Balkan countries, Slovenia, Romania, Turkey) checked 15 Nov. Airalo sells no Balkans plan, so its
+# column is the Europe plan, which covers every Balkan country except Kosovo.
+BALKANS_COVERAGE_ROWS = [
+    ("Countries covered", "9", "41", "5", "Global"),
+    ("Albania", Y, Y, Y, Y),
+    ("Bosnia and Herzegovina, Montenegro", Y, Y, Y, Y),
+    ("North Macedonia, Serbia", Y, Y, Y, Y),
+    ("Kosovo", Y, N, N, Y),
+    ("Croatia, Greece, Bulgaria", Y, Y, N, Y),
+    ("Slovenia, Romania", N, Y, N, Y),
+    ("Rest of the EU, UK, Turkey", N, Y, N, Y),
+]
+BALKANS_COVERAGE = """
+      <h2 id="countries-covered">Which countries are covered</h2>
+      <p>There's no standard "Balkans": each plan covers a different list, and Kosovo is the country most plans leave out. Check every country on your route before you buy.</p>
+      <div class="table-wrap glance">
+        <table class="fit cov">
+          <thead><tr><th>Country</th><th>Saily Balkans</th><th>Airalo Europe</th><th>Holafly Balkans</th><th>Maya global</th></tr></thead>
+          <tbody>
+""" + "\n".join(f"            <tr><td>{r[0]}</td>" + "".join(f"<td>{v}</td>" for v in r[1:]) + "</tr>" for r in BALKANS_COVERAGE_ROWS) + """
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note">From each provider's own country list, checked 14–15 November 2026. Airalo doesn't sell a Balkans plan, so the comparison uses its Europe plan.</p>
+      <p><strong>Route includes Kosovo?</strong> Saily's Balkans plan is the only regional plan of the three that covers it; Maya's global plan does too. Saily's and Holafly's Europe plans don't cover Albania, Kosovo or the other western Balkan countries — see <a href="best-esim-for-europe.html">the Europe guide</a>.</p>
+"""
+
+BALKANS = dict(
+    BALKAN_CHECKED, slug="best-esim-for-balkans", name="Balkans", name_h1="the Balkans", plan_name="Balkans or Europe",
+    cta_name="the Balkans", cta_plan_name="Balkans",
+    airalo_url=AIRALO_EUROPE, holafly_url="https://esim.holafly.com/esim-balkans/",
+    sticky_label="Saily Balkans · from $5.99 →", sticky_sub="",
+    headline="Best eSIM for the Balkans (2026): Saily vs Airalo vs Holafly, Prices and Coverage Compared",
+    title="Best eSIM for the Balkans 2026: Which Plans Cover Kosovo, Albania & More | TravelConnectly",
+    desc="One eSIM for a Balkans trip? Saily Balkans, Airalo Europe and Holafly Balkans compared on real, dated prices and on which countries each covers — Kosovo, Albania, Montenegro, North Macedonia, Serbia, Bosnia, Croatia, Greece.",
+    keywords="best eSIM for Balkans, Balkans eSIM, Western Balkans eSIM, eSIM Kosovo Albania Montenegro, Saily Balkans, Holafly Balkans, Airalo Europe Balkans, eSIM for Balkan road trip",
+    og_title="Best eSIM for the Balkans 2026: Which Plans Cover Kosovo, Albania & More",
+    og_desc="Real Balkans eSIM prices and country coverage compared — and the one regional plan that includes Kosovo.",
+    og_image="og-esim-balkans.jpg",
+    photo="photo-nomads.jpg", photo_alt="Laptop open on an outdoor café table under a parasol",
+    qa_label="Balkan trip, incl. Kosovo",
+    qa_reason="The only regional plan covering all 9 Balkan countries including Kosovo — and with my code ($29.69) cheaper than Airalo's Europe plan for 10 GB.",
+    qa_plan="10 GB · 30 days", qa_price="$32.99", qa_cta="Get Saily Balkans 10 GB →",
+    qa_trust=["9 countries incl. Kosovo", "Hotspot allowed", "180 days to activate"], saily_fup="3 GB",
+    qa_chips=[("Skipping Kosovo, unlimited:", "Airalo Europe 7 days", 27.00, "Airalo"),
+              ("Unlimited incl. Kosovo:", "Saily Balkans 7 days", 38.99, "Saily")],
+    takeaways=[
+        "<strong>Only Saily's Balkans plan covers Kosovo</strong> among the three regional plans. It covers 9 countries: Albania, Kosovo, North Macedonia, Montenegro, Serbia, Bosnia and Herzegovina, Croatia, Greece and Bulgaria.",
+        "<strong>Skipping Kosovo? Airalo's Europe plan is cheapest</strong> — $27.00 for an unlimited week vs $37.50 at Holafly Balkans and $38.99 at Saily Balkans — and it covers 41 countries.",
+        "<strong>Fixed data:</strong> Airalo is 49 cents to $1.99 cheaper at list price; with my code Saily Balkans is cheaper at 5, 10 and 20 GB (10 GB for $29.69 vs $31.00).",
+        "<strong>Holafly's Balkans plan covers only 5 countries</strong> — not Kosovo, Croatia, Greece or Bulgaria.",
+    ],
+    lede="Dubrovnik to Kotor, Tirana to Ohrid, Prizren to Sarajevo — a Balkans trip crosses a border every few days, and plenty of \"Europe\" eSIMs quietly stop working at some of them. Here's which regional plans cover which Balkan countries, what they cost, and when a single-country plan is the better deal.",
+    fixed=[
+        ("1 GB", [(5.99, 7)], [(5.00, 3)]),
+        ("3 GB", [(12.99, 30)], [(10.00, 3), (11.00, 7)]),
+        ("5 GB", [(19.99, 30)], [(18.50, 7), (19.00, 15), (19.50, 30)]),
+        ("10 GB", [(32.99, 30)], [(26.00, 7), (28.00, 15), (31.00, 30)]),
+        ("20 GB", [(48.99, 30)], [(47.00, 15), (48.00, 30)]),
+        ("50 GB", [], [(70.00, 30), (100.00, 90)]),
+    ],
+    fixed_note="<strong>What that means:</strong> the columns are Saily's Balkans plan and Airalo's Europe plan (Airalo has no Balkans plan). At list price Airalo is 49 cents to $1.99 cheaper at 30-day validity and sells 50 GB; with my 10% code Saily comes out cheaper at 5 GB ($17.99), 10 GB ($29.69) and 20 GB ($44.09). If your route includes Kosovo, only the Saily column works there.",
+    unl=[(3, None, 11.50, 19.90), (5, 29.99, 19.50, 29.90), (7, 38.99, 27.00, 37.50),
+         (10, 42.99, 35.00, 45.50), (15, 54.99, 49.00, 64.90), (30, 98.99, 71.00, 132.50)],
+    unl_note="Airalo's Europe plan was the cheapest unlimited option at every length, by a wide margin — but it doesn't cover Kosovo. Between the two Balkans plans, Holafly was cheaper for 5 and 7 days at list price and Saily for 10, 15 and 30 days; with my code Saily is cheaper at every length it sells ($35.09 for a week). Saily also sells 20- and 25-day plans ($68.99 and $86.99).",
+    fup_html="\"Unlimited\" rarely means unlimited full speed. <strong>Saily</strong> states 3 GB per day at full speed on its Balkans plans, then up to 1 Mbps, with no hotspot restrictions. <strong>Airalo</strong> states 5 GB a day on its Europe plan, then 1 Mbps. <strong>Holafly</strong> states a fair-usage policy that can slow speeds for up to a day.",
+    picks=[
+        f'<strong>A route that includes Kosovo:</strong> <a href="{SAILY}" target="_blank" rel="sponsored noopener">Saily Balkans</a> — the only regional plan of the three that covers all 9 countries, and the cheapest fixed data with my code.',
+        f'<strong>No Kosovo, or carrying on into the EU or Turkey:</strong> <a href="{AIRALO_EUROPE}" target="_blank" rel="noopener">Airalo Europe</a> — the cheapest unlimited plan at every length, across 41 countries.',
+        "<strong>Holafly Balkans:</strong> only worth it if your whole route is Albania, Bosnia, Montenegro, North Macedonia and Serbia — and even there Airalo's Europe plan was cheaper.",
+        '<strong>Mostly one country:</strong> a country plan is often cheaper for fixed data — Saily Albania is $21.99 for 10 GB against $32.99 for Saily Balkans. See the <a href="best-esim-for-albania.html">Albania</a>, <a href="best-esim-for-kosovo.html">Kosovo</a> and <a href="best-esim-for-greece.html">Greece</a> guides.',
+    ],
+    net_intro="Regional plans roam on local networks in each country:",
+    networks=[
+        "<strong>Saily Balkans:</strong> doesn't name networks; it lists 3G/4G/LTE/5G depending on the local network.",
+        "<strong>Airalo Europe:</strong> roams on a local network in each of its 41 countries; it doesn't list its Balkan networks on the plan page.",
+        "<strong>Holafly Balkans:</strong> doesn't name networks on its Balkans page.",
+        'For Albania and Kosovo, the networks each provider\'s country plan uses are in the <a href="best-esim-for-albania.html#networks-and-coverage">Albania</a> and <a href="best-esim-for-kosovo.html#networks-and-coverage">Kosovo</a> guides.',
+    ],
+    tips_title="Balkans tips",
+    tips=[
+        "<strong>EU roaming rules don't apply in Albania, Kosovo, Montenegro, North Macedonia, Serbia or Bosnia and Herzegovina</strong>, which aren't in the EU. Even with an EU phone plan, check roaming rates before relying on it.",
+        "<strong>Border crossings by road are where a regional plan pays off.</strong> In my experience the signal holds through the Kosovo–Albania crossing, so a plan covering both keeps you online the whole drive.",
+        "<strong>Coverage thins in the mountains</strong> — the signal drops in Theth in the Albanian Alps, for example. Download offline maps before mountain drives and hikes.",
+        "<strong>Free café and restaurant WiFi is almost everywhere</strong> in Albania and Kosovo. Use a VPN on shared WiFi: see <a href=\"best-vpn-for-airport-hotel-wifi.html\">the best VPN for hotel and airport WiFi</a>.",
+        "<strong>Turn off data roaming on ferries</strong> (Italy or Corfu to Albania, Croatia's islands) unless you're sure your plan covers the ship's network — ships often use their own maritime network.",
+    ],
+    faq=[
+        ("What is the best eSIM for the Balkans?",
+         "It depends on whether your route includes Kosovo. On 14 November 2026, Saily's Balkans plan was the only regional plan of the three covering all 9 Balkan countries including Kosovo (10 GB for 30 days at $32.99, or $29.69 with my code). Without Kosovo, Airalo's Europe plan was cheapest: $27.00 for an unlimited week, across 41 countries."),
+        ("Which eSIM covers both Kosovo and Albania?",
+         "Saily's Balkans plan covers both, plus North Macedonia, Montenegro, Serbia, Bosnia and Herzegovina, Croatia, Greece and Bulgaria. Maya's global plan also covers both. Airalo's Europe plan and Holafly's Balkans plan cover Albania but not Kosovo."),
+        ("Does a Europe eSIM work in the Balkans?",
+         "Partly. Airalo's Europe plan covers every Balkan country except Kosovo. Saily's and Holafly's Europe plans cover EU members such as Croatia, Greece and Bulgaria, but not Albania, Kosovo, Montenegro, North Macedonia, Serbia or Bosnia and Herzegovina."),
+        ("How much is a Balkans eSIM?",
+         "Prices started at $5.00 for 1 GB (Airalo Europe, 3 days) or $5.99 for 7 days on Saily Balkans. An unlimited week cost $27.00 on Airalo's Europe plan, $37.50 on Holafly Balkans and $38.99 on Saily Balkans ($35.09 with my code)."),
+        ("Is a Balkans eSIM cheaper than separate country eSIMs?",
+         "For fixed data in one country, a country plan is usually cheaper — Saily Albania was $21.99 for 10 GB against $32.99 for Saily Balkans. For unlimited data, Airalo's Europe plan ($27.00 a week) was cheaper than Albania-only ($35.50–36.50) or Kosovo-only (Holafly, $36.90) unlimited plans."),
+        ("Do Balkans eSIMs include a phone number?",
+         "No. These are data-only eSIMs, so use WhatsApp, Viber or other internet calling — both are widely used across the Balkans. Keep your home SIM active for texts such as bank codes, with its data roaming turned off."),
+    ],
+    coverage_html=BALKANS_COVERAGE,
+    related_href="best-esim-for-kosovo.html", related_tag="eSIM · Kosovo", related_title="Best eSIM for Kosovo (2026)",
+)
+
 if __name__ == "__main__":
-    for country in ALL_PAGES + (ASIA, ALBANIA, KOSOVO):
+    for country in ALL_PAGES + (ASIA, ALBANIA, KOSOVO, BALKANS):
         page(country)
