@@ -2451,7 +2451,7 @@ ASIA = dict(
 # ---- Albania and Kosovo (15 Nov 2026). Prices checked 14 Nov 2026 in USD on saily.com (esim-albania, esim-kosovo,
 # esim-balkans, esim-europe), airalo.com (albania-esim, kosovo-esim, europe-esim) and esim.holafly.com (esim-albania,
 # esim-kosovo, esim-balkans); networks and speed limits from the same pages on 15 Nov. Maya's own country pages list
-# Albania and Kosovo at its usual global prices. Local tips come from Eron, who is based in Kosovo.
+# Albania and Kosovo at its usual global prices. Local tips (IPKO signal, Theth, WiFi, border) come from Eron.
 # Kept out of ALL_PAGES (like ASIA) so the comparison pages keep their 23 destinations.
 BALKAN_CHECKED = dict(checked="14 Nov 2026", checked_long="14 November 2026", date="2026-11-15")
 SAILY_BALKANS = saily_alt("esim-balkans")
@@ -2503,7 +2503,7 @@ ALBANIA = dict(
         "<strong>Going on to Kosovo?</strong> Albania plans and Saily's Europe plan don't work there. Saily's Balkans plan covers both (10 GB for $32.99).",
         "<strong>Free WiFi is almost everywhere</strong> in cafés and restaurants, but the signal drops in Theth.",
     ],
-    lede="The Riviera beaches, Berat and Gjirokastër, ferries from Corfu and the mountain road to Theth — Albania is easy to get around with a phone. Here's what an Albania eSIM costs from the three biggest travel-eSIM brands, which \"Europe\" plans actually cover Albania, the one plan that also works in Kosovo, and a few tips from someone based next door in Kosovo.",
+    lede="The Riviera beaches, Berat and Gjirokastër, ferries from Corfu and the mountain road to Theth — Albania is easy to get around with a phone. Here's what an Albania eSIM costs from the three biggest travel-eSIM brands, which \"Europe\" plans actually cover Albania, the one plan that also works in Kosovo, and a few local tips.",
     fixed=[
         ("1 GB", [(3.99, 7)], [(4.00, 3)]),
         ("3 GB", [(8.99, 30)], [(8.50, 3), (9.00, 7)]),
@@ -2577,7 +2577,7 @@ KOSOVO = dict(
         "<strong>Unlimited:</strong> Holafly Kosovo was cheapest at list for a week ($36.90, on IPKO); Saily Balkans is cheaper with my code ($35.09) and for 15–30 days. Airalo has no Kosovo unlimited plan.",
         "<strong>IPKO usually has the better signal</strong> in Kosovo, and EU roaming rules don't apply here.",
     ],
-    lede="Kosovo catches a lot of travellers out: \"Europe\" eSIMs usually skip it, and EU roaming deals don't apply. I'm based in Kosovo, so here's which eSIMs actually work here, what they cost from the three biggest travel-eSIM brands, and which network to look for — whether you're in Prishtina for a weekend, visiting family for the summer, or carrying on to Albania.",
+    lede="Kosovo catches a lot of travellers out: \"Europe\" eSIMs usually skip it, and EU roaming deals don't apply. Here's which eSIMs actually work in Kosovo, what they cost from the three biggest travel-eSIM brands, and which network to look for — whether you're in Prishtina for a weekend, visiting family for the summer, or carrying on to Albania.",
     fixed=[
         ("1 GB", [(5.99, 7)], [(5.00, 3)]),
         ("3 GB", [(12.99, 30)], [(13.00, 3), (14.00, 7)]),
