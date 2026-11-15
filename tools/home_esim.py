@@ -34,6 +34,8 @@ DEST = [
     ("philippines", "Philippines", "from $3.99", 26.99, "Saily"),
     ("singapore", "Singapore", "from $3.99", 26.99, "Saily"),
     ("malaysia", "Malaysia", "from $3.99", 26.99, "Saily"),
+    ("albania", "Albania", "from $3.99", 27.00, "Airalo"),  # Airalo's Europe plan covers Albania (checked 14 Nov 2026)
+    ("kosovo", "Kosovo", "from $5.00", 36.90, "Holafly"),
     ("asia", "Asia", "from $4.00", 26.00, "Airalo"),
 ]
 
@@ -97,7 +99,7 @@ def hero():
       <div class="board esim-board">
         <div class="board-head">
           <div class="mono">Cheapest unlimited week</div>
-          <div class="board-status"><span class="dot"></span> CHECKED 4 NOV 2026</div>
+          <div class="board-status"><span class="dot"></span> CHECKED 4–14 NOV 2026</div>
         </div>
         <div class="board-cols"><span>Destination</span><span>7 days</span><span>Provider</span></div>
 {rows}
@@ -105,7 +107,7 @@ def hero():
           <a href="{SAILY}" target="_blank" rel="sponsored noopener" class="btn btn-saily">See Saily's eSIM plans</a>
         </div>
         <p class="board-coupon">10% off your first Saily order · code <b>TRAVELCONNECTLY</b> · applied automatically</p>
-        <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe and Asia: regional plans). Cheaper still: Maya Mobile's global plan, $19.99 for 7 days in any country. I earn a commission from Saily and Maya, not from Airalo.</p>
+        <p class="board-note">Cheapest 7-day unlimited plan among Saily, Airalo and Holafly in each guide, at list prices before any discount (Europe and Asia: regional plans; Albania: Airalo's Europe plan, which covers it). Cheaper still: Maya Mobile's global plan, $19.99 for 7 days in any country. I earn a commission from Saily and Maya, not from Airalo.</p>
       </div>
     </div>
   </section>"""

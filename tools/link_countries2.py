@@ -4,16 +4,19 @@ import re
 import sys
 
 os.chdir(sys.argv[1])
-DATE = "2026-10-16"
+DATE = "2026-11-15"  # lastmod for new guides and for the pages whose link lists change (guides, eSIM basics, home)
 GUIDE_COUNT = 31
 ALL = [("japan", "Japan"), ("thailand", "Thailand"), ("usa", "USA"), ("turkey", "Turkey"),
        ("canada", "Canada"), ("italy", "Italy"), ("spain", "Spain"), ("uk", "UK"), ("france", "France"),
        ("greece", "Greece"), ("mexico", "Mexico"), ("china", "China"), ("south-korea", "South Korea"),
        ("bali", "Bali"), ("portugal", "Portugal"), ("dubai", "Dubai"), ("vietnam", "Vietnam"),
        ("australia", "Australia"), ("germany", "Germany"), ("philippines", "Philippines"),
-       ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("asia", "Asia"), ("europe", "Europe")]
+       ("singapore", "Singapore"), ("malaysia", "Malaysia"), ("albania", "Albania"), ("kosovo", "Kosovo"),
+       ("asia", "Asia"), ("europe", "Europe")]
 NEW = ALL[4:]
 BLURBS = {
+    "albania": "Real, dated prices, which Europe plans cover Albania, and local tips.",
+    "kosovo": "Most Europe eSIMs skip Kosovo — here's which ones work, at real, dated prices.",
     "asia": "Which of 16–22 countries each Asia plan covers, with real, dated prices.",
     "philippines": "Saily, Airalo and Holafly compared, plus coverage tips for island-hopping.",
     "singapore": "From a stopover to a longer stay: real, dated prices on Singtel and more.",
@@ -36,6 +39,8 @@ BLURBS = {
     "spain": "Saily, Airalo and Holafly Spain plans compared at real, dated prices.",
 }
 LLMS = {
+    "albania": "Saily vs Airalo vs Holafly, networks (One Albania, Vodafone), which Europe plans cover Albania (Airalo yes, Saily/Holafly no), Balkans plan for Albania + Kosovo",
+    "kosovo": "which eSIMs work in Kosovo (no Europe-wide plan from Saily, Airalo or Holafly covers it), Saily Balkans vs Airalo vs Holafly prices, networks (IPKO, Vala), no EU roaming",
     "asia": "regional plans compared: Airalo cheapest, Saily covers most countries (India, Australia, NZ); coverage table",
     "philippines": "Saily vs Airalo vs Holafly, networks (Smart, Globe), island coverage",
     "singapore": "Saily vs Airalo vs Holafly, network Singtel, stopover plans",
@@ -129,6 +134,13 @@ entries = "".join(f"""  <url>
 loc = "<loc>https://www.travelconnectly.com/best-esim-for-turkey.html</loc>"
 end = t.index("</url>", t.index(loc)) + len("</url>\n")
 t = t[:end] + entries + t[end:]
+def modified(page):
+    """Country guides: the page's own dateModified (set by the generator when prices are re-checked)."""
+    country_pages = {f"best-esim-for-{s}.html" for s, _ in ALL}
+    m = re.search(r'"dateModified": "(\d{4}-\d{2}-\d{2})"', read(page)) if page in country_pages else None
+    return m.group(1) if m else DATE
+
+
 for page in ["guides.html", "best-esim-for-travelers.html", ""] + [f"best-esim-for-{s}.html" for s, _ in ALL]:
     loc = f"<loc>https://www.travelconnectly.com/{page}</loc>"
     if loc not in t:
@@ -136,6 +148,6 @@ for page in ["guides.html", "best-esim-for-travelers.html", ""] + [f"best-esim-f
         continue
     j = t.index("<lastmod>", t.index(loc))
     k = t.index("</lastmod>", j)
-    t = t[:j] + f"<lastmod>{DATE}" + t[k:]
+    t = t[:j] + f"<lastmod>{modified(page)}" + t[k:]
 write("sitemap.xml", t, o)
 print("sitemap urls:", t.count("<loc>"))
